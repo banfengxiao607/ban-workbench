@@ -1,7 +1,307 @@
 {
-  "generated_at": "2026-07-26T12:57:53.365959+08:00",
-  "count": 65,
+  "generated_at": "2026-07-26T13:12:02.033531+08:00",
+  "count": 95,
   "items": [
+    {
+      "title": "上海市2026年度选调应届优秀大学毕业生公告",
+      "category": "xuandiao",
+      "region": "上海",
+      "publish_date": "2026-07-26",
+      "deadline": "2025-09-24",
+      "source": "pku",
+      "url": "https://scc.pku.edu.cn/frontpage/mobile/dist/index.html#/newsDetail?id=f08dc7115adc4184a43e1d615c534d87",
+      "content_summary": "来源：北京大学学生就业指导服务中心"
+    },
+    {
+      "title": "北京市2026年度定向选调和\"优培计划\"招聘应届优秀大学毕业生公告",
+      "category": "xuandiao",
+      "region": "北京",
+      "publish_date": "2026-07-26",
+      "deadline": "2025-09-26",
+      "source": "pku",
+      "url": "https://scc.pku.edu.cn//f/newsCenter/view-aa49e27b2d7a41d3a49583e65172a0eb.htm",
+      "content_summary": "来源：北京大学学生就业指导服务中心"
+    },
+    {
+      "title": "甘肃省2026年选调应届优秀大学毕业生公告",
+      "category": "xuandiao",
+      "region": "甘肃",
+      "publish_date": "2026-07-26",
+      "deadline": "2025-11-10",
+      "source": "pku",
+      "url": "http://www.gszg.gov.cn/20250918/28e7383784c842618c082e37d07e77c6/c.html",
+      "content_summary": "来源：北京大学学生就业指导服务中心"
+    },
+    {
+      "title": "四川省面向北京大学选调2026届优秀大学毕业生公告",
+      "category": "xuandiao",
+      "region": "四川",
+      "publish_date": "2026-07-26",
+      "deadline": "2025-10-15",
+      "source": "pku",
+      "url": "https://scc.pku.edu.cn//f/newsCenter/view-0e74034f91d346bfa5c56b50e649397e.htm",
+      "content_summary": "来源：北京大学学生就业指导服务中心"
+    },
+    {
+      "title": "重庆市面向北京大学定向选调2026届急需紧缺专业应届优秀大学毕业生公告",
+      "category": "xuandiao",
+      "region": "重庆",
+      "publish_date": "2026-07-26",
+      "deadline": "2025-10-17",
+      "source": "pku",
+      "url": "https://scc.pku.edu.cn//f/newsCenter/view-b330160f22774b8386e7f87868db17c8.htm",
+      "content_summary": "来源：北京大学学生就业指导服务中心"
+    },
+    {
+      "title": "吉林省面向北京大学定向招录2026届选调生公告",
+      "category": "xuandiao",
+      "region": "吉林",
+      "publish_date": "2026-07-26",
+      "deadline": "2025-10-14",
+      "source": "pku",
+      "url": "https://scc.pku.edu.cn//f/newsCenter/view-43ec7882f43245bdbe923e398e8176bb.htm",
+      "content_summary": "来源：北京大学学生就业指导服务中心"
+    },
+    {
+      "title": "山东省2026年度选拔录用选调生公告",
+      "category": "xuandiao",
+      "region": "山东",
+      "publish_date": "2026-07-26",
+      "deadline": "2025-10-16",
+      "source": "pku",
+      "url": "https://scc.pku.edu.cn//f/newsCenter/view-42b4d4612f9c468d98b836f07bdcb361.htm",
+      "content_summary": "来源：北京大学学生就业指导服务中心"
+    },
+    {
+      "title": "2026年度浙江省党政机关选调应届优秀大学毕业生公告",
+      "category": "xuandiao",
+      "region": "浙江",
+      "publish_date": "2026-07-26",
+      "deadline": "2025-10-19",
+      "source": "pku",
+      "url": "https://scc.pku.edu.cn/frontpage/pku/html/newsDetail_zdtj.html?id=6408624b070541f584073bcf6175e894",
+      "content_summary": "来源：北京大学学生就业指导服务中心"
+    },
+    {
+      "title": "安徽省2026年度面向北京大学定向招录选调生公告",
+      "category": "xuandiao",
+      "region": "安徽",
+      "publish_date": "2026-07-26",
+      "deadline": "2025-10-22",
+      "source": "pku",
+      "url": "https://scc.pku.edu.cn//f/newsCenter/view-684df9ed6acf49f98b9840659ad7c0d7.htm",
+      "content_summary": "来源：北京大学学生就业指导服务中心"
+    },
+    {
+      "title": "辽宁省2026年度面向北京大学选调全日制应届优秀大学毕业生公告",
+      "category": "xuandiao",
+      "region": "辽宁",
+      "publish_date": "2026-07-26",
+      "deadline": "2025-10-22",
+      "source": "pku",
+      "url": "https://scc.pku.edu.cn/frontpage/pku/html/xds_newsDetail.html?id=28892daabdfe4eca8e24031c36cb9726",
+      "content_summary": "来源：北京大学学生就业指导服务中心"
+    },
+    {
+      "title": "贵州省2026年度定向部分高校选调优秀毕业生公告",
+      "category": "xuandiao",
+      "region": "贵州",
+      "publish_date": "2026-07-26",
+      "deadline": null,
+      "source": "pku",
+      "url": "https://scc.pku.edu.cn//f/newsCenter/view-a1a68a038f7f41a19c72bbe7d0b89992.htm",
+      "content_summary": "来源：北京大学学生就业指导服务中心"
+    },
+    {
+      "title": "江苏省2026年应届优秀大学毕业生选调工作公告",
+      "category": "xuandiao",
+      "region": "江苏",
+      "publish_date": "2026-07-26",
+      "deadline": "2025-11-03",
+      "source": "pku",
+      "url": "https://scc.pku.edu.cn/frontpage/pku/html/newsDetail_zdtj.html?id=7315d2da258649caa40cb01fa28b206b",
+      "content_summary": "来源：北京大学学生就业指导服务中心"
+    },
+    {
+      "title": "湖南省2026年定向选调公告",
+      "category": "xuandiao",
+      "region": "湖南",
+      "publish_date": "2026-07-26",
+      "deadline": "2025-10-24",
+      "source": "pku",
+      "url": "https://scc.pku.edu.cn//f/newsCenter/view-1edec88579b3418e9403c39ab6a0350d.htm",
+      "content_summary": "来源：北京大学学生就业指导服务中心"
+    },
+    {
+      "title": "新疆维吾尔自治区和新疆生产建设兵团2026年度选调大学毕业生公告",
+      "category": "xuandiao",
+      "region": "新疆",
+      "publish_date": "2026-07-26",
+      "deadline": "2025-11-05",
+      "source": "pku",
+      "url": "https://scc.pku.edu.cn//f/newsCenter/view-01b7979914ca4fd09c7abcc1d615ef6d.htm",
+      "content_summary": "来源：北京大学学生就业指导服务中心"
+    },
+    {
+      "title": "2026年度宁夏招录选调生公告",
+      "category": "xuandiao",
+      "region": "宁夏",
+      "publish_date": "2026-07-26",
+      "deadline": "2025-11-17",
+      "source": "pku",
+      "url": "https://scc.pku.edu.cn//f/newsCenter/view-da5d598d96754e0e858c4fd7870e21b1.htm",
+      "content_summary": "来源：北京大学学生就业指导服务中心"
+    },
+    {
+      "title": "广西2026年定向北京大学招录选调生公告",
+      "category": "xuandiao",
+      "region": "广西",
+      "publish_date": "2026-07-26",
+      "deadline": "2025-11-16",
+      "source": "pku",
+      "url": "https://scc.pku.edu.cn/frontpage/pku/html/newsDetail_zdtj.html?id=b81cbe2d6426410da5ae6967a97e63f7",
+      "content_summary": "来源：北京大学学生就业指导服务中心"
+    },
+    {
+      "title": "青海省2026年度选调应届优秀大学毕业生公告",
+      "category": "xuandiao",
+      "region": "青海",
+      "publish_date": "2026-07-26",
+      "deadline": "2025-11-13",
+      "source": "pku",
+      "url": "https://scc.pku.edu.cn//f/newsCenter/view-e50be2a8df2d4216a86144fa41d2637d.htm",
+      "content_summary": "来源：北京大学学生就业指导服务中心"
+    },
+    {
+      "title": "天津市2026年度定向招录选调生公告",
+      "category": "xuandiao",
+      "region": "天津",
+      "publish_date": "2026-07-26",
+      "deadline": "2025-11-16",
+      "source": "pku",
+      "url": "https://scc.pku.edu.cn//f/newsCenter/view-355265fdbbfc4ababc569eb7ed654ae5.htm",
+      "content_summary": "来源：北京大学学生就业指导服务中心"
+    },
+    {
+      "title": "内蒙古自治区2026年度到北京大学定向选调应届优秀大学毕业生公告",
+      "category": "xuandiao",
+      "region": "内蒙古",
+      "publish_date": "2026-07-26",
+      "deadline": "2025-11-20",
+      "source": "pku",
+      "url": "https://scc.pku.edu.cn//f/newsCenter/view-436fcbd8cf2644938dcced4f39bf4121.htm",
+      "content_summary": "来源：北京大学学生就业指导服务中心"
+    },
+    {
+      "title": "2026年湖北省定向选调生招录公告",
+      "category": "xuandiao",
+      "region": "湖北",
+      "publish_date": "2026-07-26",
+      "deadline": "2025-11-19",
+      "source": "pku",
+      "url": "https://scc.pku.edu.cn/frontpage/pku/html/newsDetail_zdtj.html?id=b2bee68f66004152a649695d66d75027",
+      "content_summary": "来源：北京大学学生就业指导服务中心"
+    },
+    {
+      "title": "福建省2026届引进生选拔公告",
+      "category": "xuandiao",
+      "region": "福建",
+      "publish_date": "2026-07-26",
+      "deadline": "2025-11-23",
+      "source": "pku",
+      "url": "https://scc.pku.edu.cn//f/newsCenter/view-6879469e956841be9d93df27c1b473a5.htm",
+      "content_summary": "来源：北京大学学生就业指导服务中心"
+    },
+    {
+      "title": "江西省2026年度面向北京大学选调应届优秀大学毕业生公告",
+      "category": "xuandiao",
+      "region": "江西",
+      "publish_date": "2026-07-26",
+      "deadline": "2025-11-27",
+      "source": "pku",
+      "url": "https://scc.pku.edu.cn//f/newsCenter/view-89625bd4a5e546f59dbcb1b58b88e4e3.htm",
+      "content_summary": "来源：北京大学学生就业指导服务中心"
+    },
+    {
+      "title": "云南省2026年面向北京大学选调优秀毕业生公告",
+      "category": "xuandiao",
+      "region": "云南",
+      "publish_date": "2026-07-26",
+      "deadline": "2025-11-25",
+      "source": "pku",
+      "url": "https://scc.pku.edu.cn//f/newsCenter/view-29828a7c54594c71b35244f7138a51bc.htm",
+      "content_summary": "来源：北京大学学生就业指导服务中心"
+    },
+    {
+      "title": "福建省2026年度选调生选拔工作公告",
+      "category": "xuandiao",
+      "region": "福建",
+      "publish_date": "2026-07-26",
+      "deadline": "2025-12-02",
+      "source": "pku",
+      "url": "https://scc.pku.edu.cn//f/newsCenter/view-ea39bf826c4b43da9570b9cb641dd552.htm",
+      "content_summary": "来源：北京大学学生就业指导服务中心"
+    },
+    {
+      "title": "西藏自治区2026年度定向选调应届优秀大学毕业生公告",
+      "category": "xuandiao",
+      "region": "西藏",
+      "publish_date": "2026-07-26",
+      "deadline": "2025-12-15",
+      "source": "pku",
+      "url": "https://scc.pku.edu.cn/frontpage/pku/html/xds_newsDetail.html?id=ed42d4f7773944c68a3a98337583c5e3",
+      "content_summary": "来源：北京大学学生就业指导服务中心"
+    },
+    {
+      "title": "2026年度陕西省面向北京大学招录选调生公告",
+      "category": "xuandiao",
+      "region": "陕西",
+      "publish_date": "2026-07-26",
+      "deadline": "2025-12-17",
+      "source": "pku",
+      "url": "https://scc.pku.edu.cn/frontpage/pku/html/newsDetail_zdtj.html?id=393fad38ad0c4abaaaeda83e1cb82670",
+      "content_summary": "来源：北京大学学生就业指导服务中心"
+    },
+    {
+      "title": "广东省2026年度选调优秀大学毕业生公告",
+      "category": "xuandiao",
+      "region": "广东",
+      "publish_date": "2026-07-26",
+      "deadline": "2025-12-08",
+      "source": "pku",
+      "url": "https://scc.pku.edu.cn//f/newsCenter/view-1327621072e74706996ac969532b11ed.htm",
+      "content_summary": "来源：北京大学学生就业指导服务中心"
+    },
+    {
+      "title": "河北省2026年度定向选调生招录公告",
+      "category": "xuandiao",
+      "region": "河北",
+      "publish_date": "2026-07-26",
+      "deadline": "2025-12-29",
+      "source": "pku",
+      "url": "https://scc.pku.edu.cn/frontpage/pku/html/newsDetail_zdtj.html?id=d26b4737913247498846fe44d510c394",
+      "content_summary": "来源：北京大学学生就业指导服务中心"
+    },
+    {
+      "title": "山西省2026年面向北京大学选调优秀高校毕业生公告",
+      "category": "xuandiao",
+      "region": "山西",
+      "publish_date": "2026-07-26",
+      "deadline": "2025-12-26",
+      "source": "pku",
+      "url": "https://scc.pku.edu.cn/frontpage/pku/html/newsDetail_zdtj.html?id=e79aba27a29644bdb46e38c6447463ab",
+      "content_summary": "来源：北京大学学生就业指导服务中心"
+    },
+    {
+      "title": "海南省2026年度选调应届优秀大学毕业生公告",
+      "category": "xuandiao",
+      "region": "海南",
+      "publish_date": "2026-07-26",
+      "deadline": "2025-01-30",
+      "source": "pku",
+      "url": "https://scc.pku.edu.cn//f/newsCenter/view-a3da1b5c120143fa867c11e3bb421b52.htm",
+      "content_summary": "来源：北京大学学生就业指导服务中心"
+    },
     {
       "title": "2024年下半年阳新县纪委监委公开择优选调(聘)工作人员调整岗位计划公告",
       "category": "xuandiao",

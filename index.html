@@ -438,6 +438,7 @@ function refreshShizheng() {
 
 // ========== 招聘公告 ==========
 let announceFilters = { cat: 'all', city: 'all' };
+let cityDrawerOpen = false;
 
 function renderAnnounceView() {
   let html = `
@@ -454,13 +455,25 @@ function renderAnnounceView() {
           <option value="fudaoyuan">辅导员</option>
         </select>
       </div>
-    </div>
-    <div class="flex gap-3">
-      <div class="w-24 flex-shrink-0">
-        <p class="text-xs text-slate-400 mb-1.5 px-1">城市</p>
-        <div id="cityFilter" class="space-y-1 max-h-[60vh] overflow-y-auto no-scrollbar sticky top-2"></div>
+      <div class="mt-3">
+        <button id="cityToggleBtn" onclick="toggleCityDrawer()" class="text-xs flex items-center gap-1 px-3 py-1.5 bg-slate-100 text-slate-600 rounded-lg">
+          <span>🏙</span>
+          <span>${announceFilters.city === 'all' ? '按城市筛选' : announceFilters.city}</span>
+        </button>
       </div>
-      <div id="announceList" class="space-y-2 flex-1 min-w-0"></div>
+    </div>
+    <div class="relative">
+      <!-- 城市抽屉 -->
+      <div id="cityDrawer" class="absolute left-0 top-0 bottom-0 bg-white rounded-xl shadow-lg z-20 w-28 p-2 transform -translate-x-full transition-transform duration-200 ${cityDrawerOpen ? 'translate-x-0' : ''}">
+        <div class="flex items-center justify-between mb-2">
+          <p class="text-xs font-medium text-slate-600">城市</p>
+          <button onclick="toggleCityDrawer()" class="text-slate-400 text-xs">✕</button>
+        </div>
+        <div id="cityFilter" class="space-y-1 max-h-[55vh] overflow-y-auto no-scrollbar"></div>
+      </div>
+      <!-- 遮罩 -->
+      <div id="cityOverlay" onclick="toggleCityDrawer()" class="fixed inset-0 bg-black/20 z-10 ${cityDrawerOpen ? '' : 'hidden'}"></div>
+      <div id="announceList" class="space-y-2 relative z-0"></div>
     </div>
   `;
   setTimeout(() => {
@@ -468,6 +481,17 @@ function renderAnnounceView() {
     filterAnnounce();
   }, 0);
   return html;
+}
+
+function toggleCityDrawer() {
+  cityDrawerOpen = !cityDrawerOpen;
+  const drawer = document.getElementById('cityDrawer');
+  const overlay = document.getElementById('cityOverlay');
+  if (drawer) {
+    if (cityDrawerOpen) drawer.classList.remove('-translate-x-full');
+    else drawer.classList.add('-translate-x-full');
+  }
+  if (overlay) overlay.classList.toggle('hidden', !cityDrawerOpen);
 }
 
 function onCatChange(cat) {
@@ -479,23 +503,24 @@ function onCatChange(cat) {
 
 function onCityChange(city) {
   announceFilters.city = city;
+  cityDrawerOpen = false;
   renderCityFilter();
   filterAnnounce();
+  // 更新按钮文字
+  const btnText = document.querySelector('#cityToggleBtn span:last-child');
+  if (btnText) btnText.textContent = city === 'all' ? '按城市筛选' : city;
 }
 
 function renderCityFilter() {
   const container = document.getElementById('cityFilter');
   if (!container) return;
-  // 按当前分类统计城市
   let items = announcements;
   if (announceFilters.cat !== 'all') items = items.filter(x => x.category === announceFilters.cat);
-  // 统计每个城市的条数
   const cityCount = {};
   items.forEach(x => {
     const c = x.region || '全国';
     cityCount[c] = (cityCount[c] || 0) + 1;
   });
-  // 排序：全国放第一，其余按条数倒序
   const cities = Object.keys(cityCount).sort((a,b) => {
     if (a === '全国') return -1;
     if (b === '全国') return 1;

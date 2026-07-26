@@ -430,12 +430,15 @@ function renderShizhengView() {
   // 时政列表
   html += '<div class="space-y-2">';
   shizheng.forEach((item, i) => {
+    const isSizheng = item.category === 'sizheng';
+    const catBadge = isSizheng ? '<span class="text-xs bg-purple-50 text-purple-600 px-1.5 py-0.5 rounded-full">高校思政</span>' : '';
     html += `
-      <a href="${item.url}" target="_blank" class="block bg-white rounded-xl shadow p-3 active:bg-slate-50">
+      <a href="${item.url}" target="_blank" class="block bg-white rounded-xl shadow p-3 active:bg-slate-50 ${isSizheng ? 'border-l-4 border-purple-300' : ''}">
         <div class="flex items-start justify-between gap-2">
           <p class="text-sm text-slate-800 line-clamp-2 flex-1">${i+1}. ${escapeHtml(item.title)}</p>
           <span class="text-xs text-slate-400 whitespace-nowrap">${escapeHtml(item.source)}</span>
         </div>
+        ${catBadge ? `<div class="mt-1">${catBadge}</div>` : ''}
       </a>
     `;
   });
@@ -556,7 +559,16 @@ function filterAnnounce() {
   if (announceFilters.cat !== 'all') items = items.filter(x => x.category === announceFilters.cat);
   if (announceFilters.city !== 'all') items = items.filter(x => (x.region || '全国') === announceFilters.city);
   if (search) items = items.filter(x => (x.title + (x.content_summary || '') + (x.region || '')).toLowerCase().includes(search));
-  items.sort((a,b) => (b.publish_date||'').localeCompare(a.publish_date||''));
+  // 目标城市优先 → 匹配分数降序 → 发布日期降序
+  items.sort((a,b) => {
+    const ta = a.is_target_city ? 0 : 1;
+    const tb = b.is_target_city ? 0 : 1;
+    if (ta !== tb) return ta - tb;
+    const sa = a.match_score || 0;
+    const sb = b.match_score || 0;
+    if (sa !== sb) return sb - sa;
+    return (b.publish_date||'').localeCompare(a.publish_date||'');
+  });
 
   const container = document.getElementById('announceList');
   if (!container) return;
@@ -566,17 +578,21 @@ function filterAnnounce() {
     const d = daysUntil(it.deadline);
     const alert = d !== null && d >= 0 && d <= 3;
     const badge = d !== null && d >= 0 ? `<span class="text-xs ${alert ? 'text-red-600 bg-red-50' : 'text-slate-500 bg-slate-100'} px-1.5 py-0.5 rounded-full">剩${d}天</span>` : '';
+    const targetFlag = it.is_target_city ? '<span class="text-xs bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded-full">★目标城市</span>' : '';
+    const matchBadge = it.match_score ? `<span class="text-xs ${it.match_score >= 100 ? 'text-green-700 bg-green-50' : it.match_score >= 70 ? 'text-blue-700 bg-blue-50' : 'text-slate-500 bg-slate-100'} px-1.5 py-0.5 rounded-full">匹配${it.match_score}</span>` : '';
     return `
-      <a href="${it.url}" target="_blank" class="block bg-white rounded-xl shadow p-3 ${alert ? 'border-l-4 border-red-500' : ''}">
+      <a href="${it.url}" target="_blank" class="block bg-white rounded-xl shadow p-3 ${it.is_target_city ? 'border-l-4 border-amber-400' : alert ? 'border-l-4 border-red-500' : ''}">
         <div class="flex items-start justify-between gap-2 mb-1">
           <p class="text-sm font-medium text-slate-800 line-clamp-2 flex-1">${escapeHtml(it.title)}</p>
-          ${badge}
+          <div class="flex flex-col gap-1 items-end">${badge}${targetFlag}</div>
         </div>
-        <div class="flex gap-2 text-xs text-slate-400">
+        <div class="flex gap-2 text-xs text-slate-400 flex-wrap">
           <span class="px-1 bg-teal-50 text-teal-600 rounded">${escapeHtml(it.region || '全国')}</span>
           <span>发布:${formatDate(it.publish_date)}</span>
           <span class="text-red-500">截止:${formatDate(it.deadline)}</span>
+          ${matchBadge}
         </div>
+        ${it.match_reason ? `<p class="text-xs text-slate-400 mt-1">${escapeHtml(it.match_reason)}</p>` : ''}
       </a>
     `;
   }).join('');

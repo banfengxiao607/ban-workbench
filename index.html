@@ -40,6 +40,8 @@
   ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius:3px; }
   .line-clamp-2 { display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
 </style>
 </head>
 <body class="bg-slate-50">
@@ -435,6 +437,8 @@ function refreshShizheng() {
 }
 
 // ========== 招聘公告 ==========
+let announceFilters = { cat: 'all', city: 'all' };
+
 function renderAnnounceView() {
   let html = `
     <div class="bg-white rounded-xl shadow p-4 mb-4">
@@ -444,25 +448,61 @@ function renderAnnounceView() {
       </div>
       <div class="flex gap-2">
         <input type="text" id="annSearch" placeholder="搜索..." oninput="filterAnnounce()" class="flex-1 px-3 py-1.5 border border-slate-200 rounded-lg text-sm">
-        <select id="annCategory" onchange="filterAnnounce()" class="px-2 py-1.5 border border-slate-200 rounded-lg text-sm">
+        <select id="annCategory" onchange="onCatChange(this.value)" class="px-2 py-1.5 border border-slate-200 rounded-lg text-sm">
           <option value="all">全部</option>
           <option value="xuandiao">选调生</option>
           <option value="fudaoyuan">辅导员</option>
         </select>
       </div>
+      <div id="cityFilter" class="flex gap-1.5 overflow-x-auto mt-3 pb-1 no-scrollbar"></div>
     </div>
     <div id="announceList" class="space-y-2"></div>
   `;
-  setTimeout(filterAnnounce, 0);
+  setTimeout(() => {
+    renderCityFilter();
+    filterAnnounce();
+  }, 0);
   return html;
+}
+
+function onCatChange(cat) {
+  announceFilters.cat = cat;
+  renderCityFilter();
+  filterAnnounce();
+}
+
+function onCityChange(city) {
+  announceFilters.city = city;
+  renderCityFilter();
+  filterAnnounce();
+}
+
+function renderCityFilter() {
+  const container = document.getElementById('cityFilter');
+  if (!container) return;
+  // 按当前分类统计城市
+  let items = announcements;
+  if (announceFilters.cat !== 'all') items = items.filter(x => x.category === announceFilters.cat);
+  const cities = ['all', ...Array.from(new Set(items.map(x => x.region || '全国'))).filter(c => c !== '全国').sort()];
+  if (!cities.includes('全国') && announceFilters.city === '全国') announceFilters.city = 'all';
+  if (!cities.includes(announceFilters.city)) announceFilters.city = 'all';
+
+  container.innerHTML = cities.map(city => {
+    const active = announceFilters.city === city;
+    const label = city === 'all' ? '全部城市' : city;
+    const count = city === 'all' ? items.length : items.filter(x => (x.region || '全国') === city).length;
+    return `<button onclick="onCityChange('${city}')" class="whitespace-nowrap px-2.5 py-1 rounded-full text-xs ${active ? 'bg-teal-600 text-white' : 'bg-slate-100 text-slate-600'}">${label} ${count}</button>`;
+  }).join('');
 }
 
 function filterAnnounce() {
   const search = (document.getElementById('annSearch')?.value || '').toLowerCase();
-  const cat = document.getElementById('annCategory')?.value || 'all';
+  const catEl = document.getElementById('annCategory');
+  if (catEl) announceFilters.cat = catEl.value || 'all';
   let items = announcements;
-  if (cat !== 'all') items = items.filter(x => x.category === cat);
-  if (search) items = items.filter(x => (x.title + (x.content_summary || '')).toLowerCase().includes(search));
+  if (announceFilters.cat !== 'all') items = items.filter(x => x.category === announceFilters.cat);
+  if (announceFilters.city !== 'all') items = items.filter(x => (x.region || '全国') === announceFilters.city);
+  if (search) items = items.filter(x => (x.title + (x.content_summary || '') + (x.region || '')).toLowerCase().includes(search));
   items.sort((a,b) => (b.publish_date||'').localeCompare(a.publish_date||''));
 
   const container = document.getElementById('announceList');

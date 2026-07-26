@@ -503,6 +503,158 @@ def crawl_chsi(session):
     return items
 
 
+# ==================== 源 6.5：高校人才网教师频道（高校教师招聘）====================
+
+def crawl_gaoxiaojob_teacher(session):
+    """高校人才网 - 教师频道（column/239）+ 医学卫生频道（column/243）。
+
+    教师频道抓高校教师/专任教师/讲师岗位；
+    医学卫生频道抓医院/卫健委/医疗卫生事业单位招聘。
+    """
+    items = []
+    channels = [
+        ("https://www.gaoxiaojob.com/column/239.html", "teacher", "教师频道"),
+        ("https://www.gaoxiaojob.com/column/243.html", "other", "医学卫生频道"),
+    ]
+
+    for list_url, default_cat, ch_name in channels:
+        r = safe_get(session, list_url)
+        if r is None:
+            print(f"  [gaoxiaojob-{ch_name}] 无法访问")
+            continue
+        r.encoding = r.apparent_encoding or "utf-8"
+        soup = BeautifulSoup(r.text, "lxml")
+
+        detail_links = []
+        seen_url = set()
+        for a in soup.find_all("a", href=True):
+            title = clean_text(a.get_text())
+            if not title or len(title) < 8:
+                continue
+            href = a["href"]
+            if "/announcement/detail/" not in href:
+                continue
+            full_url = urljoin(list_url, href)
+            if full_url in seen_url:
+                continue
+            seen_url.add(full_url)
+            detail_links.append((title, full_url))
+
+        print(f"  [gaoxiaojob-{ch_name}] 找到 {len(detail_links)} 条详情链接")
+
+        for title, detail_url in detail_links[:12]:
+            time.sleep(0.3)
+            rd = safe_get(session, detail_url)
+            if rd is None:
+                continue
+            rd.encoding = rd.apparent_encoding or "utf-8"
+            dsoup = BeautifulSoup(rd.text, "lxml")
+
+            detail_box = dsoup.find("div", class_="detail-list") or dsoup.find("div", class_=re.compile("detail-item"))
+            box_text = clean_text(detail_box.get_text()) if detail_box else ""
+            content_box = dsoup.find("div", class_=re.compile("detail-main-content|announcement-rich-text"))
+            content_text = clean_text(content_box.get_text()) if content_box else box_text
+
+            publish_date = None
+            m = RE_GXJ_PUBLISH.search(box_text)
+            if m:
+                publish_date = m.group(1)
+            deadline = None
+            m = RE_GXJ_DEADLINE.search(box_text)
+            if m:
+                deadline = m.group(1)
+            region = None
+            m = RE_GXJ_PROVINCE.search(box_text)
+            if m:
+                region = m.group(1).strip()
+            if not region:
+                region = detect_region(title, content_text[:200])
+
+            # 智能分类：标题含"辅导员"归辅导员，含"教师/讲师"归teacher，医学类归other
+            cat = default_cat
+            if "辅导员" in title:
+                cat = "fudaoyuan"
+            elif any(kw in title for kw in ("教师", "讲师", "教授", "师资")):
+                cat = "teacher"
+            elif any(kw in title for kw in ("医院", "卫生", "医疗", "护理", "临床", "卫健")):
+                cat = "other"
+
+            recruit_num = None
+            m = RE_GXJ_RECRUIT.search(box_text) or RE_GXJ_RECRUIT.search(title)
+            if m:
+                recruit_num = next((g for g in m.groups() if g), None)
+
+            summary = truncate(content_text, 80)
+            if recruit_num and recruit_num not in summary:
+                summary = f"招聘{recruit_num}人。" + summary
+
+            items.append({
+                "title": title,
+                "category": cat,
+                "region": region or "全国",
+                "publish_date": publish_date,
+                "deadline": deadline,
+                "source": "gaoxiaojob",
+                "url": detail_url,
+                "content_summary": summary,
+            })
+
+    return items
+
+
+# ==================== 源 6.6：硕博招聘网教师/医学分频道 ====================
+
+def crawl_shuobojob_teacher_medical(session):
+    """硕博招聘网 - 教师（jiaoshi）+ 医学（yixue）分频道。"""
+    items = []
+    channels = [
+        ("http://www.shuobojob.com/gaoxiaozhaopin/jiaoshi/", "teacher", "教师"),
+        ("http://www.shuobojob.com/gaoxiaozhaopin/yixue/", "other", "医学"),
+    ]
+
+    for url, default_cat, ch_name in channels:
+        r = safe_get(session, url)
+        if r is None:
+            continue
+        r.encoding = r.apparent_encoding or "utf-8"
+        soup = BeautifulSoup(r.text, "lxml")
+
+        for a in soup.find_all("a", href=True):
+            title = clean_text(a.get_text())
+            if not title or len(title) < 8:
+                continue
+            href = a["href"]
+            full_url = urljoin(url, href)
+            if not re.search(r'/\d+\.html?$', full_url):
+                continue
+
+            cat = default_cat
+            if "辅导员" in title:
+                cat = "fudaoyuan"
+            elif any(kw in title for kw in ("教师", "讲师", "教授")):
+                cat = "teacher"
+
+            items.append({
+                "title": title,
+                "category": cat,
+                "region": detect_region(title),
+                "publish_date": None,
+                "deadline": None,
+                "source": "shuobojob",
+                "url": full_url,
+                "content_summary": ch_name,
+            })
+        time.sleep(0.2)
+
+    seen = set()
+    unique = []
+    for it in items:
+        if it["title"] not in seen:
+            seen.add(it["title"])
+            unique.append(it)
+    return unique[:30]
+
+
 # ==================== 源 7：北京大学选调生汇总（权威，本地JSON）====================
 
 def crawl_pku_xuandiao(session=None):
@@ -671,12 +823,148 @@ def crawl_hust(session):
 from urllib.parse import urljoin as _urljoin
 
 
+# ==================== 岗位条件筛选与排序 ====================
+
+# 用户画像
+USER_PROFILE = {
+    "graduation_year": "2027",
+    "school": "华中科技大学",
+    "major": "护理学",
+    "degree": "硕士",
+    "party_member": True,
+    "student_leader": True,
+}
+
+# 目标城市（置顶优先显示）
+TARGET_CITIES = ["天津", "武汉", "青岛", "烟台", "长春", "沈阳"]
+
+# 排除关键词（不符合条件的岗位）
+EXCLUDE_JOB_KW = (
+    "博士", "博士后", "长江学者", "杰青", "优青",
+    "建筑", "土木", "机械", "电气", "自动化", "计算机", "软件",
+    "金融", "会计", "法律", "法学", "经济",
+    "幼儿园", "小学", "初中", "高中", "中学",  # 只看高校
+)
+
+
+def _is_job_suitable(item):
+    """判断岗位是否符合用户条件。
+
+    返回 (suitable: bool, match_score: int, match_reason: str)
+    """
+    title = item.get("title", "")
+    summary = item.get("content_summary", "")
+    text = title + " " + summary
+
+    # 1. 排除明显不符合的
+    for kw in EXCLUDE_JOB_KW:
+        if kw in title:
+            # 但"博士"如果是"博士及以上"或"硕士及以上"则保留
+            if kw == "博士" and ("硕士" in title or "及以上" in title):
+                continue
+            return (False, 0, f"不匹配：含'{kw}'")
+
+    # 2. 已截止的过滤掉（deadline 早于今天）
+    deadline = item.get("deadline")
+    if deadline:
+        try:
+            d = datetime.strptime(deadline, "%Y-%m-%d")
+            if d < datetime.now(TZ):
+                return (False, 0, "已截止报名")
+        except Exception:
+            pass
+
+    # 3. 计算匹配分数
+    score = 50  # 基础分
+    reasons = []
+
+    # 护理/医学相关加分
+    if any(kw in text for kw in ("护理", "医学", "卫生", "医疗", "临床", "卫健", "医院")):
+        score += 30
+        reasons.append("医学/护理相关")
+
+    # 硕士可报加分
+    if any(kw in text for kw in ("硕士", "研究生", "及以上")):
+        score += 15
+        reasons.append("硕士可报")
+
+    # 党员优先加分
+    if any(kw in text for kw in ("党员", "中共党员")):
+        score += 10
+        reasons.append("党员优先")
+
+    # 学生干部加分
+    if any(kw in text for kw in ("学生干部", "干部", "主席团", "学生会")):
+        score += 10
+        reasons.append("学生干部优先")
+
+    # 2027届/应届加分
+    if any(kw in text for kw in ("应届", "2027", "2027届")):
+        score += 5
+        reasons.append("应届可报")
+
+    # 目标城市加分
+    region = item.get("region", "") or ""
+    for city in TARGET_CITIES:
+        if city in region or city in title:
+            score += 40
+            reasons.append(f"目标城市：{city}")
+            break
+
+    # 选调生/辅导员天然适合
+    if item.get("category") == "xuandiao":
+        score += 20
+        reasons.append("选调生")
+    elif item.get("category") == "fudaoyuan":
+        score += 20
+        reasons.append("辅导员")
+
+    return (True, score, "；".join(reasons) if reasons else "基础匹配")
+
+
+def filter_and_rank(items):
+    """筛选符合条件的岗位，并按匹配度排序。
+
+    目标城市的排在前面，然后按匹配分数降序。
+    """
+    suitable = []
+    filtered_out = 0
+
+    for it in items:
+        ok, score, reason = _is_job_suitable(it)
+        if ok:
+            it["match_score"] = score
+            it["match_reason"] = reason
+            it["is_target_city"] = any(city in (it.get("region", "") or "") for city in TARGET_CITIES)
+            suitable.append(it)
+        else:
+            filtered_out += 1
+
+    # 排序：目标城市优先 → 匹配分数降序 → 发布日期降序
+    suitable.sort(key=lambda x: (
+        0 if x.get("is_target_city", False) else 1,
+        -x.get("match_score", 0),
+    ), reverse=False)
+    # 发布日期单独排
+    suitable.sort(key=lambda x: x.get("publish_date") or "", reverse=True)
+    # 目标城市置顶（稳定排序，不影响上面的分数排序）
+    suitable.sort(key=lambda x: 0 if x.get("is_target_city", False) else 1)
+
+    print(f"\n筛选：{len(items)} -> {len(suitable)} 条（过滤 {filtered_out} 条不匹配）")
+    target_count = sum(1 for x in suitable if x.get("is_target_city"))
+    print(f"目标城市（天津/武汉/青岛/烟台/长春/沈阳）：{target_count} 条")
+
+    return suitable
+
+
 # ==================== 主流程 ====================
 
 def write_json(path, items):
     data = {
         "generated_at": datetime.now(TZ).isoformat(),
         "count": len(items),
+        "user_profile": USER_PROFILE,
+        "target_cities": TARGET_CITIES,
         "items": items,
     }
     with open(path, "w", encoding="utf-8") as f:
@@ -686,9 +974,11 @@ def write_json(path, items):
 
 def main():
     print("=" * 60)
-    print("「班」工作台 - 招聘公告爬虫 v2")
+    print("「班」工作台 - 招聘公告爬虫 v3")
     print("=" * 60)
-    print(f"开始时间：{datetime.now(TZ).strftime('%Y-%m-%d %H:%M:%S')}\n")
+    print(f"开始时间：{datetime.now(TZ).strftime('%Y-%m-%d %H:%M:%S')}")
+    print(f"用户条件：{USER_PROFILE['graduation_year']}届 {USER_PROFILE['school']} {USER_PROFILE['major']} {USER_PROFILE['degree']}")
+    print(f"目标城市：{'、'.join(TARGET_CITIES)}\n")
 
     session = make_session()
     all_items = []
@@ -700,7 +990,9 @@ def main():
         ("上岸鸭（选调生）", crawl_gwy),
         ("中公选调生", crawl_offcn_xds),
         ("高校人才网（辅导员-多城市）", crawl_gaoxiaojob),
+        ("高校人才网（教师+医学）", crawl_gaoxiaojob_teacher),
         ("硕博招聘网（辅导员-多省份）", crawl_shuobojob),
+        ("硕博招聘网（教师+医学）", crawl_shuobojob_teacher_medical),
         ("学信网（辅导员）", crawl_chsi),
     ]
 
@@ -719,6 +1011,9 @@ def main():
     all_items = dedup(all_items)
     after = len(all_items)
     print(f"\n去重：{before} -> {after}")
+
+    # 条件筛选与排序
+    all_items = filter_and_rank(all_items)
 
     if not all_items:
         all_items = _fallback_data()

@@ -454,9 +454,14 @@ function renderAnnounceView() {
           <option value="fudaoyuan">辅导员</option>
         </select>
       </div>
-      <div id="cityFilter" class="flex gap-1.5 overflow-x-auto mt-3 pb-1 no-scrollbar"></div>
     </div>
-    <div id="announceList" class="space-y-2"></div>
+    <div class="flex gap-3">
+      <div class="w-24 flex-shrink-0">
+        <p class="text-xs text-slate-400 mb-1.5 px-1">城市</p>
+        <div id="cityFilter" class="space-y-1 max-h-[60vh] overflow-y-auto no-scrollbar sticky top-2"></div>
+      </div>
+      <div id="announceList" class="space-y-2 flex-1 min-w-0"></div>
+    </div>
   `;
   setTimeout(() => {
     renderCityFilter();
@@ -467,6 +472,7 @@ function renderAnnounceView() {
 
 function onCatChange(cat) {
   announceFilters.cat = cat;
+  announceFilters.city = 'all';
   renderCityFilter();
   filterAnnounce();
 }
@@ -483,16 +489,26 @@ function renderCityFilter() {
   // 按当前分类统计城市
   let items = announcements;
   if (announceFilters.cat !== 'all') items = items.filter(x => x.category === announceFilters.cat);
-  const cities = ['all', ...Array.from(new Set(items.map(x => x.region || '全国'))).filter(c => c !== '全国').sort()];
-  if (!cities.includes('全国') && announceFilters.city === '全国') announceFilters.city = 'all';
+  // 统计每个城市的条数
+  const cityCount = {};
+  items.forEach(x => {
+    const c = x.region || '全国';
+    cityCount[c] = (cityCount[c] || 0) + 1;
+  });
+  // 排序：全国放第一，其余按条数倒序
+  const cities = Object.keys(cityCount).sort((a,b) => {
+    if (a === '全国') return -1;
+    if (b === '全国') return 1;
+    return cityCount[b] - cityCount[a];
+  });
   if (!cities.includes(announceFilters.city)) announceFilters.city = 'all';
 
-  container.innerHTML = cities.map(city => {
+  let html = `<button onclick="onCityChange('all')" class="w-full text-left px-2 py-1 rounded text-xs ${announceFilters.city === 'all' ? 'bg-teal-600 text-white' : 'bg-slate-100 text-slate-600'}">全部 ${items.length}</button>`;
+  html += cities.map(city => {
     const active = announceFilters.city === city;
-    const label = city === 'all' ? '全部城市' : city;
-    const count = city === 'all' ? items.length : items.filter(x => (x.region || '全国') === city).length;
-    return `<button onclick="onCityChange('${city}')" class="whitespace-nowrap px-2.5 py-1 rounded-full text-xs ${active ? 'bg-teal-600 text-white' : 'bg-slate-100 text-slate-600'}">${label} ${count}</button>`;
+    return `<button onclick="onCityChange('${city}')" class="w-full text-left px-2 py-1 rounded text-xs ${active ? 'bg-teal-600 text-white' : 'bg-slate-100 text-slate-600'}">${city} ${cityCount[city]}</button>`;
   }).join('');
+  container.innerHTML = html;
 }
 
 function filterAnnounce() {

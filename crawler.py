@@ -1,13 +1,15 @@
-"""crawler.py — 「班」工作台招聘公告爬虫
+"""crawler.py — 「班」工作台招聘公告爬虫（增强版 v2）
 
-聚合 4 个数据源，抓取全国选调生 + 高校辅导员招聘公告：
-- 选调生：格木教育 gemu.cn、上岸鸭 gwy.com
-- 辅导员：高校人才网 gaoxiaojob.com（主源，结构化字段完整）、教育部学信网 chsi.com.cn（补充）
+聚合 6 个数据源，抓取全国选调生 + 高校辅导员招聘公告：
+- 选调生：格木教育 gemu.cn、上岸鸭 gwy.com、中公选调生 zgxds.cn
+- 辅导员：高校人才网 gaoxiaojob.com（多城市分页）、硕博招聘网 shuobojob.com、学信网 chsi.com.cn
 
-用法：
-    python3 /workspace/crawler.py
-
-输出：/workspace/data.json
+v2 改进：
+- 高校人才网从单一辅导员频道 → 多个城市分页（长沙、西安、武汉、北京等10+城市）
+- 新增硕博招聘网 shuobojob.com（按省份分页）
+- 新增中公选调生 zgxds.cn
+- 放宽选调生关键词：事业单位选调、市直选调、人才引进也保留
+- 辅导员关键词放宽：高校公开招聘（含辅导员）也保留
 """
 import json
 import re
@@ -26,8 +28,8 @@ import os
 OUTPUT_FILE = os.environ.get("CRAWLER_OUTPUT", "/workspace/data.json")
 TZ = timezone(timedelta(hours=8))
 
-# 选调生公告标题必须包含的关键词（排除资讯/指南类文章）
-XUANDIAO_REQUIRE_KW = ("公告", "招录", "招考", "招聘", "简章")
+# 选调生公告标题必须包含的关键词
+XUANDIAO_REQUIRE_KW = ("公告", "招录", "招考", "招聘", "简章", "引进", "选调", "选拔")
 XUANDIAO_EXCLUDE_KW = (
     "如何", "什么条件", "流程", "指南", "名单", "条件？",
     "解读", "分析", "备考", "攻略", "须知", "会发到",
@@ -42,16 +44,16 @@ XUANDIAO_EXCLUDE_KW = (
     "报名入口", "面试公告", "报名人数", "温馨提示", "职位表在哪发布",
     "缴费入口", "考场分布图", "资格复审", "材料上传入口",
     "面试注意事项", "考察公告", "岗前培训", "拟录用", "公示",
-    "职位表",
 )
 
 
 def _is_valid_xuandiao(title):
-    """判断是否为有效的选调生招录公告（排除资讯、成绩、体检等）。"""
-    if "选调生" not in title:
+    """判断是否为有效的选调生/人才引进招录公告。"""
+    # 必须包含选调相关词
+    if not any(kw in title for kw in ("选调", "人才引进", "党政机关", "优秀毕业生", "优选生", "菁英计划")):
         return False
     # 标题过长的一般是资讯摘要
-    if len(title) > 60:
+    if len(title) > 70:
         return False
     # 排除资讯/问答/成绩/体检类
     for kw in XUANDIAO_EXCLUDE_KW:
@@ -86,9 +88,7 @@ def crawl_gemu(session):
         title = clean_text(a.get_text())
         if not title or len(title) < 8:
             continue
-        # 去掉一些站点附加的"查看全文"等后缀
         title = re.sub(r'\[\s*查看全文\s*\]', '', title).strip()
-        # 提取标题尾日期
         date_match = re.search(r'(\d{4})[.\-/年](\d{1,2})[.\-/月](\d{1,2})', title)
         publish_date = None
         if date_match:
@@ -96,7 +96,6 @@ def crawl_gemu(session):
                 publish_date = f"{int(date_match.group(1)):04d}-{int(date_match.group(2)):02d}-{int(date_match.group(3)):02d}"
             except ValueError:
                 pass
-        # 清洗标题末尾的日期
         title = re.sub(r'\s*(\d{4})[.\-/年](\d{1,2})[.\-/月](\d{1,2})\s*$', '', title).strip()
         if not _is_valid_xuandiao(title):
             continue
@@ -104,9 +103,7 @@ def crawl_gemu(session):
             continue
         seen.add(title)
 
-        href = a["href"]
-        full_url = urljoin(url, href)
-
+        full_url = urljoin(url, a["href"])
         items.append({
             "title": title,
             "category": "xuandiao",
@@ -141,9 +138,7 @@ def crawl_gwy(session):
         title = clean_text(a.get_text())
         if not title or len(title) < 8:
             continue
-        # 去掉一些站点附加的"查看全文"等后缀
         title = re.sub(r'\[\s*查看全文\s*\]', '', title).strip()
-        # 提取标题尾日期
         date_match = re.search(r'(\d{4})[.\-/年](\d{1,2})[.\-/月](\d{1,2})', title)
         publish_date = None
         if date_match:
@@ -151,7 +146,6 @@ def crawl_gwy(session):
                 publish_date = f"{int(date_match.group(1)):04d}-{int(date_match.group(2)):02d}-{int(date_match.group(3)):02d}"
             except ValueError:
                 pass
-        # 清洗标题末尾的日期
         title = re.sub(r'\s*(\d{4})[.\-/年](\d{1,2})[.\-/月](\d{1,2})\s*$', '', title).strip()
         if not _is_valid_xuandiao(title):
             continue
@@ -160,7 +154,6 @@ def crawl_gwy(session):
         seen.add(title)
 
         full_url = urljoin(url, a["href"])
-
         items.append({
             "title": title,
             "category": "xuandiao",
@@ -174,132 +167,270 @@ def crawl_gwy(session):
     return items[:30]
 
 
-# ==================== 源 3：高校人才网（辅导员，主源）====================
+# ==================== 源 3：中公选调生（zgxds.cn，新增）====================
 
-# 详情页基本信息正则
+def crawl_offcn_xds(session):
+    """中公选调生 - 考试公告频道。"""
+    items = []
+    url = "https://www.zgxds.cn/ksxx/ksgg/"
+    r = safe_get(session, url)
+    if r is None:
+        print("  [offcn-xds] 无法访问")
+        return items
+
+    r.encoding = r.apparent_encoding or "utf-8"
+    soup = BeautifulSoup(r.text, "lxml")
+    seen = set()
+    for a in soup.find_all("a", href=True):
+        title = clean_text(a.get_text())
+        if not title or len(title) < 8:
+            continue
+        if not _is_valid_xuandiao(title):
+            continue
+        if title in seen:
+            continue
+        seen.add(title)
+
+        full_url = urljoin(url, a["href"])
+        # 从URL提取日期
+        publish_date = None
+        # 从标题提取年份判断
+        year_match = re.search(r'(20\d{2})', title)
+        if year_match:
+            publish_date = year_match.group(1)  # 只有年，后面处理
+
+        items.append({
+            "title": title,
+            "category": "xuandiao",
+            "region": detect_region(title),
+            "publish_date": None,
+            "deadline": None,
+            "source": "offcn",
+            "url": full_url,
+            "content_summary": "",
+        })
+    return items[:20]
+
+
+# ==================== 源 4：高校人才网（辅导员，多城市分页，主源）====================
+
 RE_GXJ_PUBLISH = re.compile(r'发布时间[：:]\s*(\d{4}-\d{2}-\d{2})')
 RE_GXJ_DEADLINE = re.compile(r'截止日期[：:]\s*(\d{4}-\d{2}-\d{2})')
 RE_GXJ_PROVINCE = re.compile(r'所属省份[：:]\s*([^\s]+)')
 RE_GXJ_RECRUIT = re.compile(r'招\s*(\d+)\s*人|共计\d+个岗位，招\s*(\d+)\s*人')
 
+# 高校人才网辅导员频道 - 多个城市分页
+GXJ_CITIES = [
+    ("changsha", "长沙"), ("xian", "西安"), ("wuhan", "武汉"),
+    ("beijing", "北京"), ("shanghai", "上海"), ("guangzhou", "广州"),
+    ("nanjing", "南京"), ("chengdu", "成都"), ("zhengzhou", "郑州"),
+    ("jinan", "济南"), ("hangzhou", "杭州"), ("tianjin", "天津"),
+]
 
-def crawl_gaoxiaojob(session):
-    """高校人才网 - 辅导员频道（主源）。
 
-    列表页 /column/242.html 静态 HTML 中含辅导员招聘链接，
-    详情页有结构化的发布时间、截止日期、所属省份、招聘人数。
-    """
+def _crawl_gxj_city(session, city_pinyin, city_name):
+    """爬高校人才网某城市的辅导员招聘。"""
     items = []
-    list_url = "https://www.gaoxiaojob.com/column/242.html"
-    r = safe_get(session, list_url)
+    url = f"https://www.gaoxiaojob.com/rczhaopin/{city_pinyin}/fudaoyuan"
+    r = safe_get(session, url)
     if r is None:
-        print("  [gaoxiaojob] 无法访问")
         return items
 
+    r.encoding = r.apparent_encoding or "utf-8"
     soup = BeautifulSoup(r.text, "lxml")
     detail_links = []
     seen_url = set()
     for a in soup.find_all("a", href=True):
         title = clean_text(a.get_text())
-        if not title or len(title) < 8:
-            continue
-        if "辅导员" not in title:
+        if not title or len(title) < 6:
             continue
         href = a["href"]
-        if "/announcement/detail/" not in href:
+        # 职位详情页 /job/detail/xxx.html
+        if "/job/detail/" not in href:
             continue
-        full_url = urljoin(list_url, href)
+        if "辅导员" not in title and "辅导员" not in href:
+            continue
+        full_url = urljoin(url, href)
         if full_url in seen_url:
             continue
         seen_url.add(full_url)
-        detail_links.append((title, full_url))
+        # 提取发布日期（格式：07-22发布 或 2025-08-13发布）
+        date_match = re.search(r'(\d{2}-\d{2})发布\s*(.+?)#\s*([\u4e00-\u9fa5]+-[\u4e00-\u9fa5]+)', title)
+        recruit_match = re.search(r'(\d+)人', title)
+        if date_match:
+            md, org, region = date_match.groups()
+            year = datetime.now(TZ).year
+            # 如果月份大于当前月，说明是去年
+            if int(md.split('-')[0]) > datetime.now(TZ).month:
+                year -= 1
+            publish_date = f"{year}-{md}"
+            clean_title = f"{org}招聘辅导员{recruit_match.group(1) if recruit_match else ''}人"
+            items.append({
+                "title": clean_title,
+                "category": "fudaoyuan",
+                "region": region or city_name,
+                "publish_date": publish_date,
+                "deadline": None,
+                "source": "gaoxiaojob",
+                "url": full_url,
+                "content_summary": f"{city_name}辅导员招聘",
+            })
+    return items
 
-    print(f"  [gaoxiaojob] 列表页找到 {len(detail_links)} 条详情链接")
 
-    # 进详情页提取结构化信息（限制数量）
-    for title, detail_url in detail_links[:15]:
-        time.sleep(0.4)  # 礼貌延迟
-        rd = safe_get(session, detail_url)
-        if rd is None:
+def crawl_gaoxiaojob(session):
+    """高校人才网 - 多城市辅导员招聘。"""
+    items = []
+    # 先爬主辅导员频道（保留原有逻辑，含详情页结构化信息）
+    list_url = "https://www.gaoxiaojob.com/column/242.html"
+    r = safe_get(session, list_url)
+    if r is not None:
+        r.encoding = r.apparent_encoding or "utf-8"
+        soup = BeautifulSoup(r.text, "lxml")
+        detail_links = []
+        seen_url = set()
+        for a in soup.find_all("a", href=True):
+            title = clean_text(a.get_text())
+            if not title or len(title) < 8:
+                continue
+            if "辅导员" not in title:
+                continue
+            href = a["href"]
+            if "/announcement/detail/" not in href:
+                continue
+            full_url = urljoin(list_url, href)
+            if full_url in seen_url:
+                continue
+            seen_url.add(full_url)
+            detail_links.append((title, full_url))
+
+        print(f"  [gaoxiaojob] 主频道找到 {len(detail_links)} 条详情链接")
+
+        for title, detail_url in detail_links[:15]:
+            time.sleep(0.3)
+            rd = safe_get(session, detail_url)
+            if rd is None:
+                continue
+            rd.encoding = rd.apparent_encoding or "utf-8"
+            dsoup = BeautifulSoup(rd.text, "lxml")
+
+            detail_box = (
+                dsoup.find("div", class_="detail-list")
+                or dsoup.find("div", class_=re.compile("detail-item"))
+                or dsoup.find("div", class_=re.compile("section-main"))
+            )
+            box_text = clean_text(detail_box.get_text()) if detail_box else ""
+
+            content_box = dsoup.find("div", class_=re.compile("detail-main-content|announcement-rich-text"))
+            content_text = clean_text(content_box.get_text()) if content_box else box_text
+
+            publish_date = None
+            m = RE_GXJ_PUBLISH.search(box_text)
+            if m:
+                publish_date = m.group(1)
+
+            deadline = None
+            m = RE_GXJ_DEADLINE.search(box_text)
+            if m:
+                deadline = m.group(1)
+
+            region = None
+            m = RE_GXJ_PROVINCE.search(box_text)
+            if m:
+                region = m.group(1).strip()
+
+            recruit_num = None
+            m = RE_GXJ_RECRUIT.search(box_text) or RE_GXJ_RECRUIT.search(title)
+            if m:
+                recruit_num = next((g for g in m.groups() if g), None)
+
+            if not region:
+                region = detect_region(title, content_text[:200])
+
+            summary = truncate(content_text, 80)
+            if recruit_num and recruit_num not in summary:
+                summary = f"招聘{recruit_num}人。" + summary
+
+            items.append({
+                "title": title,
+                "category": "fudaoyuan",
+                "region": region or "全国",
+                "publish_date": publish_date,
+                "deadline": deadline,
+                "source": "gaoxiaojob",
+                "url": detail_url,
+                "content_summary": summary,
+            })
+
+    # 爬各城市分页
+    for city_pinyin, city_name in GXJ_CITIES:
+        city_items = _crawl_gxj_city(session, city_pinyin, city_name)
+        items.extend(city_items)
+        if city_items:
+            print(f"  [gaoxiaojob] {city_name}: {len(city_items)} 条")
+        time.sleep(0.2)
+
+    return items
+
+
+# ==================== 源 5：硕博招聘网（shuobojob.com，新增）====================
+
+def crawl_shuobojob(session):
+    """硕博招聘网 - 各省份高校招聘（含辅导员）。"""
+    items = []
+    provinces = ["hunan", "shanxi", "hubei", "beijing", "shanghai", "guangdong",
+                 "jiangsu", "sichuan", "shandong", "zhejiang", "henan", "tianjin"]
+
+    for prov in provinces:
+        url = f"http://www.shuobojob.com/gaoxiaozhaopin/{prov}/"
+        r = safe_get(session, url)
+        if r is None:
             continue
+        r.encoding = r.apparent_encoding or "utf-8"
+        soup = BeautifulSoup(r.text, "lxml")
 
-        dsoup = BeautifulSoup(rd.text, "lxml")
+        for a in soup.find_all("a", href=True):
+            title = clean_text(a.get_text())
+            if not title or len(title) < 8:
+                continue
+            # 只保留含辅导员或高校招聘的
+            if "辅导员" not in title and "高校" not in title and "大学" not in title:
+                continue
+            href = a["href"]
+            if "shuobojob.com" not in href and not href.startswith("/"):
+                continue
+            if "gaoxiaozhaopin" in href and href.endswith(f"/{prov}/"):
+                continue  # 跳过省份导航链接
+            full_url = urljoin(url, href)
+            if not re.search(r'/\d+\.html?$', full_url):
+                continue
 
-        # 优先取 detail-list 容器（含结构化字段）
-        detail_box = (
-            dsoup.find("div", class_="detail-list")
-            or dsoup.find("div", class_=re.compile("detail-item"))
-            or dsoup.find("div", class_=re.compile("section-main"))
-        )
-        box_text = clean_text(detail_box.get_text()) if detail_box else ""
-
-        # 也取正文容器作摘要
-        content_box = dsoup.find("div", class_=re.compile("detail-main-content|announcement-rich-text"))
-        content_text = clean_text(content_box.get_text()) if content_box else box_text
-
-        # 提取结构化字段
-        publish_date = None
-        m = RE_GXJ_PUBLISH.search(box_text)
-        if m:
-            publish_date = m.group(1)
-
-        deadline = None
-        m = RE_GXJ_DEADLINE.search(box_text)
-        if m:
-            deadline = m.group(1)
-
-        region = None
-        m = RE_GXJ_PROVINCE.search(box_text)
-        if m:
-            region = m.group(1).strip()
-
-        recruit_num = None
-        m = RE_GXJ_RECRUIT.search(box_text) or RE_GXJ_RECRUIT.search(title)
-        if m:
-            recruit_num = next((g for g in m.groups() if g), None)
-
-        if not region:
-            region = detect_region(title, content_text[:200])
-
-        summary = truncate(content_text, 80)
-        if recruit_num and recruit_num not in summary:
-            summary = f"招聘{recruit_num}人。" + summary
-
-        items.append({
-            "title": title,
-            "category": "fudaoyuan",
-            "region": region or "全国",
-            "publish_date": publish_date,
-            "deadline": deadline,
-            "source": "gaoxiaojob",
-            "url": detail_url,
-            "content_summary": summary,
-        })
-
-    # 若详情页全失败，用列表页信息兜底
-    if not items:
-        for title, url in detail_links[:10]:
             items.append({
                 "title": title,
                 "category": "fudaoyuan",
                 "region": detect_region(title),
                 "publish_date": None,
                 "deadline": None,
-                "source": "gaoxiaojob",
-                "url": url,
+                "source": "shuobojob",
+                "url": full_url,
                 "content_summary": "",
             })
+        time.sleep(0.2)
 
-    return items
+    # 去重
+    seen = set()
+    unique = []
+    for it in items:
+        if it["title"] not in seen:
+            seen.add(it["title"])
+            unique.append(it)
+    return unique[:30]
 
 
-# ==================== 源 4：教育部学信网（辅导员，补充）====================
+# ==================== 源 6：教育部学信网（辅导员，补充）====================
 
 def crawl_chsi(session):
-    """教育部学信网 - 首页公告列表中筛选辅导员相关。
-
-    列表页 JS 渲染，但首页 /home/index 有静态公告列表。
-    """
+    """教育部学信网 - 首页公告列表中筛选辅导员相关。"""
     items = []
     r = safe_get(session, "https://jybzp.chsi.com.cn/home/index")
     if r is None:
@@ -324,7 +455,6 @@ def crawl_chsi(session):
 
     print(f"  [chsi] 首页找到 {len(detail_links)} 条公告链接")
 
-    # 进详情页，筛选含"辅导员"或高校招聘的
     for title, detail_url in detail_links[:12]:
         time.sleep(0.4)
         rd = safe_get(session, detail_url)
@@ -341,7 +471,6 @@ def crawl_chsi(session):
         )
         content_text = clean_text(content_box.get_text()) if content_box else ""
 
-        # 只保留辅导员相关
         if "辅导员" not in final_title and "辅导员" not in content_text[:500]:
             continue
 
@@ -362,35 +491,6 @@ def crawl_chsi(session):
     return items
 
 
-# ==================== 备用：示例数据 ====================
-
-def _fallback_data():
-    """当所有数据源都失败时，返回示例数据。"""
-    today_str = datetime.now(TZ).strftime("%Y-%m-%d")
-    return [
-        {
-            "title": "【示例】2026年度XX省选调应届优秀毕业生公告",
-            "category": "xuandiao",
-            "region": "全国",
-            "publish_date": today_str,
-            "deadline": None,
-            "source": "demo",
-            "url": "https://gemu.cn/zhaokao/",
-            "content_summary": "（示例数据）所有数据源均抓取失败，请检查网络后重新运行 python3 /workspace/crawler.py",
-        },
-        {
-            "title": "【示例】XX大学2026年辅导员招聘公告",
-            "category": "fudaoyuan",
-            "region": "全国",
-            "publish_date": today_str,
-            "deadline": None,
-            "source": "demo",
-            "url": "https://www.gaoxiaojob.com/column/242.html",
-            "content_summary": "（示例数据）所有数据源均抓取失败，请检查网络后重新运行爬虫。",
-        },
-    ]
-
-
 # ==================== 主流程 ====================
 
 def write_json(path, items):
@@ -406,7 +506,7 @@ def write_json(path, items):
 
 def main():
     print("=" * 60)
-    print("「班」工作台 - 招聘公告爬虫")
+    print("「班」工作台 - 招聘公告爬虫 v2")
     print("=" * 60)
     print(f"开始时间：{datetime.now(TZ).strftime('%Y-%m-%d %H:%M:%S')}\n")
 
@@ -416,7 +516,9 @@ def main():
     crawlers = [
         ("格木教育（选调生）", crawl_gemu),
         ("上岸鸭（选调生）", crawl_gwy),
-        ("高校人才网（辅导员）", crawl_gaoxiaojob),
+        ("中公选调生", crawl_offcn_xds),
+        ("高校人才网（辅导员-多城市）", crawl_gaoxiaojob),
+        ("硕博招聘网（辅导员-多省份）", crawl_shuobojob),
         ("学信网（辅导员）", crawl_chsi),
     ]
 
@@ -437,12 +539,37 @@ def main():
     print(f"\n去重：{before} -> {after}")
 
     if not all_items:
-        print("\n[警告] 所有数据源均未获取到数据，使用示例数据兜底")
         all_items = _fallback_data()
 
     write_json(OUTPUT_FILE, all_items)
-    print(f"\n完成时间：{datetime.now(TZ).strftime('%Y-%m-%d %H:%M:%S')}")
-    print("=" * 60)
+    print(f"结束时间：{datetime.now(TZ).strftime('%Y-%m-%d %H:%M:%S')}")
+
+
+def _fallback_data():
+    """当所有数据源都失败时，返回示例数据。"""
+    today_str = datetime.now(TZ).strftime("%Y-%m-%d")
+    return [
+        {
+            "title": "【示例】2026年度XX省选调应届优秀毕业生公告",
+            "category": "xuandiao",
+            "region": "全国",
+            "publish_date": today_str,
+            "deadline": None,
+            "source": "demo",
+            "url": "https://gemu.cn/zhaokao/",
+            "content_summary": "（示例数据）所有数据源均抓取失败",
+        },
+        {
+            "title": "【示例】XX大学2026年辅导员招聘公告",
+            "category": "fudaoyuan",
+            "region": "全国",
+            "publish_date": today_str,
+            "deadline": None,
+            "source": "demo",
+            "url": "https://www.gaoxiaojob.com/column/242.html",
+            "content_summary": "（示例数据）所有数据源均抓取失败",
+        },
+    ]
 
 
 if __name__ == "__main__":

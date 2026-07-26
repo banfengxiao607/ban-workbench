@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="班">
+<meta name="theme-color" content="#0d9488">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>班 · 个人工作台</title>
+<script src="tailwind.js"></script>
+<style>
+  :root { --teal: #0d9488; }
+  * { -webkit-tap-highlight-color: transparent; box-sizing:border-box; }
+  html,body { height:100%; overflow:hidden; }
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; -webkit-font-smoothing: antialiased; }
+  .sidebar-item { transition: all 0.2s; }
+  .sidebar-item.active { background: var(--teal); color: white; }
+  .task-done { text-decoration: line-through; opacity: 0.5; }
+  .carry-over { border-left: 3px solid #f59e0b; }
+  .progress-bar { transition: width 0.4s ease; }
+  .toast { animation: slideIn 0.3s ease, fadeOut 0.4s ease 2.6s forwards; }
+  @keyframes slideIn { from{transform:translateX(120%)} to{transform:translateX(0)} }
+  @keyframes fadeOut { to{opacity:0;transform:translateX(120%)} }
+  .content-area { height: calc(100vh - 64px); overflow-y: auto; }
+  .desktop-layout { display: flex; height: 100vh; }
+  .desktop-sidebar { width: 64px; flex-shrink: 0; }
+  .desktop-main { flex: 1; overflow-y: auto; }
+  .mobile-bottom { position: fixed; bottom: 0; left: 0; right: 0; z-index: 30; }
+  .mobile-content { height: calc(100vh - 112px); overflow-y: auto; padding-bottom: 20px; }
+  @media (min-width: 768px) {
+    .mobile-bottom { display: none; }
+    .mobile-content { height: auto; }
+  }
+  @media (max-width: 767px) {
+    .desktop-sidebar { display: none; }
+  }
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius:3px; }
+  .line-clamp-2 { display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+</style>
+</head>
+<body class="bg-slate-50">
+
+<!-- 顶部栏 -->
+<header class="bg-white shadow-sm h-14 flex items-center px-4 z-20 relative">
+  <div class="w-8 h-8 rounded-lg bg-teal-600 text-white flex items-center justify-center text-lg font-bold mr-3">班</div>
+  <div>
+    <h1 class="text-base font-bold text-slate-800">个人工作台</h1>
+    <p class="text-xs text-slate-500" id="todayDate"></p>
+  </div>
+  <div class="ml-auto flex items-center gap-2">
+    <span id="countdown" class="text-lg font-bold text-teal-600">--</span>
+    <span class="text-xs text-slate-400">天</span>
+  </div>
+</header>
+
+<div class="desktop-layout">
+  <!-- 左侧导航（桌面） -->
+  <aside class="desktop-sidebar bg-white border-r border-slate-200 py-2 flex flex-col items-center">
+    <nav class="space-y-1 w-full px-1.5">
+      <button onclick="switchView('shizheng')" data-view="shizheng" title="每日时政" class="sidebar-item w-full flex justify-center py-2.5 rounded-lg text-lg">📰</button>
+      <button onclick="switchView('fudaoyuan')" data-view="fudaoyuan" title="辅导员备考" class="sidebar-item w-full flex justify-center py-2.5 rounded-lg text-lg">🎓</button>
+      <button onclick="switchView('xuandiao')" data-view="xuandiao" title="选调生备考" class="sidebar-item w-full flex justify-center py-2.5 rounded-lg text-lg">📋</button>
+      <button onclick="switchView('announce')" data-view="announce" title="招聘公告" class="sidebar-item w-full flex justify-center py-2.5 rounded-lg text-lg">📢</button>
+      <button onclick="switchView('jobs')" data-view="jobs" title="报考岗位" class="sidebar-item w-full flex justify-center py-2.5 rounded-lg text-lg">🎯</button>
+      <button onclick="switchView('tasks')" data-view="tasks" title="我的任务" class="sidebar-item w-full flex justify-center py-2.5 rounded-lg text-lg">✅</button>
+    </nav>
+    <div class="mt-auto px-1.5 py-2 border-t border-slate-100 w-full space-y-1.5">
+      <button onclick="document.getElementById('fileInput').click()" title="导入数据" class="w-full flex justify-center py-1.5 bg-slate-100 rounded text-sm">📥</button>
+      <button onclick="showCrawlerCmd()" title="运行爬虫" class="w-full flex justify-center py-1.5 bg-teal-50 rounded text-sm">🕷</button>
+    </div>
+  </aside>
+
+  <!-- 主内容区 -->
+  <main class="desktop-main mobile-content bg-slate-50">
+    <div id="mainContent" class="max-w-5xl mx-auto px-6 py-4 pb-24"></div>
+  </main>
+</div>
+
+<!-- 底部导航（移动端） -->
+<nav class="mobile-bottom bg-white border-t border-slate-200 px-2 py-1.5">
+  <div class="flex justify-around">
+    <button onclick="switchView('shizheng')" data-view="shizheng" class="nav-bottom flex flex-col items-center py-1 px-2 text-xs text-slate-500">
+      <span class="text-lg mb-0.5">📰</span>时政
+    </button>
+    <button onclick="switchView('fudaoyuan')" data-view="fudaoyuan" class="nav-bottom flex flex-col items-center py-1 px-2 text-xs text-slate-500">
+      <span class="text-lg mb-0.5">🎓</span>辅导员
+    </button>
+    <button onclick="switchView('xuandiao')" data-view="xuandiao" class="nav-bottom flex flex-col items-center py-1 px-2 text-xs text-slate-500">
+      <span class="text-lg mb-0.5">📋</span>选调生
+    </button>
+    <button onclick="switchView('announce')" data-view="announce" class="nav-bottom flex flex-col items-center py-1 px-2 text-xs text-slate-500">
+      <span class="text-lg mb-0.5">📢</span>公告
+    </button>
+    <button onclick="switchView('more')" data-view="more" class="nav-bottom flex flex-col items-center py-1 px-2 text-xs text-slate-500">
+      <span class="text-lg mb-0.5">⋯</span>更多
+    </button>
+  </div>
+</nav>
+
+<!-- 更多菜单（移动端） -->
+<div id="moreMenu" class="fixed inset-0 bg-black/30 z-40 hidden" onclick="closeMoreMenu(event)">
+  <div class="absolute bottom-16 left-4 right-4 bg-white rounded-xl shadow-lg p-3 space-y-1">
+    <button onclick="switchView('jobs')" class="w-full text-left px-3 py-3 text-sm text-slate-700 active:bg-slate-100 rounded-lg">🎯 报考岗位</button>
+    <button onclick="switchView('tasks')" class="w-full text-left px-3 py-3 text-sm text-slate-700 active:bg-slate-100 rounded-lg">✅ 我的任务</button>
+    <button onclick="document.getElementById('fileInput').click()" class="w-full text-left px-3 py-3 text-sm text-slate-700 active:bg-slate-100 rounded-lg">📥 导入数据</button>
+    <button onclick="showCrawlerCmd()" class="w-full text-left px-3 py-3 text-sm text-slate-700 active:bg-slate-100 rounded-lg">🕷 运行爬虫</button>
+  </div>
+</div>
+
+<input type="file" id="fileInput" accept=".json" class="hidden" onchange="handleFileUpload(event)">
+
+<!-- Toast 容器 -->
+<div id="toastContainer" class="fixed top-16 right-4 z-50 space-y-2"></div>
+
+<script>
+// ========== 全局状态 ==========
+let studyPlan = [];
+let currentView = 'shizheng';
+let announcements = [];
+let shizheng = [];
+let todayIndex = 0;
+let currentPlanIndex = 0;
+
+const EXAM_DATE = '2026-11-01';
+
+const VIEW_LABELS = {
+  shizheng: '每日时政',
+  fudaoyuan: '辅导员备考',
+  xuandiao: '选调生备考',
+  announce: '招聘公告',
+  jobs: '报考岗位',
+  tasks: '我的任务',
+};
+
+// ========== 推荐岗位 ==========
+const JOBS = [
+  { name: '华中科技大学专职辅导员', match: '极高', color: 'bg-green-100 text-green-700', region: '湖北', condition: '党员+院系主席团+优秀学生干部，完全符合', timeline: '2027年度预计2026年11月', exam: '招聘系统考核', url: 'http://employment.hust.edu.cn/', note: '本校事业编制，最匹配' },
+  { name: '湖北省定向选调生', match: '极高', color: 'bg-green-100 text-green-700', region: '湖北', condition: '华科在39所重点高校名单，党员+学生干部', timeline: '预计2026.11中旬报名，12月上旬笔试', exam: '综合知识+行测+申论', url: 'https://job.hust.edu.cn/jcfw/2366241.htm', note: '首选选调，武汉笔试' },
+  { name: '天津市定向选调生', match: '高', color: 'bg-blue-100 text-blue-700', region: '天津', condition: '华科在45所名单，党员+学生干部+校级荣誉', timeline: '预计2026.11中旬报名', exam: '综合能力测试', url: 'https://gklx.hrss.tj.gov.cn', note: '本科天津，有地缘优势' },
+  { name: '河南省定向选调生', match: '高', color: 'bg-blue-100 text-blue-700', region: '河南', condition: '党员可报省直岗位，华科在名单', timeline: '预计2026.11底-12月初报名', exam: '案例分析+行测+材料写作', url: 'http://xds.jyt.henan.gov.cn/', note: '406人，省直70名' },
+  { name: '中央选调生', match: '高', color: 'bg-blue-100 text-blue-700', region: '北京', condition: '华科在34所名单，需校内推荐', timeline: '2026年9-10月校内推荐', exam: '校内推荐+央选考核', url: 'https://job.hust.edu.cn/', note: '主动联系学院党委争取推荐' },
+  { name: '湖北省高校辅导员统招', match: '高', color: 'bg-blue-100 text-blue-700', region: '湖北', condition: '2027届应届，306人规模', timeline: '预计2027年7月', exam: '职测+综合应用能力', url: 'https://rst.hubei.gov.cn/', note: '规模大，适合兜底' },
+  { name: '山东省第二批定向选调', match: '中高', color: 'bg-amber-100 text-amber-700', region: '山东', condition: '华科在第二批定向范围', timeline: '预计2026.11中旬报名', exam: '行测+申论', url: 'http://www.shandong.gov.cn/art/2025/10/9/art_94237_10357046.html', note: '1597人，规模大' },
+  { name: '天津医科大学辅导员', match: '中', color: 'bg-amber-100 text-amber-700', region: '天津', condition: '本科母校，关注2027岗位', timeline: '关注人事处招聘专栏', exam: '现场考核', url: 'https://www.tmu.edu.cn/rsc/2740/list.htm', note: '母校背景优势' },
+];
+
+// ========== 初始化 ==========
+function init() {
+  const now = new Date();
+  const days = ['日','一','二','三','四','五','六'];
+  document.getElementById('todayDate').textContent =
+    `${now.getFullYear()}年${now.getMonth()+1}月${now.getDate()}日 周${days[now.getDay()]}`;
+  const exam = new Date(EXAM_DATE);
+  document.getElementById('countdown').textContent = Math.ceil((exam - now) / 86400000);
+
+  Promise.all([
+    smartFetch('study_plan').then(d => { studyPlan = d; }).catch(() => {}),
+    smartFetch('data').then(d => { announcements = d.items || []; }).catch(() => {}),
+    smartFetch('shizheng').then(d => { shizheng = d.items || []; }).catch(() => {}),
+  ]).then(() => {
+    if (studyPlan.length) {
+      const today = todayStr();
+      const idx = studyPlan.findIndex(p => p.date === today);
+      currentPlanIndex = idx >= 0 ? idx : 0;
+      todayIndex = currentPlanIndex;
+      migrateOldProgress();
+    }
+    switchView('shizheng');
+  });
+
+  registerPWA();
+}
+
+// ========== 配置：GitHub Pages 在线数据地址 ==========
+// 部署到你的 GitHub 仓库后，把下面改成你的地址：
+// 格式：https://<用户名>.github.io/<仓库名>/<文件>
+const ONLINE_BASE = 'https://banfengxiao607.github.io/ban-workbench';
+const DATA_SOURCES = {
+  study_plan: { local: './study_plan.json', online: ONLINE_BASE + '/study_plan.json' },
+  data: { local: './data.json', online: ONLINE_BASE + '/data.json' },
+  shizheng: { local: './shizheng.json', online: ONLINE_BASE + '/shizheng.json' },
+};
+
+// 优先尝试在线数据，失败则回退到本地
+function smartFetch(key) {
+  const src = DATA_SOURCES[key];
+  if (src.online) {
+    // 先试在线
+    return fetch(src.online + '?t=' + Date.now())
+      .then(r => { if (!r.ok) throw new Error('online fail'); return r.json(); })
+      .catch(() => fetch(src.local).then(r => r.json()));
+  }
+  return fetch(src.local).then(r => r.json());
+}
+
+function todayStr() { return new Date().toISOString().slice(0,10); }
+function formatDate(s) { return s ? s.replace(/-/g,'/').slice(5) : '—'; }
+function daysUntil(s) {
+  if (!s) return null;
+  const t = new Date(); t.setHours(0,0,0,0);
+  const d = new Date(s); d.setHours(0,0,0,0);
+  return Math.round((d - t) / 86400000);
+}
+
+// ========== 视图切换 ==========
+function switchView(view) {
+  if (view === 'more') { document.getElementById('moreMenu').classList.remove('hidden'); return; }
+  currentView = view;
+  document.getElementById('moreMenu').classList.add('hidden');
+
+  // 更新侧边栏
+  document.querySelectorAll('.sidebar-item').forEach(el => {
+    if (el.dataset.view === view) el.classList.add('active');
+    else el.classList.remove('active');
+  });
+  // 更新底部导航
+  document.querySelectorAll('.nav-bottom').forEach(el => {
+    if (el.dataset.view === view) { el.classList.add('text-teal-600'); el.classList.remove('text-slate-500'); }
+    else { el.classList.remove('text-teal-600'); el.classList.add('text-slate-500'); }
+  });
+
+  renderMain();
+}
+
+function closeMoreMenu(e) {
+  if (e.target.id === 'moreMenu') document.getElementById('moreMenu').classList.add('hidden');
+}
+
+function renderMain() {
+  const content = document.getElementById('mainContent');
+  if (currentView === 'shizheng') content.innerHTML = renderShizhengView();
+  else if (currentView === 'fudaoyuan') content.innerHTML = renderStudyView('fudaoyuan');
+  else if (currentView === 'xuandiao') content.innerHTML = renderStudyView('xuandiao');
+  else if (currentView === 'announce') content.innerHTML = renderAnnounceView();
+  else if (currentView === 'jobs') content.innerHTML = renderJobsView();
+  else if (currentView === 'tasks') content.innerHTML = renderTasksView();
+}
+
+// ========== 任务进度存储 ==========
+function getProgress() {
+  const raw = localStorage.getItem('ban_task_progress_v3');
+  return raw ? JSON.parse(raw) : {};
+}
+function saveProgress(p) { localStorage.setItem('ban_task_progress_v3', JSON.stringify(p)); }
+
+function migrateOldProgress() {
+  // 兼容旧版 ban_task_progress_v2
+  const old = localStorage.getItem('ban_task_progress_v2');
+  if (old && !localStorage.getItem('ban_task_progress_v3')) {
+    localStorage.setItem('ban_task_progress_v3', old);
+  }
+}
+
+function getDayProgress(date, category) {
+  const p = getProgress();
+  return (p[date] && p[date][category]) || {};
+}
+
+function setTaskDone(date, category, text, done) {
+  const p = getProgress();
+  if (!p[date]) p[date] = {};
+  if (!p[date][category]) p[date][category] = {};
+  p[date][category][text] = done;
+  saveProgress(p);
+  renderMain();
+}
+
+function taskKey(text) { return text; }
+
+// 获取今日任务，包含昨日遗留
+function getTodayTasks(category) {
+  if (!studyPlan.length) return { tasks: [], carryOver: [] };
+  const p = studyPlan[currentPlanIndex];
+  const rawTasks = p[category] || [];
+
+  // 查找前一天未完成的任务
+  let carryOverTasks = [];
+  if (currentPlanIndex > 0) {
+    const yesterday = studyPlan[currentPlanIndex - 1];
+    const yesterdayProgress = getDayProgress(yesterday.date, category);
+    const yesterdayTasks = yesterday[category] || [];
+    carryOverTasks = yesterdayTasks.filter(t => !yesterdayProgress[t]);
+  }
+
+  // 合并：昨日遗留 + 今日任务
+  const allTasks = [];
+  const seen = new Set();
+  carryOverTasks.forEach(t => { if (!seen.has(t)) { seen.add(t); allTasks.push({ text: t, carryOver: true }); } });
+  rawTasks.forEach(t => { if (!seen.has(t)) { seen.add(t); allTasks.push({ text: t, carryOver: false }); } });
+
+  return { tasks: allTasks, date: p.date, day: p.day, phase: p.phase, weekday: p.weekday };
+}
+
+function renderStudyView(category) {
+  if (!studyPlan.length) return '<p class="text-center text-slate-400 py-10">学习计划加载中...</p>';
+  const { tasks, date, day, phase, weekday } = getTodayTasks(category);
+  const progress = getDayProgress(date, category);
+  const doneCount = tasks.filter(t => progress[t.text]).length;
+  const pct = tasks.length ? Math.round(doneCount / tasks.length * 100) : 0;
+  const phaseName = {1:'基础阶段',2:'强化阶段',3:'冲刺阶段',4:'考前调整'}[phase];
+  const title = category === 'fudaoyuan' ? '辅导员备考' : '选调生备考';
+  const icon = category === 'fudaoyuan' ? '🎓' : '📋';
+
+  let html = `
+    <div class="bg-white rounded-xl shadow p-4 mb-4">
+      <div class="flex items-center justify-between mb-3">
+        <h2 class="text-lg font-bold text-slate-800">${icon} ${title}</h2>
+        <span class="text-xs px-2 py-1 bg-teal-50 text-teal-700 rounded-full">第${day}天 · ${phaseName}</span>
+      </div>
+      <div class="flex items-center justify-between text-sm text-slate-500 mb-1">
+        <span>${date.replace(/-/g,'/')} 周${weekday}</span>
+        <span class="font-semibold text-teal-600">${doneCount}/${tasks.length} · ${pct}%</span>
+      </div>
+      <div class="w-full bg-slate-100 rounded-full h-2 mb-4">
+        <div class="progress-bar bg-gradient-to-r from-teal-400 to-teal-600 h-2 rounded-full" style="width:${pct}%"></div>
+      </div>
+      <div class="flex gap-2 mb-2">
+        <button onclick="prevStudyDay('${category}')" class="px-3 py-1.5 bg-slate-100 text-slate-600 rounded-lg text-sm">← 前一天</button>
+        <button onclick="nextStudyDay('${category}')" class="px-3 py-1.5 bg-slate-100 text-slate-600 rounded-lg text-sm">后一天 →</button>
+        <button onclick="jumpStudyToday('${category}')" class="ml-auto px-3 py-1.5 bg-teal-50 text-teal-700 rounded-lg text-sm">回到今天</button>
+      </div>
+    </div>
+  `;
+
+  if (!tasks.length) {
+    html += '<p class="text-center text-slate-400 py-8">今日暂无任务</p>';
+    return html;
+  }
+
+  html += '<div class="space-y-2">';
+  tasks.forEach((t, i) => {
+    const isDone = progress[t.text];
+    const carryClass = t.carryOver ? 'carry-over bg-amber-50' : 'bg-white';
+    const carryTag = t.carryOver ? '<span class="text-xs text-amber-600 bg-amber-100 px-1.5 py-0.5 rounded ml-2">昨日遗留</span>' : '';
+    html += `
+      <div class="${carryClass} rounded-xl shadow p-3 flex items-start gap-3">
+        <input type="checkbox" ${isDone ? 'checked' : ''} onchange="setTaskDone('${date}', '${category}', '${escapeJs(t.text)}', this.checked)" class="w-5 h-5 accent-teal-600 mt-0.5 flex-shrink-0">
+        <div class="flex-1">
+          <p class="text-sm ${isDone ? 'task-done' : 'text-slate-800'}">${escapeHtml(t.text)}${carryTag}</p>
+        </div>
+      </div>
+    `;
+  });
+  html += '</div>';
+
+  // 明日预览
+  if (currentPlanIndex < studyPlan.length - 1) {
+    const tomorrow = studyPlan[currentPlanIndex + 1];
+    html += `
+      <div class="mt-4 bg-slate-100 rounded-xl p-3">
+        <p class="text-xs text-slate-500 mb-1">明日预告 · ${tomorrow.date.replace(/-/g,'/')}</p>
+        <div class="space-y-1">
+          ${tomorrow[category].slice(0,3).map(t => `<p class="text-xs text-slate-600">• ${escapeHtml(t)}</p>`).join('')}
+          ${tomorrow[category].length > 3 ? `<p class="text-xs text-slate-400">...还有${tomorrow[category].length-3}项</p>` : ''}
+        </div>
+      </div>
+    `;
+  }
+
+  return html;
+}
+
+function prevStudyDay(cat) {
+  if (currentPlanIndex > 0) { currentPlanIndex--; renderMain(); }
+}
+function nextStudyDay(cat) {
+  if (currentPlanIndex < studyPlan.length - 1) { currentPlanIndex++; renderMain(); }
+}
+function jumpStudyToday(cat) {
+  currentPlanIndex = todayIndex;
+  renderMain();
+}
+
+// ========== 每日时政 ==========
+function renderShizhengView() {
+  let html = `
+    <div class="bg-white rounded-xl shadow p-4 mb-4">
+      <div class="flex items-center justify-between mb-2">
+        <h2 class="text-lg font-bold text-slate-800">📰 每日时政</h2>
+        <button onclick="refreshShizheng()" class="text-xs px-2 py-1 bg-teal-50 text-teal-700 rounded">刷新</button>
+      </div>
+      <p class="text-xs text-slate-500">每日精选时政热点，点击查看原文</p>
+    </div>
+  `;
+
+  if (!shizheng.length) {
+    html += '<p class="text-center text-slate-400 py-8">时政数据加载中，请运行 shizheng_crawler.py</p>';
+    return html;
+  }
+
+  // 时政任务清单
+  const date = todayStr();
+  const szTasks = [
+    '查看今日时政热点TOP10',
+    '精读2-3条重要时政并做笔记',
+    '粉笔APP/半月谈时政刷题20道',
+    '背诵近期重要会议/讲话关键词',
+  ];
+  const progress = getDayProgress(date, 'shizheng');
+  html += '<div class="space-y-2 mb-4">';
+  szTasks.forEach(t => {
+    const done = progress[t];
+    html += `
+      <div class="bg-white rounded-xl shadow p-3 flex items-start gap-3">
+        <input type="checkbox" ${done ? 'checked' : ''} onchange="setTaskDone('${date}', 'shizheng', '${escapeJs(t)}', this.checked)" class="w-5 h-5 accent-teal-600 mt-0.5 flex-shrink-0">
+        <p class="text-sm ${done ? 'task-done' : 'text-slate-800'}">${escapeHtml(t)}</p>
+      </div>
+    `;
+  });
+  html += '</div>';
+
+  // 时政列表
+  html += '<div class="space-y-2">';
+  shizheng.forEach((item, i) => {
+    html += `
+      <a href="${item.url}" target="_blank" class="block bg-white rounded-xl shadow p-3 active:bg-slate-50">
+        <div class="flex items-start justify-between gap-2">
+          <p class="text-sm text-slate-800 line-clamp-2 flex-1">${i+1}. ${escapeHtml(item.title)}</p>
+          <span class="text-xs text-slate-400 whitespace-nowrap">${escapeHtml(item.source)}</span>
+        </div>
+      </a>
+    `;
+  });
+  html += '</div>';
+
+  return html;
+}
+
+function refreshShizheng() {
+  showToast('请运行：python3 /workspace/shizheng_crawler.py', 'info');
+}
+
+// ========== 招聘公告 ==========
+function renderAnnounceView() {
+  let html = `
+    <div class="bg-white rounded-xl shadow p-4 mb-4">
+      <div class="flex items-center justify-between mb-2">
+        <h2 class="text-lg font-bold text-slate-800">📢 招聘公告</h2>
+        <span class="text-xs text-slate-400">${announcements.length} 条</span>
+      </div>
+      <div class="flex gap-2">
+        <input type="text" id="annSearch" placeholder="搜索..." oninput="filterAnnounce()" class="flex-1 px-3 py-1.5 border border-slate-200 rounded-lg text-sm">
+        <select id="annCategory" onchange="filterAnnounce()" class="px-2 py-1.5 border border-slate-200 rounded-lg text-sm">
+          <option value="all">全部</option>
+          <option value="xuandiao">选调生</option>
+          <option value="fudaoyuan">辅导员</option>
+        </select>
+      </div>
+    </div>
+    <div id="announceList" class="space-y-2"></div>
+  `;
+  setTimeout(filterAnnounce, 0);
+  return html;
+}
+
+function filterAnnounce() {
+  const search = (document.getElementById('annSearch')?.value || '').toLowerCase();
+  const cat = document.getElementById('annCategory')?.value || 'all';
+  let items = announcements;
+  if (cat !== 'all') items = items.filter(x => x.category === cat);
+  if (search) items = items.filter(x => (x.title + (x.content_summary || '')).toLowerCase().includes(search));
+  items.sort((a,b) => (b.publish_date||'').localeCompare(a.publish_date||''));
+
+  const container = document.getElementById('announceList');
+  if (!container) return;
+  if (!items.length) { container.innerHTML = '<p class="text-center text-slate-400 py-8">暂无公告</p>'; return; }
+
+  container.innerHTML = items.map(it => {
+    const d = daysUntil(it.deadline);
+    const alert = d !== null && d >= 0 && d <= 3;
+    const badge = d !== null && d >= 0 ? `<span class="text-xs ${alert ? 'text-red-600 bg-red-50' : 'text-slate-500 bg-slate-100'} px-1.5 py-0.5 rounded-full">剩${d}天</span>` : '';
+    return `
+      <a href="${it.url}" target="_blank" class="block bg-white rounded-xl shadow p-3 ${alert ? 'border-l-4 border-red-500' : ''}">
+        <div class="flex items-start justify-between gap-2 mb-1">
+          <p class="text-sm font-medium text-slate-800 line-clamp-2 flex-1">${escapeHtml(it.title)}</p>
+          ${badge}
+        </div>
+        <div class="flex gap-2 text-xs text-slate-400">
+          <span class="px-1 bg-teal-50 text-teal-600 rounded">${escapeHtml(it.region || '全国')}</span>
+          <span>发布:${formatDate(it.publish_date)}</span>
+          <span class="text-red-500">截止:${formatDate(it.deadline)}</span>
+        </div>
+      </a>
+    `;
+  }).join('');
+}
+
+// ========== 报考岗位 ==========
+function renderJobsView() {
+  return `
+    <div class="bg-white rounded-xl shadow p-4 mb-4">
+      <h2 class="text-lg font-bold text-slate-800">🎯 推荐报考岗位</h2>
+      <p class="text-xs text-slate-500 mt-1">基于你的条件筛选：华科护理硕士/党员/主席团成员</p>
+    </div>
+    <div class="space-y-3">
+      ${JOBS.map(job => `
+        <details class="bg-white rounded-xl shadow overflow-hidden">
+          <summary class="p-4 flex items-center justify-between gap-2 list-none cursor-pointer">
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium text-slate-800">${job.name}</p>
+              <p class="text-xs text-slate-400 mt-0.5">${job.region} · ${job.timeline}</p>
+            </div>
+            <span class="text-xs ${job.color} px-2 py-0.5 rounded-full whitespace-nowrap">${job.match}</span>
+          </summary>
+          <div class="px-4 pb-4 space-y-1.5 bg-slate-50 text-xs">
+            <p><span class="text-slate-400">条件：</span>${job.condition}</p>
+            <p><span class="text-slate-400">笔试：</span>${job.exam}</p>
+            <p><span class="text-slate-400">备注：</span>${job.note}</p>
+            <a href="${job.url}" target="_blank" class="inline-block text-teal-600 hover:underline mt-1">查看来源 →</a>
+          </div>
+        </details>
+      `).join('')}
+    </div>
+  `;
+}
+
+// ========== 我的任务 ==========
+function getCustomTasks() { return JSON.parse(localStorage.getItem('ban_custom_tasks') || '[]'); }
+function saveCustomTasks(t) { localStorage.setItem('ban_custom_tasks', JSON.stringify(t)); }
+
+function renderTasksView() {
+  const tasks = getCustomTasks();
+  const done = tasks.filter(t => t.done).length;
+  return `
+    <div class="bg-white rounded-xl shadow p-4 mb-4">
+      <div class="flex items-center justify-between mb-3">
+        <h2 class="text-lg font-bold text-slate-800">✅ 我的任务</h2>
+        <span class="text-xs text-slate-400">${done}/${tasks.length}</span>
+      </div>
+      <div class="flex gap-2">
+        <input type="text" id="customTaskInput" placeholder="添加自定义任务..." onkeydown="if(event.key==='Enter')addCustomTask()" class="flex-1 px-3 py-2 border border-slate-200 rounded-lg text-sm">
+        <button onclick="addCustomTask()" class="px-3 py-2 bg-teal-600 text-white rounded-lg text-sm">+</button>
+      </div>
+    </div>
+    <div class="space-y-2">
+      ${tasks.length ? tasks.map(t => `
+        <div class="bg-white rounded-xl shadow p-3 flex items-center gap-3">
+          <input type="checkbox" ${t.done ? 'checked' : ''} onchange="toggleCustomTask('${t.id}')" class="w-5 h-5 accent-teal-600">
+          <span class="flex-1 text-sm ${t.done ? 'task-done' : 'text-slate-800'}">${escapeHtml(t.text)}</span>
+          <button onclick="deleteCustomTask('${t.id}')" class="text-slate-300 hover:text-red-500">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+      `).join('') : '<p class="text-center text-slate-400 py-8">暂无自定义任务</p>'}
+    </div>
+  `;
+}
+
+function addCustomTask() {
+  const input = document.getElementById('customTaskInput');
+  const text = input.value.trim();
+  if (!text) return;
+  const tasks = getCustomTasks();
+  tasks.push({ id: 'c'+Date.now(), text, done: false });
+  saveCustomTasks(tasks);
+  renderMain();
+}
+function toggleCustomTask(id) {
+  const tasks = getCustomTasks();
+  const t = tasks.find(x => x.id === id);
+  if (t) { t.done = !t.done; saveCustomTasks(tasks); renderMain(); }
+}
+function deleteCustomTask(id) {
+  saveCustomTasks(getCustomTasks().filter(t => t.id !== id));
+  renderMain();
+}
+
+// ========== 文件导入 ==========
+function handleFileUpload(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    try {
+      const data = JSON.parse(ev.target.result);
+      if (Array.isArray(data)) {
+        // 学习计划
+        if (data[0] && data[0].xuandiao) {
+          studyPlan = data;
+          showToast('学习计划已更新', 'success');
+        } else {
+          announcements = data;
+          showToast(`已导入 ${data.length} 条公告`, 'success');
+        }
+      } else if (data.items) {
+        if (file.name.includes('shizheng')) {
+          shizheng = data.items;
+          showToast(`已导入 ${shizheng.length} 条时政`, 'success');
+        } else {
+          announcements = data.items;
+          showToast(`已导入 ${announcements.length} 条公告`, 'success');
+        }
+      }
+      renderMain();
+    } catch (err) {
+      showToast('解析失败：' + err.message, 'error');
+    }
+  };
+  reader.readAsText(file);
+  e.target.value = '';
+}
+
+function showCrawlerCmd() {
+  const cmd = 'python3 /workspace/crawler.py && python3 /workspace/shizheng_crawler.py';
+  if (navigator.clipboard) navigator.clipboard.writeText(cmd).then(() => showToast('命令已复制', 'success')).catch(() => showToast(cmd, 'info'));
+  else showToast(cmd, 'info');
+}
+
+function showToast(msg, type='info') {
+  const colors = { success:'bg-teal-600', error:'bg-red-500', info:'bg-slate-700' };
+  const div = document.createElement('div');
+  div.className = `toast ${colors[type]} text-white px-3 py-2 rounded-lg shadow-lg text-sm max-w-xs`;
+  div.textContent = msg;
+  document.getElementById('toastContainer').appendChild(div);
+  setTimeout(() => div.remove(), 3000);
+}
+
+function escapeHtml(s) { return (s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function escapeJs(s) { return escapeHtml(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '\\"'); }
+
+function registerPWA() {
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+  if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !(window.navigator.standalone === true)) {
+    setTimeout(() => showToast('💡 Safari 分享按钮 → 添加到主屏幕', 'info'), 2000);
+  }
+}
+
+init();
+</script>
+</body>
+</html>

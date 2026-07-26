@@ -523,6 +523,9 @@ def crawl_pku_xuandiao(session=None):
         with open(json_path, "r", encoding="utf-8") as f:
             data = json.load(f)
         for it in data.get("items", []):
+            # 过滤掉"面向北京大学"专属公告（用户是华中科技大学）
+            if "北京大学" in it["title"]:
+                continue
             items.append({
                 "title": it["title"],
                 "category": "xuandiao",
@@ -533,10 +536,139 @@ def crawl_pku_xuandiao(session=None):
                 "url": it["url"],
                 "content_summary": f"来源：{data.get('source', '北大就业中心')}",
             })
-        print(f"  [pku] 加载 {len(items)} 条选调生公告")
+        print(f"  [pku] 加载 {len(items)} 条选调生公告（已过滤北大专属）")
     except Exception as e:
         print(f"  [pku] 读取失败: {e}")
     return items
+
+
+# ==================== 源 8：华中科技大学就业网（用户本校，最权威）====================
+
+HUST_BASE = "https://job.hust.edu.cn"
+
+
+def _crawl_hust_page(session, url, category_filter=None):
+    """爬华科就业网某个列表页，返回条目列表。
+
+    category_filter: 函数(title) -> (category, region) 或 None（表示跳过）
+    """
+    import re as _re
+    items = []
+    r = safe_get(session, url)
+    if r is None:
+        return items
+    r.encoding = r.apparent_encoding or "utf-8"
+    soup = BeautifulSoup(r.text, "lxml")
+
+    for a in soup.find_all("a", href=True):
+        title = clean_text(a.get_text())
+        if not title or len(title) < 8 or len(title) > 80:
+            continue
+        href = a["href"]
+        # 只保留详情页链接
+        if not (_re.search(r'/jcfw/\d+\.htm$', href) or _re.search(r'/zpinfo\d+/\d+\.htm$', href)):
+            continue
+        full_url = _urljoin(HUST_BASE, href)
+
+        # 日期提取（从兄弟节点或父节点）
+        publish_date = None
+        parent_text = a.parent.get_text() if a.parent else ""
+        date_m = _re.search(r'\[(\d{4}-\d{2}-\d{2})\]', parent_text)
+        if date_m:
+            publish_date = date_m.group(1)
+        else:
+            date_m = _re.search(r'(\d{4}-\d{2}-\d{2})', parent_text)
+            if date_m:
+                publish_date = date_m.group(1)
+
+        # 分类判断
+        if category_filter:
+            result = category_filter(title)
+            if result is None:
+                continue
+            cat, region = result
+        else:
+            cat = "other"
+            region = detect_region(title)
+
+        items.append({
+            "title": title,
+            "category": cat,
+            "region": region or "全国",
+            "publish_date": publish_date,
+            "deadline": None,
+            "source": "hust",
+            "url": full_url,
+            "content_summary": "华中科技大学就业网",
+        })
+    return items
+
+
+def _classify_hust_jcfw(title):
+    """华科基层招聘分类：选调生 / 教师招聘 / 其他。
+
+    返回 (category, region) 或 None（跳过）。
+    """
+    # 排除拟录用/公示（已结束的）
+    if any(kw in title for kw in ("拟录用", "公示", "成绩", "笔试合格", "拟聘")):
+        return None
+    # 选调生
+    if "选调" in title:
+        return ("xuandiao", detect_region(title))
+    # 教师招聘
+    if any(kw in title for kw in ("教师", "讲师", "教授", "师资")):
+        return ("teacher", detect_region(title))
+    # 人才引进/事业单位
+    if any(kw in title for kw in ("人才引进", "引进", "事业单位", "党政机关")):
+        return ("xuandiao", detect_region(title))
+    # 其他
+    return ("other", detect_region(title))
+
+
+def _classify_hust_zpinfo(title):
+    """华科普通招聘分类：教师 / 其他岗位。
+
+    返回 (category, region) 或 None（跳过）。
+    """
+    # 教师招聘
+    if any(kw in title for kw in ("教师", "讲师", "教授", "师资", "辅导员")):
+        return ("teacher", detect_region(title))
+    # 医院/医疗（护理专业相关）
+    if any(kw in title for kw in ("医院", "医疗", "卫生", "护理", "临床")):
+        return ("other", detect_region(title))
+    # 事业单位/管培生
+    if any(kw in title for kw in ("事业单位", "管培生", "党校", "机关")):
+        return ("other", detect_region(title))
+    # 企业校招（只保留大厂和管培生，过滤纯技术岗）
+    if any(kw in title for kw in ("校招", "校园招聘", "管培")):
+        return ("other", "全国")
+    # 其他不确定的，保留为 other
+    return None
+
+
+def crawl_hust(session):
+    """华中科技大学就业网 - 基层招聘 + 普通招聘。
+
+    这是用户本校的就业网，最权威最及时。
+    - 基层招聘（jcfw）：选调生、教师、人才引进
+    - 普通招聘（zpinfo）：企业校招、医院、事业单位
+    """
+    items = []
+
+    # 基层招聘（选调生、教师、人才引进）
+    jcfw_items = _crawl_hust_page(session, f"{HUST_BASE}/jcfw/index.htm", _classify_hust_jcfw)
+    items.extend(jcfw_items)
+    print(f"  [hust] 基层招聘: {len(jcfw_items)} 条")
+
+    # 普通招聘信息（教师、医院、企业）
+    zpinfo_items = _crawl_hust_page(session, f"{HUST_BASE}/zpxx123123/index.htm", _classify_hust_zpinfo)
+    items.extend(zpinfo_items)
+    print(f"  [hust] 普通招聘: {len(zpinfo_items)} 条")
+
+    return items
+
+
+from urllib.parse import urljoin as _urljoin
 
 
 # ==================== 主流程 ====================
@@ -562,6 +694,7 @@ def main():
     all_items = []
 
     crawlers = [
+        ("华中科技大学就业网（本校）", crawl_hust),
         ("北京大学选调生汇总（权威）", crawl_pku_xuandiao),
         ("格木教育（选调生）", crawl_gemu),
         ("上岸鸭（选调生）", crawl_gwy),

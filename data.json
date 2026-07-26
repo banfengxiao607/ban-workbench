@@ -1,7 +1,147 @@
 {
-  "generated_at": "2026-07-26T13:12:02.033531+08:00",
-  "count": 95,
+  "generated_at": "2026-07-26T13:50:08.000621+08:00",
+  "count": 98,
   "items": [
+    {
+      "title": "咸宁市第一高级中学2026年面向社会公开招聘教师公告",
+      "category": "teacher",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "hust",
+      "url": "https://job.hust.edu.cn/jcfw/2401505.htm",
+      "content_summary": "华中科技大学就业网"
+    },
+    {
+      "title": "随州市2026年招引博士研究生人才公告",
+      "category": "other",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "hust",
+      "url": "https://job.hust.edu.cn/jcfw/2401498.htm",
+      "content_summary": "华中科技大学就业网"
+    },
+    {
+      "title": "湖南省财政厅2026年专业技术人员招聘",
+      "category": "other",
+      "region": "湖南",
+      "publish_date": null,
+      "deadline": null,
+      "source": "hust",
+      "url": "https://job.hust.edu.cn/jcfw/2392280.htm",
+      "content_summary": "华中科技大学就业网"
+    },
+    {
+      "title": "重庆市华翌智能装备26校招（智能高端五轴机床领域）",
+      "category": "other",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "hust",
+      "url": "https://job.hust.edu.cn/zpinfo1/2407094.htm",
+      "content_summary": "华中科技大学就业网"
+    },
+    {
+      "title": "寻找爱“迪”生——比亚迪2027届博士秋季校园招聘简章",
+      "category": "other",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "hust",
+      "url": "https://job.hust.edu.cn/zpinfo1/2407093.htm",
+      "content_summary": "华中科技大学就业网"
+    },
+    {
+      "title": "OPPO 2027届校园招聘",
+      "category": "other",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "hust",
+      "url": "https://job.hust.edu.cn/zpinfo1/2407092.htm",
+      "content_summary": "华中科技大学就业网"
+    },
+    {
+      "title": "电商独角兽-掌上先机/慧策-2026校园招聘",
+      "category": "other",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "hust",
+      "url": "https://job.hust.edu.cn/zpinfo1/2407090.htm",
+      "content_summary": "华中科技大学就业网"
+    },
+    {
+      "title": "【招聘】艾为电子2027届校园招聘",
+      "category": "other",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "hust",
+      "url": "https://job.hust.edu.cn/zpinfo1/2407084.htm",
+      "content_summary": "华中科技大学就业网"
+    },
+    {
+      "title": "DJI 大疆 2027“拓疆者”校园招聘",
+      "category": "other",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "hust",
+      "url": "https://job.hust.edu.cn/zpinfo1/2407088.htm",
+      "content_summary": "华中科技大学就业网"
+    },
+    {
+      "title": "芯原股份2027届校园招聘",
+      "category": "other",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "hust",
+      "url": "https://job.hust.edu.cn/zpinfo1/2407072.htm",
+      "content_summary": "华中科技大学就业网"
+    },
+    {
+      "title": "芯星计划丨成都华芯天微科技有限公司2027校园招聘",
+      "category": "other",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "hust",
+      "url": "https://job.hust.edu.cn/zpinfo1/2407086.htm",
+      "content_summary": "华中科技大学就业网"
+    },
+    {
+      "title": "心向往之，在学而思——学而思2027校园招聘正式启动！",
+      "category": "other",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "hust",
+      "url": "https://job.hust.edu.cn/zpinfo1/2407082.htm",
+      "content_summary": "华中科技大学就业网"
+    },
+    {
+      "title": "中共乐山市委党校2026年第二批公开考核招聘事业单位工作人员",
+      "category": "other",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "hust",
+      "url": "https://job.hust.edu.cn/zpinfo1/2407081.htm",
+      "content_summary": "华中科技大学就业网"
+    },
+    {
+      "title": "网易游戏（互娱）2027届校园招聘正式启动！",
+      "category": "other",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "hust",
+      "url": "https://job.hust.edu.cn/zpinfo1/2407074.htm",
+      "content_summary": "华中科技大学就业网"
+    },
     {
       "title": "上海市2026年度选调应届优秀大学毕业生公告",
       "category": "xuandiao",
@@ -33,36 +173,6 @@
       "content_summary": "来源：北京大学学生就业指导服务中心"
     },
     {
-      "title": "四川省面向北京大学选调2026届优秀大学毕业生公告",
-      "category": "xuandiao",
-      "region": "四川",
-      "publish_date": "2026-07-26",
-      "deadline": "2025-10-15",
-      "source": "pku",
-      "url": "https://scc.pku.edu.cn//f/newsCenter/view-0e74034f91d346bfa5c56b50e649397e.htm",
-      "content_summary": "来源：北京大学学生就业指导服务中心"
-    },
-    {
-      "title": "重庆市面向北京大学定向选调2026届急需紧缺专业应届优秀大学毕业生公告",
-      "category": "xuandiao",
-      "region": "重庆",
-      "publish_date": "2026-07-26",
-      "deadline": "2025-10-17",
-      "source": "pku",
-      "url": "https://scc.pku.edu.cn//f/newsCenter/view-b330160f22774b8386e7f87868db17c8.htm",
-      "content_summary": "来源：北京大学学生就业指导服务中心"
-    },
-    {
-      "title": "吉林省面向北京大学定向招录2026届选调生公告",
-      "category": "xuandiao",
-      "region": "吉林",
-      "publish_date": "2026-07-26",
-      "deadline": "2025-10-14",
-      "source": "pku",
-      "url": "https://scc.pku.edu.cn//f/newsCenter/view-43ec7882f43245bdbe923e398e8176bb.htm",
-      "content_summary": "来源：北京大学学生就业指导服务中心"
-    },
-    {
       "title": "山东省2026年度选拔录用选调生公告",
       "category": "xuandiao",
       "region": "山东",
@@ -80,26 +190,6 @@
       "deadline": "2025-10-19",
       "source": "pku",
       "url": "https://scc.pku.edu.cn/frontpage/pku/html/newsDetail_zdtj.html?id=6408624b070541f584073bcf6175e894",
-      "content_summary": "来源：北京大学学生就业指导服务中心"
-    },
-    {
-      "title": "安徽省2026年度面向北京大学定向招录选调生公告",
-      "category": "xuandiao",
-      "region": "安徽",
-      "publish_date": "2026-07-26",
-      "deadline": "2025-10-22",
-      "source": "pku",
-      "url": "https://scc.pku.edu.cn//f/newsCenter/view-684df9ed6acf49f98b9840659ad7c0d7.htm",
-      "content_summary": "来源：北京大学学生就业指导服务中心"
-    },
-    {
-      "title": "辽宁省2026年度面向北京大学选调全日制应届优秀大学毕业生公告",
-      "category": "xuandiao",
-      "region": "辽宁",
-      "publish_date": "2026-07-26",
-      "deadline": "2025-10-22",
-      "source": "pku",
-      "url": "https://scc.pku.edu.cn/frontpage/pku/html/xds_newsDetail.html?id=28892daabdfe4eca8e24031c36cb9726",
       "content_summary": "来源：北京大学学生就业指导服务中心"
     },
     {
@@ -153,16 +243,6 @@
       "content_summary": "来源：北京大学学生就业指导服务中心"
     },
     {
-      "title": "广西2026年定向北京大学招录选调生公告",
-      "category": "xuandiao",
-      "region": "广西",
-      "publish_date": "2026-07-26",
-      "deadline": "2025-11-16",
-      "source": "pku",
-      "url": "https://scc.pku.edu.cn/frontpage/pku/html/newsDetail_zdtj.html?id=b81cbe2d6426410da5ae6967a97e63f7",
-      "content_summary": "来源：北京大学学生就业指导服务中心"
-    },
-    {
       "title": "青海省2026年度选调应届优秀大学毕业生公告",
       "category": "xuandiao",
       "region": "青海",
@@ -180,16 +260,6 @@
       "deadline": "2025-11-16",
       "source": "pku",
       "url": "https://scc.pku.edu.cn//f/newsCenter/view-355265fdbbfc4ababc569eb7ed654ae5.htm",
-      "content_summary": "来源：北京大学学生就业指导服务中心"
-    },
-    {
-      "title": "内蒙古自治区2026年度到北京大学定向选调应届优秀大学毕业生公告",
-      "category": "xuandiao",
-      "region": "内蒙古",
-      "publish_date": "2026-07-26",
-      "deadline": "2025-11-20",
-      "source": "pku",
-      "url": "https://scc.pku.edu.cn//f/newsCenter/view-436fcbd8cf2644938dcced4f39bf4121.htm",
       "content_summary": "来源：北京大学学生就业指导服务中心"
     },
     {
@@ -213,26 +283,6 @@
       "content_summary": "来源：北京大学学生就业指导服务中心"
     },
     {
-      "title": "江西省2026年度面向北京大学选调应届优秀大学毕业生公告",
-      "category": "xuandiao",
-      "region": "江西",
-      "publish_date": "2026-07-26",
-      "deadline": "2025-11-27",
-      "source": "pku",
-      "url": "https://scc.pku.edu.cn//f/newsCenter/view-89625bd4a5e546f59dbcb1b58b88e4e3.htm",
-      "content_summary": "来源：北京大学学生就业指导服务中心"
-    },
-    {
-      "title": "云南省2026年面向北京大学选调优秀毕业生公告",
-      "category": "xuandiao",
-      "region": "云南",
-      "publish_date": "2026-07-26",
-      "deadline": "2025-11-25",
-      "source": "pku",
-      "url": "https://scc.pku.edu.cn//f/newsCenter/view-29828a7c54594c71b35244f7138a51bc.htm",
-      "content_summary": "来源：北京大学学生就业指导服务中心"
-    },
-    {
       "title": "福建省2026年度选调生选拔工作公告",
       "category": "xuandiao",
       "region": "福建",
@@ -253,16 +303,6 @@
       "content_summary": "来源：北京大学学生就业指导服务中心"
     },
     {
-      "title": "2026年度陕西省面向北京大学招录选调生公告",
-      "category": "xuandiao",
-      "region": "陕西",
-      "publish_date": "2026-07-26",
-      "deadline": "2025-12-17",
-      "source": "pku",
-      "url": "https://scc.pku.edu.cn/frontpage/pku/html/newsDetail_zdtj.html?id=393fad38ad0c4abaaaeda83e1cb82670",
-      "content_summary": "来源：北京大学学生就业指导服务中心"
-    },
-    {
       "title": "广东省2026年度选调优秀大学毕业生公告",
       "category": "xuandiao",
       "region": "广东",
@@ -280,16 +320,6 @@
       "deadline": "2025-12-29",
       "source": "pku",
       "url": "https://scc.pku.edu.cn/frontpage/pku/html/newsDetail_zdtj.html?id=d26b4737913247498846fe44d510c394",
-      "content_summary": "来源：北京大学学生就业指导服务中心"
-    },
-    {
-      "title": "山西省2026年面向北京大学选调优秀高校毕业生公告",
-      "category": "xuandiao",
-      "region": "山西",
-      "publish_date": "2026-07-26",
-      "deadline": "2025-12-26",
-      "source": "pku",
-      "url": "https://scc.pku.edu.cn/frontpage/pku/html/newsDetail_zdtj.html?id=e79aba27a29644bdb46e38c6447463ab",
       "content_summary": "来源：北京大学学生就业指导服务中心"
     },
     {

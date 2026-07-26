@@ -29,34 +29,56 @@ UA_POOL = [
 
 
 def make_session():
-    """返回带 UA 的 requests.Session，预置 verify=False。"""
+    """返回带完整浏览器 headers 的 requests.Session，预置 verify=False。"""
     s = requests.Session()
     s.headers.update({
         "User-Agent": UA,
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
         "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
+        "Accept-Encoding": "gzip, deflate, br",
         "Connection": "keep-alive",
+        "Upgrade-Insecure-Requests": "1",
+        "Sec-Fetch-Dest": "document",
+        "Sec-Fetch-Mode": "navigate",
+        "Sec-Fetch-Site": "none",
+        "Sec-Fetch-User": "?1",
+        "Cache-Control": "max-age=0",
     })
     s.verify = False
     return s
 
 
 def safe_get(session, url, **kwargs):
-    """try/except 包裹的 GET，失败返回 None 并打印日志。"""
-    try:
-        kwargs.setdefault("timeout", 20)
-        kwargs.setdefault("verify", False)
-        r = session.get(url, **kwargs)
-        if r.status_code != 200:
-            print(f"  [warn] {url} -> HTTP {r.status_code}")
+    """try/except 包裹的 GET，失败返回 None 并打印日志。带重试和 UA 轮换。"""
+    kwargs.setdefault("timeout", 25)
+    kwargs.setdefault("verify", False)
+    max_retries = 2
+    for attempt in range(max_retries + 1):
+        try:
+            # 第2次起换 UA
+            if attempt > 0:
+                session.headers["User-Agent"] = UA_POOL[attempt % len(UA_POOL)]
+            r = session.get(url, **kwargs)
+            if r.status_code == 200:
+                # 优先用 apparent_encoding 自动检测中文编码
+                if not r.encoding or r.encoding.lower() == "iso-8859-1":
+                    r.encoding = r.apparent_encoding
+                return r
+            print(f"  [warn] {url} -> HTTP {r.status_code} (attempt {attempt+1})")
+            if r.status_code in (403, 429):
+                # 反爬/限流，等久一点再试
+                import time as _t
+                _t.sleep(2 + attempt * 2)
+                continue
             return None
-        # 优先用 apparent_encoding 自动检测中文编码
-        if not r.encoding or r.encoding.lower() == "iso-8859-1":
-            r.encoding = r.apparent_encoding
-        return r
-    except Exception as e:
-        print(f"  [error] {url} -> {e}")
-        return None
+        except Exception as e:
+            print(f"  [error] {url} -> {e} (attempt {attempt+1})")
+            if attempt < max_retries:
+                import time as _t
+                _t.sleep(1 + attempt)
+                continue
+            return None
+    return None
 
 
 # ---------- 日期解析 ----------

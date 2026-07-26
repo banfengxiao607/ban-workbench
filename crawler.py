@@ -44,23 +44,35 @@ XUANDIAO_EXCLUDE_KW = (
     "报名入口", "面试公告", "报名人数", "温馨提示", "职位表在哪发布",
     "缴费入口", "考场分布图", "资格复审", "材料上传入口",
     "面试注意事项", "考察公告", "岗前培训", "拟录用", "公示",
+    # 资讯/科普类文章（非招聘公告）
+    "考试内容", "难度大吗", "考什么", "报名条件", "是什么", "有哪些",
+    "每年", "小伙伴", "应届生", "应届毕业生", "选调生考试是", "选调生是",
+    "普通选调", "定向选调", "选调生考试", "选调生考试内容", "选调生考试难度",
 )
 
 
 def _is_valid_xuandiao(title):
     """判断是否为有效的选调生/人才引进招录公告。"""
     # 必须包含选调相关词
-    if not any(kw in title for kw in ("选调", "人才引进", "党政机关", "优秀毕业生", "优选生", "菁英计划")):
+    if not any(kw in title for kw in ("选调", "人才引进", "优选生", "菁英计划")):
         return False
     # 标题过长的一般是资讯摘要
-    if len(title) > 70:
+    if len(title) > 60:
         return False
     # 排除资讯/问答/成绩/体检类
     for kw in XUANDIAO_EXCLUDE_KW:
         if kw in title:
             return False
     # 必须含招录类关键词
-    return any(kw in title for kw in XUANDIAO_REQUIRE_KW)
+    if not any(kw in title for kw in XUANDIAO_REQUIRE_KW):
+        return False
+    # 必须含明确年份（2023-2027），过滤掉"选调生是什么"这类无年份资讯
+    if not re.search(r'20(2[3-7])', title):
+        return False
+    # 标题中必须出现具体地名或高校名（至少2个汉字）+ 公告/招录/招聘/简章，避免纯资讯
+    has_region = bool(re.search(r'[\u4e00-\u9fa5]{2,}(省|市|自治区|县|区|大学|学院)', title))
+    has_announcement = any(kw in title for kw in ("公告", "招录", "招聘", "简章", "选拔", "选聘"))
+    return has_region and has_announcement
 
 
 # ==================== 源 1：格木教育（选调生）====================

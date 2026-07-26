@@ -623,7 +623,29 @@ function escapeHtml(s) { return (s || '').replace(/[&<>"']/g, c => ({'&':'&amp;'
 function escapeJs(s) { return escapeHtml(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '\\"'); }
 
 function registerPWA() {
-  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+  if ('serviceWorker' in navigator) {
+    // 先注销所有旧 Service Worker，清掉旧缓存，再注册新的
+    navigator.serviceWorker.getRegistrations().then(regs => {
+      const clearOld = Promise.all(regs.map(r => r.unregister()));
+      return clearOld.then(() => {
+        if (window.caches) {
+          return caches.keys().then(keys =>
+            Promise.all(keys.map(k => { if (k !== 'ban-workbench-v3') return caches.delete(k); }))
+          );
+        }
+      });
+    }).then(() => {
+      // 注册新 SW
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+      // 强制重新加载一次，确保拿到新数据
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        if (!sessionStorage.getItem('reloaded')) {
+          sessionStorage.setItem('reloaded', '1');
+          location.reload();
+        }
+      });
+    }).catch(() => {});
+  }
   if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !(window.navigator.standalone === true)) {
     setTimeout(() => showToast('💡 Safari 分享按钮 → 添加到主屏幕', 'info'), 2000);
   }

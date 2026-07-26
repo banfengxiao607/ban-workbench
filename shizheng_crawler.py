@@ -200,12 +200,57 @@ def crawl_xinhua_leader():
     return items
 
 
+def crawl_sizheng():
+    """抓取高校思政专项时政（辅导员笔试考点）。
+
+    来源：
+    - 教育部官网政策文件
+    - 中国大学生在线
+    标注 category: "sizheng" 便于前端分类展示。
+    """
+    items = []
+    sources = [
+        ("http://www.moe.gov.cn/jyb_sjzl/", "教育部"),
+        ("http://www.moe.gov.cn/jyb_xwfb/", "教育部新闻"),
+    ]
+    for url, source_name in sources:
+        try:
+            r = requests.get(url, headers={"User-Agent": UA}, verify=False, timeout=15)
+            if r.status_code != 200:
+                continue
+            r.encoding = r.apparent_encoding
+            soup = BeautifulSoup(r.text, "lxml")
+            for a in soup.find_all("a", href=True):
+                title = clean_text(a.get_text())
+                href = a["href"]
+                if not title or len(title) < 8 or len(title) > 80:
+                    continue
+                # 只保留思政/高校/教育/辅导员相关
+                if not any(kw in title for kw in ("思政", "高校", "辅导员", "大学生", "教育", "党建", "立德树人", "意识形态")):
+                    continue
+                full_url = urljoin(url, href)
+                if full_url.startswith("javascript"):
+                    continue
+                date = parse_date_from_url(full_url) or TODAY
+                items.append({
+                    "title": title,
+                    "url": full_url,
+                    "source": source_name,
+                    "date": date,
+                    "category": "sizheng",
+                })
+        except Exception as e:
+            print(f"思政专项 {source_name} 抓取失败: {e}")
+    return items
+
+
 def main():
     print("抓取每日时政...")
     items = []
     items.extend(crawl_xinhua())
     items.extend(crawl_xinhua_leader())
     items.extend(crawl_people())
+    items.extend(crawl_sizheng())
 
     # 去重（按标题）
     seen = set()
@@ -218,8 +263,8 @@ def main():
     # 按日期倒序
     unique.sort(key=lambda x: x["date"], reverse=True)
 
-    # 取最新15条
-    unique = unique[:15]
+    # 取最新20条（含思政专项）
+    unique = unique[:20]
 
     if not unique:
         unique.append({

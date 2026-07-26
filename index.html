@@ -286,6 +286,18 @@ function setTaskDone(date, category, text, done) {
 function taskKey(text) { return text; }
 
 // 获取今日任务，包含昨日遗留
+// 兼容新旧格式：把任务统一转成 {text, core, duration, type, carryOver}
+function normalizeTask(t, carryOver = false) {
+  if (typeof t === 'string') return { text: t, core: false, carryOver };
+  return {
+    text: t.text || '',
+    core: !!t.core,
+    duration: t.duration || '',
+    type: t.type || '',
+    carryOver,
+  };
+}
+
 function getTodayTasks(category) {
   if (!studyPlan.length) return { tasks: [], carryOver: [] };
   const p = studyPlan[currentPlanIndex];
@@ -297,14 +309,23 @@ function getTodayTasks(category) {
     const yesterday = studyPlan[currentPlanIndex - 1];
     const yesterdayProgress = getDayProgress(yesterday.date, category);
     const yesterdayTasks = yesterday[category] || [];
-    carryOverTasks = yesterdayTasks.filter(t => !yesterdayProgress[t]);
+    carryOverTasks = yesterdayTasks.filter(t => {
+      const norm = normalizeTask(t);
+      return !yesterdayProgress[norm.text];
+    });
   }
 
   // 合并：昨日遗留 + 今日任务
   const allTasks = [];
   const seen = new Set();
-  carryOverTasks.forEach(t => { if (!seen.has(t)) { seen.add(t); allTasks.push({ text: t, carryOver: true }); } });
-  rawTasks.forEach(t => { if (!seen.has(t)) { seen.add(t); allTasks.push({ text: t, carryOver: false }); } });
+  carryOverTasks.forEach(t => {
+    const norm = normalizeTask(t, true);
+    if (!seen.has(norm.text)) { seen.add(norm.text); allTasks.push(norm); }
+  });
+  rawTasks.forEach(t => {
+    const norm = normalizeTask(t, false);
+    if (!seen.has(norm.text)) { seen.add(norm.text); allTasks.push(norm); }
+  });
 
   return { tasks: allTasks, date: p.date, day: p.day, phase: p.phase, weekday: p.weekday };
 }
@@ -315,7 +336,8 @@ function renderStudyView(category) {
   const progress = getDayProgress(date, category);
   const doneCount = tasks.filter(t => progress[t.text]).length;
   const pct = tasks.length ? Math.round(doneCount / tasks.length * 100) : 0;
-  const phaseName = {1:'基础阶段',2:'强化阶段',3:'冲刺阶段',4:'考前调整'}[phase];
+  const phaseNameMap = {'基础夯实':'基础夯实','刷题强化':'刷题强化','套卷冲刺':'套卷冲刺','基础阶段':'基础阶段','强化阶段':'强化阶段','冲刺阶段':'冲刺阶段','考前调整':'考前调整','1':'基础阶段','2':'强化阶段','3':'冲刺阶段','4':'考前调整'};
+  const phaseName = phaseNameMap[phase] || phase || '未知阶段';
   const title = category === 'fudaoyuan' ? '辅导员备考' : '选调生备考';
   const icon = category === 'fudaoyuan' ? '🎓' : '📋';
 
@@ -350,11 +372,13 @@ function renderStudyView(category) {
     const isDone = progress[t.text];
     const carryClass = t.carryOver ? 'carry-over bg-amber-50' : 'bg-white';
     const carryTag = t.carryOver ? '<span class="text-xs text-amber-600 bg-amber-100 px-1.5 py-0.5 rounded ml-2">昨日遗留</span>' : '';
+    const coreTag = t.core ? '<span class="text-xs text-red-600 bg-red-50 px-1.5 py-0.5 rounded ml-1">★必做</span>' : '';
+    const durTag = t.duration ? `<span class="text-xs text-slate-400 ml-1">${escapeHtml(t.duration)}</span>` : '';
     html += `
       <div class="${carryClass} rounded-xl shadow p-3 flex items-start gap-3">
         <input type="checkbox" ${isDone ? 'checked' : ''} onchange="setTaskDone('${date}', '${category}', '${escapeJs(t.text)}', this.checked)" class="w-5 h-5 accent-teal-600 mt-0.5 flex-shrink-0">
         <div class="flex-1">
-          <p class="text-sm ${isDone ? 'task-done' : 'text-slate-800'}">${escapeHtml(t.text)}${carryTag}</p>
+          <p class="text-sm ${isDone ? 'task-done' : 'text-slate-800'}">${escapeHtml(t.text)}${carryTag}${coreTag}${durTag}</p>
         </div>
       </div>
     `;
@@ -364,12 +388,14 @@ function renderStudyView(category) {
   // 明日预览
   if (currentPlanIndex < studyPlan.length - 1) {
     const tomorrow = studyPlan[currentPlanIndex + 1];
+    const tomorrowTasks = tomorrow[category] || [];
+    const tomorrowList = tomorrowTasks.map(t => typeof t === 'string' ? t : t.text);
     html += `
       <div class="mt-4 bg-slate-100 rounded-xl p-3">
         <p class="text-xs text-slate-500 mb-1">明日预告 · ${tomorrow.date.replace(/-/g,'/')}</p>
         <div class="space-y-1">
-          ${tomorrow[category].slice(0,3).map(t => `<p class="text-xs text-slate-600">• ${escapeHtml(t)}</p>`).join('')}
-          ${tomorrow[category].length > 3 ? `<p class="text-xs text-slate-400">...还有${tomorrow[category].length-3}项</p>` : ''}
+          ${tomorrowList.slice(0,3).map(t => `<p class="text-xs text-slate-600">• ${escapeHtml(t)}</p>`).join('')}
+          ${tomorrowList.length > 3 ? `<p class="text-xs text-slate-400">...还有${tomorrowList.length-3}项</p>` : ''}
         </div>
       </div>
     `;

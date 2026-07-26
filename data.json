@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-26T11:39:35.578100+08:00",
-  "count": 19,
+  "generated_at": "2026-07-26T12:20:27.822179+08:00",
+  "count": 103,
   "items": [
     {
       "title": "【公告汇总】2026年湖北省定向选调生招录710人",
@@ -59,7 +59,7 @@
       "publish_date": "2026-01-12",
       "deadline": null,
       "source": "gemu",
-      "url": "https://gemu.cn/zhaokao/121885.html",
+      "url": "https://www.gemu.cn/zhaokao/121885.html",
       "content_summary": ""
     },
     {
@@ -69,7 +69,127 @@
       "publish_date": "2025-11-12",
       "deadline": null,
       "source": "gemu",
-      "url": "https://gemu.cn/zhaokao/120965.html",
+      "url": "https://www.gemu.cn/zhaokao/120965.html",
+      "content_summary": ""
+    },
+    {
+      "title": "2025年湖北选调生职位表/各地市职位表下载",
+      "category": "xuandiao",
+      "region": "湖北",
+      "publish_date": "2024-12-24",
+      "deadline": null,
+      "source": "gemu",
+      "url": "https://www.gemu.cn/zhaokao/113364.html",
+      "content_summary": ""
+    },
+    {
+      "title": "2025湖北省选调生考试职位表在哪下载？",
+      "category": "xuandiao",
+      "region": "湖北",
+      "publish_date": "2024-11-12",
+      "deadline": null,
+      "source": "gemu",
+      "url": "https://www.gemu.cn/zhaokao/112445.html",
+      "content_summary": ""
+    },
+    {
+      "title": "2024年下半年阳新县纪委监委公开择优选调(聘)工作人员调整岗位计划公告",
+      "category": "xuandiao",
+      "region": "全国",
+      "publish_date": "2024-11-02",
+      "deadline": null,
+      "source": "gemu",
+      "url": "https://www.gemu.cn/zhaokao/112136.html",
+      "content_summary": ""
+    },
+    {
+      "title": "2024湖北省选调生招录职位表（1000人）",
+      "category": "xuandiao",
+      "region": "湖北",
+      "publish_date": "2023-12-13",
+      "deadline": null,
+      "source": "gemu",
+      "url": "https://www.gemu.cn/zhaokao/102863.html",
+      "content_summary": ""
+    },
+    {
+      "title": "2024湖北省选调生考试职位表在哪下载？",
+      "category": "xuandiao",
+      "region": "湖北",
+      "publish_date": "2023-10-09",
+      "deadline": null,
+      "source": "gemu",
+      "url": "https://www.gemu.cn/zhaokao/100897.html",
+      "content_summary": ""
+    },
+    {
+      "title": "2025年湖北省选调生考试笔试科目",
+      "category": "xuandiao",
+      "region": "湖北",
+      "publish_date": "2025-02-04",
+      "deadline": null,
+      "source": "gemu",
+      "url": "https://www.gemu.cn/zhaokao/113961.html",
+      "content_summary": ""
+    },
+    {
+      "title": "2025年湖北选调生考试笔试考两科",
+      "category": "xuandiao",
+      "region": "湖北",
+      "publish_date": "2025-02-04",
+      "deadline": null,
+      "source": "gemu",
+      "url": "https://www.gemu.cn/zhaokao/113960.html",
+      "content_summary": ""
+    },
+    {
+      "title": "2025年湖北选调生考试笔试考什么？",
+      "category": "xuandiao",
+      "region": "湖北",
+      "publish_date": "2025-02-04",
+      "deadline": null,
+      "source": "gemu",
+      "url": "https://www.gemu.cn/zhaokao/113959.html",
+      "content_summary": ""
+    },
+    {
+      "title": "2025年湖北选调生考试笔试考几门？",
+      "category": "xuandiao",
+      "region": "湖北",
+      "publish_date": "2025-02-04",
+      "deadline": null,
+      "source": "gemu",
+      "url": "https://www.gemu.cn/zhaokao/113958.html",
+      "content_summary": ""
+    },
+    {
+      "title": "2024湖北省选调生报考政策是怎样的？",
+      "category": "xuandiao",
+      "region": "湖北",
+      "publish_date": "2023-11-23",
+      "deadline": null,
+      "source": "gemu",
+      "url": "https://www.gemu.cn/zhaokao/102262.html",
+      "content_summary": ""
+    },
+    {
+      "title": "选调生考试报名条件有哪些？报考必看",
+      "category": "xuandiao",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "gwy",
+      "url": "https://www.gwy.com/xds/410440.html",
+      "content_summary": ""
+    },
+    {
+      "title": "河南省选调生报名网站官网入口：http://xds.jyt.henan.gov.cn/",
+      "category": "xuandiao",
+      "region": "河南",
+      "publish_date": null,
+      "deadline": null,
+      "source": "gwy",
+      "url": "https://www.gwy.com/xds/410437.html",
       "content_summary": ""
     },
     {
@@ -79,7 +199,27 @@
       "publish_date": null,
       "deadline": null,
       "source": "gwy",
-      "url": "https://gwy.com/xds/398127.html",
+      "url": "https://www.gwy.com/xds/398127.html",
+      "content_summary": ""
+    },
+    {
+      "title": "2026年度广东省选调优秀大学毕业生公告",
+      "category": "xuandiao",
+      "region": "广东",
+      "publish_date": null,
+      "deadline": null,
+      "source": "gwy",
+      "url": "https://www.gwy.com/xds/397339.html",
+      "content_summary": ""
+    },
+    {
+      "title": "根据公务员法、公务员录用规定和《关于进一步加强和改进选调生工作的意见》精神，省委组织部、省人力资源社会保障厅决定，面向部...",
+      "category": "xuandiao",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "gwy",
+      "url": "https://www.gwy.com/xds/397339.html",
       "content_summary": ""
     },
     {
@@ -89,7 +229,27 @@
       "publish_date": null,
       "deadline": null,
       "source": "gwy",
-      "url": "https://gwy.com/xds/394259.html",
+      "url": "https://www.gwy.com/xds/394259.html",
+      "content_summary": ""
+    },
+    {
+      "title": "定向选调招录公告会通过高校就业指导中心发布，同时也在各省组织部官网同步公开。2026年定向选调预计在2025年9月至11...",
+      "category": "xuandiao",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "gwy",
+      "url": "https://www.gwy.com/xds/383619.html",
+      "content_summary": ""
+    },
+    {
+      "title": "选调生面试培训机构哪家好？这样选才靠谱",
+      "category": "xuandiao",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "gwy",
+      "url": "https://www.gwy.com/xds/380707.html",
       "content_summary": ""
     },
     {
@@ -99,17 +259,217 @@
       "publish_date": null,
       "deadline": null,
       "source": "gwy",
-      "url": "https://gwy.com/xds/349788.html",
+      "url": "https://www.gwy.com/xds/349788.html",
       "content_summary": ""
     },
     {
-      "title": "招1600人！2026云南选调生考试公告发布（12.6笔试）",
+      "title": "选调生考试考什么科目选调生考试是针对应届毕业生的一类考试，其实也是公务员考试中的一种，考上之后也属于公务员的编制。选调生...",
       "category": "xuandiao",
-      "region": "云南",
+      "region": "全国",
       "publish_date": null,
       "deadline": null,
       "source": "gwy",
-      "url": "https://gwy.com/xds/393624.html",
+      "url": "https://www.gwy.com/xds/348399.html",
+      "content_summary": ""
+    },
+    {
+      "title": "选调生考试内容一般为《综合知识》和《申论》两门，在综合知识当中主要考《行政职业能力测验》和《公共基础知识》。考试分为笔试...",
+      "category": "xuandiao",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "gwy",
+      "url": "https://www.gwy.com/xds/342206.html",
+      "content_summary": ""
+    },
+    {
+      "title": "12月17日笔试，2024广东省选调生笔试考几科内容？",
+      "category": "xuandiao",
+      "region": "广东",
+      "publish_date": null,
+      "deadline": null,
+      "source": "gwy",
+      "url": "https://www.gwy.com/xds/341647.html",
+      "content_summary": ""
+    },
+    {
+      "title": "2024广东省选调生考试",
+      "category": "xuandiao",
+      "region": "广东",
+      "publish_date": null,
+      "deadline": null,
+      "source": "gwy",
+      "url": "https://www.gwy.com/tag/383325.html",
+      "content_summary": ""
+    },
+    {
+      "title": "选调生考试时间一般是多久？考什么科目？",
+      "category": "xuandiao",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "gwy",
+      "url": "https://www.gwy.com/xds/340852.html",
+      "content_summary": ""
+    },
+    {
+      "title": "选调生考试分为定向选调和非定向选调，定向选调考时间一般是每年9-12月，非定向选调考试时间通常是每年3-4月份，考试科目...",
+      "category": "xuandiao",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "gwy",
+      "url": "https://www.gwy.com/xds/340852.html",
+      "content_summary": ""
+    },
+    {
+      "title": "2024年广东选调生报名结束！行测考哪些内容？",
+      "category": "xuandiao",
+      "region": "广东",
+      "publish_date": null,
+      "deadline": null,
+      "source": "gwy",
+      "url": "https://www.gwy.com/xds/341232.html",
+      "content_summary": ""
+    },
+    {
+      "title": "广东省选调生报名",
+      "category": "xuandiao",
+      "region": "广东",
+      "publish_date": null,
+      "deadline": null,
+      "source": "gwy",
+      "url": "https://www.gwy.com/tag/383326.html",
+      "content_summary": ""
+    },
+    {
+      "title": "关于开展2023年山西省定向选调优秀高校毕业生综合考察工作的通知",
+      "category": "xuandiao",
+      "region": "山西",
+      "publish_date": null,
+      "deadline": null,
+      "source": "gwy",
+      "url": "https://www.gwy.com/xds/235956.html",
+      "content_summary": ""
+    },
+    {
+      "title": "2023山西选调生考试",
+      "category": "xuandiao",
+      "region": "山西",
+      "publish_date": null,
+      "deadline": null,
+      "source": "gwy",
+      "url": "https://www.gwy.com/tag/184625.html",
+      "content_summary": ""
+    },
+    {
+      "title": "2023吉林定向选调生考试内容",
+      "category": "xuandiao",
+      "region": "吉林",
+      "publish_date": null,
+      "deadline": null,
+      "source": "gwy",
+      "url": "https://www.gwy.com/xds/188997.html",
+      "content_summary": ""
+    },
+    {
+      "title": "2023吉林定向选调生公告已陆续发布，各位考生可于10月10日-18日登录吉林省公务员考试网（www.jlgwyks.c...",
+      "category": "xuandiao",
+      "region": "吉林",
+      "publish_date": null,
+      "deadline": null,
+      "source": "gwy",
+      "url": "https://www.gwy.com/xds/188997.html",
+      "content_summary": ""
+    },
+    {
+      "title": "吉林选调生考试内容",
+      "category": "xuandiao",
+      "region": "吉林",
+      "publish_date": null,
+      "deadline": null,
+      "source": "gwy",
+      "url": "https://www.gwy.com/tag/21267.html",
+      "content_summary": ""
+    },
+    {
+      "title": "选调生考试内容有哪些",
+      "category": "xuandiao",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "gwy",
+      "url": "https://www.gwy.com/xds/95750.html",
+      "content_summary": ""
+    },
+    {
+      "title": "选调生考试难度大吗",
+      "category": "xuandiao",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "gwy",
+      "url": "https://www.gwy.com/xds/80204.html",
+      "content_summary": ""
+    },
+    {
+      "title": "选调生考试每年也是很多小伙伴比较关注的一个考试，选调生是针对应届毕业生的考试，其实也是属于公务员考试，但是要求会严格一些...",
+      "category": "xuandiao",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "gwy",
+      "url": "https://www.gwy.com/xds/80204.html",
+      "content_summary": ""
+    },
+    {
+      "title": "公务员选调生考试考什么",
+      "category": "xuandiao",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "gwy",
+      "url": "https://www.gwy.com/xds/80180.html",
+      "content_summary": ""
+    },
+    {
+      "title": "选调生考试是公务员考试中的一种，主要是针对应届生的考试，有些想要参加选调生的考试的小伙伴还是不太了解公务员选调生考试考什...",
+      "category": "xuandiao",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "gwy",
+      "url": "https://www.gwy.com/xds/80180.html",
+      "content_summary": ""
+    },
+    {
+      "title": "不少应届毕业生想要报考普通选调生，但很难分清报考门槛。普通选调面向范围更广，和定向选调存在明显区别，各省政策略有差异，提...",
+      "category": "xuandiao",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "gwy",
+      "url": "https://www.gwy.com/xds/410442.html",
+      "content_summary": ""
+    },
+    {
+      "title": "很多应届生有意向报考选调生，但对报考门槛划分并不清晰。定向选调与普通选调条件存在明显差异，各省细则略有调整，网络零散信息...",
+      "category": "xuandiao",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "gwy",
+      "url": "https://www.gwy.com/xds/410440.html",
+      "content_summary": ""
+    },
+    {
+      "title": "选调生考试报名条件",
+      "category": "xuandiao",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "gwy",
+      "url": "https://www.gwy.com/tag/10039.html",
       "content_summary": ""
     },
     {
@@ -191,6 +551,486 @@
       "source": "gaoxiaojob",
       "url": "https://www.gaoxiaojob.com/announcement/detail/418243.html",
       "content_summary": "此招聘信息由湖北省人力资源和社会保障厅发布的《湖北省事业单位2026年统一公开招聘高校专职辅导员公告》延伸。为助您快速、精准掌握长江大学的招聘详情，现特别针对长..."
+    },
+    {
+      "title": "陕西交通职业技术学院招聘辅导员10人",
+      "category": "fudaoyuan",
+      "region": "陕西-西安",
+      "publish_date": "2026-05-07",
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/job/detail/2157543.html",
+      "content_summary": "西安辅导员招聘"
+    },
+    {
+      "title": "湖北交通职业技术学院招聘辅导员5人",
+      "category": "fudaoyuan",
+      "region": "湖北-武汉",
+      "publish_date": "2026-07-24",
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/job/detail/2276649.html",
+      "content_summary": "武汉辅导员招聘"
+    },
+    {
+      "title": "武汉民政职业学院招聘辅导员1人",
+      "category": "fudaoyuan",
+      "region": "湖北-武汉",
+      "publish_date": "2026-07-24",
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/job/detail/2276382.html",
+      "content_summary": "武汉辅导员招聘"
+    },
+    {
+      "title": "湖北大学知行学院招聘辅导员5人",
+      "category": "fudaoyuan",
+      "region": "湖北-武汉",
+      "publish_date": "2026-05-09",
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/job/detail/2163460.html",
+      "content_summary": "武汉辅导员招聘"
+    },
+    {
+      "title": "湖北城市建设职业技术学院招聘辅导员2人",
+      "category": "fudaoyuan",
+      "region": "湖北-武汉",
+      "publish_date": "2026-02-03",
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/job/detail/2010276.html",
+      "content_summary": "武汉辅导员招聘"
+    },
+    {
+      "title": "上海民航职业技术学院招聘辅导员8人",
+      "category": "fudaoyuan",
+      "region": "上海-上海",
+      "publish_date": "2026-07-10",
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/job/detail/2258535.html",
+      "content_summary": "上海辅导员招聘"
+    },
+    {
+      "title": "广东轻工职业技术大学招聘辅导员5人",
+      "category": "fudaoyuan",
+      "region": "广东-广州",
+      "publish_date": "2026-05-16",
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/job/detail/1634796.html",
+      "content_summary": "广州辅导员招聘"
+    },
+    {
+      "title": "南京财经大学红山学院招聘辅导员3人",
+      "category": "fudaoyuan",
+      "region": "江苏-南京",
+      "publish_date": "2026-07-09",
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/job/detail/2256752.html",
+      "content_summary": "南京辅导员招聘"
+    },
+    {
+      "title": "苏州科技大学天平学院招聘辅导员人",
+      "category": "fudaoyuan",
+      "region": "江苏-南京",
+      "publish_date": "2026-04-22",
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/job/detail/2139200.html",
+      "content_summary": "南京辅导员招聘"
+    },
+    {
+      "title": "南京师范大学招聘辅导员8人",
+      "category": "fudaoyuan",
+      "region": "江苏-南京",
+      "publish_date": "2026-03-23",
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/job/detail/2082669.html",
+      "content_summary": "南京辅导员招聘"
+    },
+    {
+      "title": "金陵科技学院招聘辅导员2人",
+      "category": "fudaoyuan",
+      "region": "江苏-南京",
+      "publish_date": "2025-12-31",
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/job/detail/1960562.html",
+      "content_summary": "南京辅导员招聘"
+    },
+    {
+      "title": "苏州科技大学天平学院招聘辅导员1人",
+      "category": "fudaoyuan",
+      "region": "江苏-南京",
+      "publish_date": "2025-08-22",
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/job/detail/1774405.html",
+      "content_summary": "南京辅导员招聘"
+    },
+    {
+      "title": "四川长江职业学院招聘辅导员6人",
+      "category": "fudaoyuan",
+      "region": "四川-成都",
+      "publish_date": "2026-05-21",
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/job/detail/1642794.html",
+      "content_summary": "成都辅导员招聘"
+    },
+    {
+      "title": "四川现代职业学院招聘辅导员人",
+      "category": "fudaoyuan",
+      "region": "四川-成都",
+      "publish_date": "2026-05-16",
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/job/detail/1635951.html",
+      "content_summary": "成都辅导员招聘"
+    },
+    {
+      "title": "郑州旅游职业学院招聘辅导员5人",
+      "category": "fudaoyuan",
+      "region": "河南-郑州",
+      "publish_date": "2026-07-14",
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/job/detail/2262001.html",
+      "content_summary": "郑州辅导员招聘"
+    },
+    {
+      "title": "郑州健康学院招聘辅导员5人",
+      "category": "fudaoyuan",
+      "region": "河南-郑州",
+      "publish_date": "2026-03-19",
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/job/detail/2075985.html",
+      "content_summary": "郑州辅导员招聘"
+    },
+    {
+      "title": "嵩山少林武术职业学院招聘辅导员8人",
+      "category": "fudaoyuan",
+      "region": "河南-郑州",
+      "publish_date": "2026-01-12",
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/job/detail/1974771.html",
+      "content_summary": "郑州辅导员招聘"
+    },
+    {
+      "title": "河南医药大学招聘辅导员10人",
+      "category": "fudaoyuan",
+      "region": "河南-郑州",
+      "publish_date": "2025-10-28",
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/job/detail/1860585.html",
+      "content_summary": "郑州辅导员招聘"
+    },
+    {
+      "title": "湖南大学非洲研究院2026年人才招聘公告",
+      "category": "fudaoyuan",
+      "region": "湖南",
+      "publish_date": null,
+      "deadline": null,
+      "source": "shuobojob",
+      "url": "http://www.shuobojob.com/gaoxiaozhaopin/hunan/8496.html",
+      "content_summary": ""
+    },
+    {
+      "title": "张家界开放大学2026年公开招聘工作人员公告",
+      "category": "fudaoyuan",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "shuobojob",
+      "url": "http://www.shuobojob.com/gaoxiaozhaopin/hunan/8316.html",
+      "content_summary": ""
+    },
+    {
+      "title": "国防科技大学数智建模与仿真国家级重点实验室人才引进公告",
+      "category": "fudaoyuan",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "shuobojob",
+      "url": "http://www.shuobojob.com/gaoxiaozhaopin/hunan/8240.html",
+      "content_summary": ""
+    },
+    {
+      "title": "中南大学商学院国家自然科学基金委卓越研究群体、教育部哲学社会科学实验室",
+      "category": "fudaoyuan",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "shuobojob",
+      "url": "http://www.shuobojob.com/gaoxiaozhaopin/hunan/8265.html",
+      "content_summary": ""
+    },
+    {
+      "title": "中南林业科技大学前沿交叉学科学院2026年公开招聘公告",
+      "category": "fudaoyuan",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "shuobojob",
+      "url": "http://www.shuobojob.com/gaoxiaozhaopin/hunan/8134.html",
+      "content_summary": ""
+    },
+    {
+      "title": "湖南农业大学2026年第二批公开招聘工作人员公告（92人）",
+      "category": "fudaoyuan",
+      "region": "湖南",
+      "publish_date": null,
+      "deadline": null,
+      "source": "shuobojob",
+      "url": "http://www.shuobojob.com/gaoxiaozhaopin/hunan/7905.html",
+      "content_summary": ""
+    },
+    {
+      "title": "湖南大学人工智能先进制造研究院2026年诚聘海内外英才",
+      "category": "fudaoyuan",
+      "region": "湖南",
+      "publish_date": null,
+      "deadline": null,
+      "source": "shuobojob",
+      "url": "http://www.shuobojob.com/gaoxiaozhaopin/hunan/7783.html",
+      "content_summary": ""
+    },
+    {
+      "title": "中南林业科技大学2026年第二次公开招聘工作人员24名公告",
+      "category": "fudaoyuan",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "shuobojob",
+      "url": "http://www.shuobojob.com/gaoxiaozhaopin/hunan/7478.html",
+      "content_summary": ""
+    },
+    {
+      "title": "湖南中医药大学2026年第二次公开招聘工作人员10名公告",
+      "category": "fudaoyuan",
+      "region": "湖南",
+      "publish_date": null,
+      "deadline": null,
+      "source": "shuobojob",
+      "url": "http://www.shuobojob.com/gaoxiaozhaopin/hunan/7477.html",
+      "content_summary": ""
+    },
+    {
+      "title": "湖南农业大学2026年第二次公开招聘工作人员21名公告",
+      "category": "fudaoyuan",
+      "region": "湖南",
+      "publish_date": null,
+      "deadline": null,
+      "source": "shuobojob",
+      "url": "http://www.shuobojob.com/gaoxiaozhaopin/hunan/7476.html",
+      "content_summary": ""
+    },
+    {
+      "title": "湖南工业大学2026年第二次公开招聘工作人员42名公告",
+      "category": "fudaoyuan",
+      "region": "湖南",
+      "publish_date": null,
+      "deadline": null,
+      "source": "shuobojob",
+      "url": "http://www.shuobojob.com/gaoxiaozhaopin/hunan/7474.html",
+      "content_summary": ""
+    },
+    {
+      "title": "湖南工商大学2026年第二次公开招聘工作人员20名公告",
+      "category": "fudaoyuan",
+      "region": "湖南",
+      "publish_date": null,
+      "deadline": null,
+      "source": "shuobojob",
+      "url": "http://www.shuobojob.com/gaoxiaozhaopin/hunan/7473.html",
+      "content_summary": ""
+    },
+    {
+      "title": "湘潭大学2026年第二次公开招聘工作人员38名公告",
+      "category": "fudaoyuan",
+      "region": "湖南",
+      "publish_date": null,
+      "deadline": null,
+      "source": "shuobojob",
+      "url": "http://www.shuobojob.com/gaoxiaozhaopin/hunan/7470.html",
+      "content_summary": ""
+    },
+    {
+      "title": "湖南汽车工程职业大学（湖南汽车工程职业学院）2026年公开招聘工作人员公告",
+      "category": "fudaoyuan",
+      "region": "湖南",
+      "publish_date": null,
+      "deadline": null,
+      "source": "shuobojob",
+      "url": "http://www.shuobojob.com/gaoxiaozhaopin/hunan/7467.html",
+      "content_summary": ""
+    },
+    {
+      "title": "株洲开放大学2026年公开招聘工作人员公告",
+      "category": "fudaoyuan",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "shuobojob",
+      "url": "http://www.shuobojob.com/gaoxiaozhaopin/hunan/7466.html",
+      "content_summary": ""
+    },
+    {
+      "title": "中南大学人工智能学院2026年诚聘海内外英才",
+      "category": "fudaoyuan",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "shuobojob",
+      "url": "http://www.shuobojob.com/gaoxiaozhaopin/hunan/7418.html",
+      "content_summary": ""
+    },
+    {
+      "title": "西安科技大学测绘科学与技术学院2026年人才招聘公告",
+      "category": "fudaoyuan",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "shuobojob",
+      "url": "http://www.shuobojob.com/gaoxiaozhaopin/shanxi/8810.html",
+      "content_summary": ""
+    },
+    {
+      "title": "陕西科技大学2026年高层次人才和博士招聘公告",
+      "category": "fudaoyuan",
+      "region": "陕西",
+      "publish_date": null,
+      "deadline": null,
+      "source": "shuobojob",
+      "url": "http://www.shuobojob.com/gaoxiaozhaopin/shanxi/8768.html",
+      "content_summary": ""
+    },
+    {
+      "title": "西安石油大学理学院2026年招聘高层次人才公告",
+      "category": "fudaoyuan",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "shuobojob",
+      "url": "http://www.shuobojob.com/gaoxiaozhaopin/shanxi/8760.html",
+      "content_summary": ""
+    },
+    {
+      "title": "西安科技大学人工智能与计算机学院2026年人才招聘公告",
+      "category": "fudaoyuan",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "shuobojob",
+      "url": "http://www.shuobojob.com/gaoxiaozhaopin/shanxi/8724.html",
+      "content_summary": ""
+    },
+    {
+      "title": "西北政法大学政治与公共管理学院2026年引进与招聘教学科研人才公告",
+      "category": "fudaoyuan",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "shuobojob",
+      "url": "http://www.shuobojob.com/gaoxiaozhaopin/shanxi/8722.html",
+      "content_summary": ""
+    },
+    {
+      "title": "渭南师范学院2026年招聘专职辅导员公告",
+      "category": "fudaoyuan",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "shuobojob",
+      "url": "http://www.shuobojob.com/gaoxiaozhaopin/shanxi/8619.html",
+      "content_summary": ""
+    },
+    {
+      "title": "陕西中医药大学2026年招聘专职辅导员公告",
+      "category": "fudaoyuan",
+      "region": "陕西",
+      "publish_date": null,
+      "deadline": null,
+      "source": "shuobojob",
+      "url": "http://www.shuobojob.com/gaoxiaozhaopin/shanxi/8547.html",
+      "content_summary": ""
+    },
+    {
+      "title": "西安外国语大学国际传播中心2026年公开招聘专任教师公告",
+      "category": "fudaoyuan",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "shuobojob",
+      "url": "http://www.shuobojob.com/gaoxiaozhaopin/shanxi/8487.html",
+      "content_summary": ""
+    },
+    {
+      "title": "西安交通大学软件学院2026年诚聘英才",
+      "category": "fudaoyuan",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "shuobojob",
+      "url": "http://www.shuobojob.com/gaoxiaozhaopin/shanxi/8430.html",
+      "content_summary": ""
+    },
+    {
+      "title": "西安交通大学化学工程与技术学院2026年招聘专职科研人员公告",
+      "category": "fudaoyuan",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "shuobojob",
+      "url": "http://www.shuobojob.com/gaoxiaozhaopin/shanxi/8426.html",
+      "content_summary": ""
+    },
+    {
+      "title": "陕西科技大学环境科学与工程学院2026年引进招聘人才启事（长期有效）",
+      "category": "fudaoyuan",
+      "region": "陕西",
+      "publish_date": null,
+      "deadline": null,
+      "source": "shuobojob",
+      "url": "http://www.shuobojob.com/gaoxiaozhaopin/shanxi/8396.html",
+      "content_summary": ""
+    },
+    {
+      "title": "西安科技大学电气与控制工程学院2026年人才招聘公告",
+      "category": "fudaoyuan",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "shuobojob",
+      "url": "http://www.shuobojob.com/gaoxiaozhaopin/shanxi/8362.html",
+      "content_summary": ""
+    },
+    {
+      "title": "西安外国语大学2026年公开招聘专任教师、新疆籍少数民族辅导员岗位公告",
+      "category": "fudaoyuan",
+      "region": "新疆",
+      "publish_date": null,
+      "deadline": null,
+      "source": "shuobojob",
+      "url": "http://www.shuobojob.com/gaoxiaozhaopin/shanxi/8230.html",
+      "content_summary": ""
+    },
+    {
+      "title": "西安交通大学2026年招聘专业技术人员及管理人员公告",
+      "category": "fudaoyuan",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "shuobojob",
+      "url": "http://www.shuobojob.com/gaoxiaozhaopin/shanxi/8173.html",
+      "content_summary": ""
     }
   ]
 }

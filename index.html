@@ -67,6 +67,8 @@
       <button onclick="switchView('fudaoyuan')" data-view="fudaoyuan" title="辅导员备考" class="sidebar-item w-full flex justify-center py-2.5 rounded-lg text-lg">🎓</button>
       <button onclick="switchView('xuandiao')" data-view="xuandiao" title="选调生备考" class="sidebar-item w-full flex justify-center py-2.5 rounded-lg text-lg">📋</button>
       <button onclick="switchView('announce')" data-view="announce" title="招聘公告" class="sidebar-item w-full flex justify-center py-2.5 rounded-lg text-lg">📢</button>
+      <button onclick="switchView('teacher')" data-view="teacher" title="高校教师" class="sidebar-item w-full flex justify-center py-2.5 rounded-lg text-lg">🏫</button>
+      <button onclick="switchView('other')" data-view="other" title="其他岗位" class="sidebar-item w-full flex justify-center py-2.5 rounded-lg text-lg">💼</button>
       <button onclick="switchView('jobs')" data-view="jobs" title="报考岗位" class="sidebar-item w-full flex justify-center py-2.5 rounded-lg text-lg">🎯</button>
       <button onclick="switchView('tasks')" data-view="tasks" title="我的任务" class="sidebar-item w-full flex justify-center py-2.5 rounded-lg text-lg">✅</button>
     </nav>
@@ -96,6 +98,12 @@
     </button>
     <button onclick="switchView('announce')" data-view="announce" class="nav-bottom flex flex-col items-center py-1 px-2 text-xs text-slate-500">
       <span class="text-lg mb-0.5">📢</span>公告
+    </button>
+    <button onclick="switchView('teacher')" data-view="teacher" class="nav-bottom flex flex-col items-center py-1 px-2 text-xs text-slate-500">
+      <span class="text-lg mb-0.5">🏫</span>教师
+    </button>
+    <button onclick="switchView('other')" data-view="other" class="nav-bottom flex flex-col items-center py-1 px-2 text-xs text-slate-500">
+      <span class="text-lg mb-0.5">💼</span>其他
     </button>
     <button onclick="switchView('more')" data-view="more" class="nav-bottom flex flex-col items-center py-1 px-2 text-xs text-slate-500">
       <span class="text-lg mb-0.5">⋯</span>更多
@@ -134,6 +142,8 @@ const VIEW_LABELS = {
   fudaoyuan: '辅导员备考',
   xuandiao: '选调生备考',
   announce: '招聘公告',
+  teacher: '高校教师',
+  other: '其他岗位',
   jobs: '报考岗位',
   tasks: '我的任务',
 };
@@ -238,6 +248,8 @@ function renderMain() {
   else if (currentView === 'fudaoyuan') content.innerHTML = renderStudyView('fudaoyuan');
   else if (currentView === 'xuandiao') content.innerHTML = renderStudyView('xuandiao');
   else if (currentView === 'announce') content.innerHTML = renderAnnounceView();
+  else if (currentView === 'teacher') content.innerHTML = renderCategoryView('teacher', '🏫 高校教师招聘');
+  else if (currentView === 'other') content.innerHTML = renderCategoryView('other', '💼 其他岗位');
   else if (currentView === 'jobs') content.innerHTML = renderJobsView();
   else if (currentView === 'tasks') content.innerHTML = renderTasksView();
 }
@@ -547,6 +559,75 @@ function filterAnnounce() {
   items.sort((a,b) => (b.publish_date||'').localeCompare(a.publish_date||''));
 
   const container = document.getElementById('announceList');
+  if (!container) return;
+  if (!items.length) { container.innerHTML = '<p class="text-center text-slate-400 py-8">暂无公告</p>'; return; }
+
+  container.innerHTML = items.map(it => {
+    const d = daysUntil(it.deadline);
+    const alert = d !== null && d >= 0 && d <= 3;
+    const badge = d !== null && d >= 0 ? `<span class="text-xs ${alert ? 'text-red-600 bg-red-50' : 'text-slate-500 bg-slate-100'} px-1.5 py-0.5 rounded-full">剩${d}天</span>` : '';
+    return `
+      <a href="${it.url}" target="_blank" class="block bg-white rounded-xl shadow p-3 ${alert ? 'border-l-4 border-red-500' : ''}">
+        <div class="flex items-start justify-between gap-2 mb-1">
+          <p class="text-sm font-medium text-slate-800 line-clamp-2 flex-1">${escapeHtml(it.title)}</p>
+          ${badge}
+        </div>
+        <div class="flex gap-2 text-xs text-slate-400">
+          <span class="px-1 bg-teal-50 text-teal-600 rounded">${escapeHtml(it.region || '全国')}</span>
+          <span>发布:${formatDate(it.publish_date)}</span>
+          <span class="text-red-500">截止:${formatDate(it.deadline)}</span>
+        </div>
+      </a>
+    `;
+  }).join('');
+}
+
+// ========== 分类招聘视图（教师/其他岗位）==========
+function renderCategoryView(cat, title) {
+  const items = announcements.filter(x => x.category === cat);
+  const cities = ['all', ...Array.from(new Set(items.map(x => x.region || '全国'))).sort()];
+  let html = `
+    <div class="bg-white rounded-xl shadow p-4 mb-4">
+      <div class="flex items-center justify-between mb-2">
+        <h2 class="text-lg font-bold text-slate-800">${title}</h2>
+        <span class="text-xs text-slate-400">${items.length} 条</span>
+      </div>
+      <input type="text" id="catSearch_${cat}" placeholder="搜索..." oninput="filterCategory('${cat}')" class="w-full px-3 py-1.5 border border-slate-200 rounded-lg text-sm">
+      <div class="flex gap-1.5 overflow-x-auto mt-3 pb-1 no-scrollbar" id="catCityFilter_${cat}">
+        ${cities.map(city => `<button onclick="setCatCity('${cat}','${city}')" class="whitespace-nowrap px-2.5 py-1 rounded-full text-xs bg-slate-100 text-slate-600" data-city="${city}">${city === 'all' ? '全部' : city}</button>`).join('')}
+      </div>
+    </div>
+    <div id="catList_${cat}" class="space-y-2"></div>
+  `;
+  if (!window.catFilters) window.catFilters = {};
+  if (!window.catFilters[cat]) window.catFilters[cat] = 'all';
+  setTimeout(() => filterCategory(cat), 0);
+  return html;
+}
+
+function setCatCity(cat, city) {
+  window.catFilters[cat] = city;
+  // 更新按钮样式
+  const container = document.getElementById(`catCityFilter_${cat}`);
+  if (container) {
+    container.querySelectorAll('button').forEach(btn => {
+      btn.className = btn.dataset.city === city
+        ? 'whitespace-nowrap px-2.5 py-1 rounded-full text-xs bg-teal-600 text-white'
+        : 'whitespace-nowrap px-2.5 py-1 rounded-full text-xs bg-slate-100 text-slate-600';
+    });
+  }
+  filterCategory(cat);
+}
+
+function filterCategory(cat) {
+  const search = (document.getElementById(`catSearch_${cat}`)?.value || '').toLowerCase();
+  const city = window.catFilters[cat] || 'all';
+  let items = announcements.filter(x => x.category === cat);
+  if (city !== 'all') items = items.filter(x => (x.region || '全国') === city);
+  if (search) items = items.filter(x => (x.title + (x.content_summary || '')).toLowerCase().includes(search));
+  items.sort((a,b) => (b.publish_date||'').localeCompare(a.publish_date||''));
+
+  const container = document.getElementById(`catList_${cat}`);
   if (!container) return;
   if (!items.length) { container.innerHTML = '<p class="text-center text-slate-400 py-8">暂无公告</p>'; return; }
 

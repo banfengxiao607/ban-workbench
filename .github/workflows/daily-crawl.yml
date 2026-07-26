@@ -1,0 +1,36 @@
+name: 每日自动爬取时政与招聘公告
+on:
+  schedule:
+    - cron: '0 23 * * *'
+  workflow_dispatch:
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests beautifulsoup4 lxml
+      - run: python shizheng_crawler.py
+        env:
+          SHIZHENG_OUTPUT: shizheng.json
+      - run: python crawler.py
+        env:
+          CRAWLER_OUTPUT: data.json
+      - name: 提交更新
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add shizheng.json data.json
+          git diff --staged --quiet || git commit -m "自动更新 $(date -u -d '+8 hours' '+%Y-%m-%d')"
+          git push
+      - uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
+          publish_branch: gh-pages
+          keep_files: true

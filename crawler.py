@@ -503,6 +503,42 @@ def crawl_chsi(session):
     return items
 
 
+# ==================== 源 7：北京大学选调生汇总（权威，本地JSON）====================
+
+def crawl_pku_xuandiao(session=None):
+    """北大就业中心选调生汇总（权威数据源，JS渲染无法直接爬，用本地JSON补充）。
+
+    数据来源：https://scc.pku.edu.cn/frontpage/pku/html/newsDetail.html?id=e1582ade3ff5417f8fa0ad22ba255a6b
+    该页面是北京大学学生就业指导服务中心维护的全国选调生招录汇总，
+    覆盖30+省份的2026选调生公告，含截止日期和官方链接。
+    """
+    items = []
+    # JSON 文件位置（与 crawler.py 同目录）
+    json_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "pku_xuandiao_data.json")
+    if not os.path.exists(json_path):
+        print("  [pku] 本地数据文件不存在")
+        return items
+
+    try:
+        with open(json_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        for it in data.get("items", []):
+            items.append({
+                "title": it["title"],
+                "category": "xuandiao",
+                "region": it.get("region", "全国"),
+                "publish_date": data.get("updated_at"),
+                "deadline": it.get("deadline"),
+                "source": "pku",
+                "url": it["url"],
+                "content_summary": f"来源：{data.get('source', '北大就业中心')}",
+            })
+        print(f"  [pku] 加载 {len(items)} 条选调生公告")
+    except Exception as e:
+        print(f"  [pku] 读取失败: {e}")
+    return items
+
+
 # ==================== 主流程 ====================
 
 def write_json(path, items):
@@ -526,6 +562,7 @@ def main():
     all_items = []
 
     crawlers = [
+        ("北京大学选调生汇总（权威）", crawl_pku_xuandiao),
         ("格木教育（选调生）", crawl_gemu),
         ("上岸鸭（选调生）", crawl_gwy),
         ("中公选调生", crawl_offcn_xds),

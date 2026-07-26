@@ -1,97 +1,7 @@
 {
-  "generated_at": "2026-07-26T12:20:27.822179+08:00",
-  "count": 103,
+  "generated_at": "2026-07-26T12:53:07.278463+08:00",
+  "count": 66,
   "items": [
-    {
-      "title": "【公告汇总】2026年湖北省定向选调生招录710人",
-      "category": "xuandiao",
-      "region": "湖北",
-      "publish_date": "2025-11-12",
-      "deadline": null,
-      "source": "gemu",
-      "url": "https://www.gemu.cn/zhaokao/120968.html",
-      "content_summary": ""
-    },
-    {
-      "title": "2026年湖北省定向选调生招录710人公告",
-      "category": "xuandiao",
-      "region": "湖北",
-      "publish_date": "2025-11-12",
-      "deadline": null,
-      "source": "gemu",
-      "url": "https://www.gemu.cn/zhaokao/120963.html",
-      "content_summary": ""
-    },
-    {
-      "title": "【公告汇总】2026年湖北省普通选调生招录497人",
-      "category": "xuandiao",
-      "region": "湖北",
-      "publish_date": "2026-01-12",
-      "deadline": null,
-      "source": "gemu",
-      "url": "https://www.gemu.cn/zhaokao/121884.html",
-      "content_summary": ""
-    },
-    {
-      "title": "2026年湖北省普通选调生招录497人公告",
-      "category": "xuandiao",
-      "region": "湖北",
-      "publish_date": "2026-01-12",
-      "deadline": null,
-      "source": "gemu",
-      "url": "https://www.gemu.cn/zhaokao/121882.html",
-      "content_summary": ""
-    },
-    {
-      "title": "3月14日笔试！2026湖北省普通选调生招录497人",
-      "category": "xuandiao",
-      "region": "湖北",
-      "publish_date": "2026-01-12",
-      "deadline": null,
-      "source": "gemu",
-      "url": "https://www.gemu.cn/zhaokao/121886.html",
-      "content_summary": ""
-    },
-    {
-      "title": "2026年湖北省普通选调生招录公告",
-      "category": "xuandiao",
-      "region": "湖北",
-      "publish_date": "2026-01-12",
-      "deadline": null,
-      "source": "gemu",
-      "url": "https://www.gemu.cn/zhaokao/121885.html",
-      "content_summary": ""
-    },
-    {
-      "title": "2026年湖北省定向选调生招录公告",
-      "category": "xuandiao",
-      "region": "湖北",
-      "publish_date": "2025-11-12",
-      "deadline": null,
-      "source": "gemu",
-      "url": "https://www.gemu.cn/zhaokao/120965.html",
-      "content_summary": ""
-    },
-    {
-      "title": "2025年湖北选调生职位表/各地市职位表下载",
-      "category": "xuandiao",
-      "region": "湖北",
-      "publish_date": "2024-12-24",
-      "deadline": null,
-      "source": "gemu",
-      "url": "https://www.gemu.cn/zhaokao/113364.html",
-      "content_summary": ""
-    },
-    {
-      "title": "2025湖北省选调生考试职位表在哪下载？",
-      "category": "xuandiao",
-      "region": "湖北",
-      "publish_date": "2024-11-12",
-      "deadline": null,
-      "source": "gemu",
-      "url": "https://www.gemu.cn/zhaokao/112445.html",
-      "content_summary": ""
-    },
     {
       "title": "2024年下半年阳新县纪委监委公开择优选调(聘)工作人员调整岗位计划公告",
       "category": "xuandiao",
@@ -99,7 +9,7 @@
       "publish_date": "2024-11-02",
       "deadline": null,
       "source": "gemu",
-      "url": "https://www.gemu.cn/zhaokao/112136.html",
+      "url": "https://gemu.cn/zhaokao/112136.html",
       "content_summary": ""
     },
     {
@@ -109,97 +19,7 @@
       "publish_date": "2023-12-13",
       "deadline": null,
       "source": "gemu",
-      "url": "https://www.gemu.cn/zhaokao/102863.html",
-      "content_summary": ""
-    },
-    {
-      "title": "2024湖北省选调生考试职位表在哪下载？",
-      "category": "xuandiao",
-      "region": "湖北",
-      "publish_date": "2023-10-09",
-      "deadline": null,
-      "source": "gemu",
-      "url": "https://www.gemu.cn/zhaokao/100897.html",
-      "content_summary": ""
-    },
-    {
-      "title": "2025年湖北省选调生考试笔试科目",
-      "category": "xuandiao",
-      "region": "湖北",
-      "publish_date": "2025-02-04",
-      "deadline": null,
-      "source": "gemu",
-      "url": "https://www.gemu.cn/zhaokao/113961.html",
-      "content_summary": ""
-    },
-    {
-      "title": "2025年湖北选调生考试笔试考两科",
-      "category": "xuandiao",
-      "region": "湖北",
-      "publish_date": "2025-02-04",
-      "deadline": null,
-      "source": "gemu",
-      "url": "https://www.gemu.cn/zhaokao/113960.html",
-      "content_summary": ""
-    },
-    {
-      "title": "2025年湖北选调生考试笔试考什么？",
-      "category": "xuandiao",
-      "region": "湖北",
-      "publish_date": "2025-02-04",
-      "deadline": null,
-      "source": "gemu",
-      "url": "https://www.gemu.cn/zhaokao/113959.html",
-      "content_summary": ""
-    },
-    {
-      "title": "2025年湖北选调生考试笔试考几门？",
-      "category": "xuandiao",
-      "region": "湖北",
-      "publish_date": "2025-02-04",
-      "deadline": null,
-      "source": "gemu",
-      "url": "https://www.gemu.cn/zhaokao/113958.html",
-      "content_summary": ""
-    },
-    {
-      "title": "2024湖北省选调生报考政策是怎样的？",
-      "category": "xuandiao",
-      "region": "湖北",
-      "publish_date": "2023-11-23",
-      "deadline": null,
-      "source": "gemu",
-      "url": "https://www.gemu.cn/zhaokao/102262.html",
-      "content_summary": ""
-    },
-    {
-      "title": "选调生考试报名条件有哪些？报考必看",
-      "category": "xuandiao",
-      "region": "全国",
-      "publish_date": null,
-      "deadline": null,
-      "source": "gwy",
-      "url": "https://www.gwy.com/xds/410440.html",
-      "content_summary": ""
-    },
-    {
-      "title": "河南省选调生报名网站官网入口：http://xds.jyt.henan.gov.cn/",
-      "category": "xuandiao",
-      "region": "河南",
-      "publish_date": null,
-      "deadline": null,
-      "source": "gwy",
-      "url": "https://www.gwy.com/xds/410437.html",
-      "content_summary": ""
-    },
-    {
-      "title": "选调1268人！2026年河南选调生考试公告发布（3月7日笔试）",
-      "category": "xuandiao",
-      "region": "河南",
-      "publish_date": null,
-      "deadline": null,
-      "source": "gwy",
-      "url": "https://www.gwy.com/xds/398127.html",
+      "url": "https://gemu.cn/zhaokao/102863.html",
       "content_summary": ""
     },
     {
@@ -213,263 +33,23 @@
       "content_summary": ""
     },
     {
-      "title": "根据公务员法、公务员录用规定和《关于进一步加强和改进选调生工作的意见》精神，省委组织部、省人力资源社会保障厅决定，面向部...",
+      "title": "2024山东省选拔录用第一批选调生职位表（各高校）",
       "category": "xuandiao",
-      "region": "全国",
+      "region": "山东",
       "publish_date": null,
       "deadline": null,
       "source": "gwy",
-      "url": "https://www.gwy.com/xds/397339.html",
+      "url": "https://www.gwy.com/xds/340185.html",
       "content_summary": ""
     },
     {
-      "title": "招400人！2026福建选调生考试公告发布（2月1日笔试）",
-      "category": "xuandiao",
-      "region": "福建",
-      "publish_date": null,
-      "deadline": null,
-      "source": "gwy",
-      "url": "https://www.gwy.com/xds/394259.html",
-      "content_summary": ""
-    },
-    {
-      "title": "定向选调招录公告会通过高校就业指导中心发布，同时也在各省组织部官网同步公开。2026年定向选调预计在2025年9月至11...",
-      "category": "xuandiao",
-      "region": "全国",
-      "publish_date": null,
-      "deadline": null,
-      "source": "gwy",
-      "url": "https://www.gwy.com/xds/383619.html",
-      "content_summary": ""
-    },
-    {
-      "title": "选调生面试培训机构哪家好？这样选才靠谱",
-      "category": "xuandiao",
-      "region": "全国",
-      "publish_date": null,
-      "deadline": null,
-      "source": "gwy",
-      "url": "https://www.gwy.com/xds/380707.html",
-      "content_summary": ""
-    },
-    {
-      "title": "最新发布，2024河北选调生考试招聘1076人公告！",
-      "category": "xuandiao",
-      "region": "河北",
-      "publish_date": null,
-      "deadline": null,
-      "source": "gwy",
-      "url": "https://www.gwy.com/xds/349788.html",
-      "content_summary": ""
-    },
-    {
-      "title": "选调生考试考什么科目选调生考试是针对应届毕业生的一类考试，其实也是公务员考试中的一种，考上之后也属于公务员的编制。选调生...",
-      "category": "xuandiao",
-      "region": "全国",
-      "publish_date": null,
-      "deadline": null,
-      "source": "gwy",
-      "url": "https://www.gwy.com/xds/348399.html",
-      "content_summary": ""
-    },
-    {
-      "title": "选调生考试内容一般为《综合知识》和《申论》两门，在综合知识当中主要考《行政职业能力测验》和《公共基础知识》。考试分为笔试...",
-      "category": "xuandiao",
-      "region": "全国",
-      "publish_date": null,
-      "deadline": null,
-      "source": "gwy",
-      "url": "https://www.gwy.com/xds/342206.html",
-      "content_summary": ""
-    },
-    {
-      "title": "12月17日笔试，2024广东省选调生笔试考几科内容？",
+      "title": "近日，省委组织部、省人力资源社会保障厅公布了《广东省2024年度选调优秀大学毕业生公告》。...",
       "category": "xuandiao",
       "region": "广东",
       "publish_date": null,
       "deadline": null,
       "source": "gwy",
-      "url": "https://www.gwy.com/xds/341647.html",
-      "content_summary": ""
-    },
-    {
-      "title": "2024广东省选调生考试",
-      "category": "xuandiao",
-      "region": "广东",
-      "publish_date": null,
-      "deadline": null,
-      "source": "gwy",
-      "url": "https://www.gwy.com/tag/383325.html",
-      "content_summary": ""
-    },
-    {
-      "title": "选调生考试时间一般是多久？考什么科目？",
-      "category": "xuandiao",
-      "region": "全国",
-      "publish_date": null,
-      "deadline": null,
-      "source": "gwy",
-      "url": "https://www.gwy.com/xds/340852.html",
-      "content_summary": ""
-    },
-    {
-      "title": "选调生考试分为定向选调和非定向选调，定向选调考时间一般是每年9-12月，非定向选调考试时间通常是每年3-4月份，考试科目...",
-      "category": "xuandiao",
-      "region": "全国",
-      "publish_date": null,
-      "deadline": null,
-      "source": "gwy",
-      "url": "https://www.gwy.com/xds/340852.html",
-      "content_summary": ""
-    },
-    {
-      "title": "2024年广东选调生报名结束！行测考哪些内容？",
-      "category": "xuandiao",
-      "region": "广东",
-      "publish_date": null,
-      "deadline": null,
-      "source": "gwy",
-      "url": "https://www.gwy.com/xds/341232.html",
-      "content_summary": ""
-    },
-    {
-      "title": "广东省选调生报名",
-      "category": "xuandiao",
-      "region": "广东",
-      "publish_date": null,
-      "deadline": null,
-      "source": "gwy",
-      "url": "https://www.gwy.com/tag/383326.html",
-      "content_summary": ""
-    },
-    {
-      "title": "关于开展2023年山西省定向选调优秀高校毕业生综合考察工作的通知",
-      "category": "xuandiao",
-      "region": "山西",
-      "publish_date": null,
-      "deadline": null,
-      "source": "gwy",
-      "url": "https://www.gwy.com/xds/235956.html",
-      "content_summary": ""
-    },
-    {
-      "title": "2023山西选调生考试",
-      "category": "xuandiao",
-      "region": "山西",
-      "publish_date": null,
-      "deadline": null,
-      "source": "gwy",
-      "url": "https://www.gwy.com/tag/184625.html",
-      "content_summary": ""
-    },
-    {
-      "title": "2023吉林定向选调生考试内容",
-      "category": "xuandiao",
-      "region": "吉林",
-      "publish_date": null,
-      "deadline": null,
-      "source": "gwy",
-      "url": "https://www.gwy.com/xds/188997.html",
-      "content_summary": ""
-    },
-    {
-      "title": "2023吉林定向选调生公告已陆续发布，各位考生可于10月10日-18日登录吉林省公务员考试网（www.jlgwyks.c...",
-      "category": "xuandiao",
-      "region": "吉林",
-      "publish_date": null,
-      "deadline": null,
-      "source": "gwy",
-      "url": "https://www.gwy.com/xds/188997.html",
-      "content_summary": ""
-    },
-    {
-      "title": "吉林选调生考试内容",
-      "category": "xuandiao",
-      "region": "吉林",
-      "publish_date": null,
-      "deadline": null,
-      "source": "gwy",
-      "url": "https://www.gwy.com/tag/21267.html",
-      "content_summary": ""
-    },
-    {
-      "title": "选调生考试内容有哪些",
-      "category": "xuandiao",
-      "region": "全国",
-      "publish_date": null,
-      "deadline": null,
-      "source": "gwy",
-      "url": "https://www.gwy.com/xds/95750.html",
-      "content_summary": ""
-    },
-    {
-      "title": "选调生考试难度大吗",
-      "category": "xuandiao",
-      "region": "全国",
-      "publish_date": null,
-      "deadline": null,
-      "source": "gwy",
-      "url": "https://www.gwy.com/xds/80204.html",
-      "content_summary": ""
-    },
-    {
-      "title": "选调生考试每年也是很多小伙伴比较关注的一个考试，选调生是针对应届毕业生的考试，其实也是属于公务员考试，但是要求会严格一些...",
-      "category": "xuandiao",
-      "region": "全国",
-      "publish_date": null,
-      "deadline": null,
-      "source": "gwy",
-      "url": "https://www.gwy.com/xds/80204.html",
-      "content_summary": ""
-    },
-    {
-      "title": "公务员选调生考试考什么",
-      "category": "xuandiao",
-      "region": "全国",
-      "publish_date": null,
-      "deadline": null,
-      "source": "gwy",
-      "url": "https://www.gwy.com/xds/80180.html",
-      "content_summary": ""
-    },
-    {
-      "title": "选调生考试是公务员考试中的一种，主要是针对应届生的考试，有些想要参加选调生的考试的小伙伴还是不太了解公务员选调生考试考什...",
-      "category": "xuandiao",
-      "region": "全国",
-      "publish_date": null,
-      "deadline": null,
-      "source": "gwy",
-      "url": "https://www.gwy.com/xds/80180.html",
-      "content_summary": ""
-    },
-    {
-      "title": "不少应届毕业生想要报考普通选调生，但很难分清报考门槛。普通选调面向范围更广，和定向选调存在明显区别，各省政策略有差异，提...",
-      "category": "xuandiao",
-      "region": "全国",
-      "publish_date": null,
-      "deadline": null,
-      "source": "gwy",
-      "url": "https://www.gwy.com/xds/410442.html",
-      "content_summary": ""
-    },
-    {
-      "title": "很多应届生有意向报考选调生，但对报考门槛划分并不清晰。定向选调与普通选调条件存在明显差异，各省细则略有调整，网络零散信息...",
-      "category": "xuandiao",
-      "region": "全国",
-      "publish_date": null,
-      "deadline": null,
-      "source": "gwy",
-      "url": "https://www.gwy.com/xds/410440.html",
-      "content_summary": ""
-    },
-    {
-      "title": "选调生考试报名条件",
-      "category": "xuandiao",
-      "region": "全国",
-      "publish_date": null,
-      "deadline": null,
-      "source": "gwy",
-      "url": "https://www.gwy.com/tag/10039.html",
+      "url": "https://www.gwy.com/xds/338997.html",
       "content_summary": ""
     },
     {
@@ -551,6 +131,56 @@
       "source": "gaoxiaojob",
       "url": "https://www.gaoxiaojob.com/announcement/detail/418243.html",
       "content_summary": "此招聘信息由湖北省人力资源和社会保障厅发布的《湖北省事业单位2026年统一公开招聘高校专职辅导员公告》延伸。为助您快速、精准掌握长江大学的招聘详情，现特别针对长..."
+    },
+    {
+      "title": "长沙幼儿师范高等专科学校招聘辅导员4人",
+      "category": "fudaoyuan",
+      "region": "湖南-长沙",
+      "publish_date": "2026-07-22",
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/job/detail/2273329.html",
+      "content_summary": "长沙辅导员招聘"
+    },
+    {
+      "title": "长沙南方职业学院招聘辅导员3人",
+      "category": "fudaoyuan",
+      "region": "湖南-长沙",
+      "publish_date": "2026-07-07",
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/job/detail/2252798.html",
+      "content_summary": "长沙辅导员招聘"
+    },
+    {
+      "title": "长沙电力职业技术学院招聘辅导员2人",
+      "category": "fudaoyuan",
+      "region": "湖南-长沙",
+      "publish_date": "2026-03-25",
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/job/detail/2088778.html",
+      "content_summary": "长沙辅导员招聘"
+    },
+    {
+      "title": "湖南第一师范学院招聘辅导员10人",
+      "category": "fudaoyuan",
+      "region": "湖南-长沙",
+      "publish_date": "2026-02-11",
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/job/detail/2023011.html",
+      "content_summary": "长沙辅导员招聘"
+    },
+    {
+      "title": "长沙幼儿师范高等专科学校招聘辅导员2人",
+      "category": "fudaoyuan",
+      "region": "湖南-长沙",
+      "publish_date": "2025-08-13",
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/job/detail/1762524.html",
+      "content_summary": "长沙辅导员招聘"
     },
     {
       "title": "陕西交通职业技术学院招聘辅导员10人",

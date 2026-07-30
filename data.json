@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-29T16:19:54.314746+08:00",
-  "count": 91,
+  "generated_at": "2026-07-30T15:58:30.548363+08:00",
+  "count": 96,
   "user_profile": {
     "graduation_year": "2027",
     "school": "华中科技大学",
@@ -32,6 +32,32 @@
       "is_target_city": true
     },
     {
+      "title": "闽南科技学院2026年中层管理干部招聘启事",
+      "category": "teacher",
+      "region": "福建",
+      "publish_date": "2026-07-30",
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/announcement/detail/390604.html",
+      "content_summary": "闽南科技学院地处海上丝绸之路起点、著名侨乡福建省南安市，2001年由福建省“双一流”建设高校福建师范大学与菲律宾爱国华侨共同举办，是福建省首批设立的独立学院，实...",
+      "match_score": 60,
+      "match_reason": "学生干部优先",
+      "is_target_city": false
+    },
+    {
+      "title": "广州东华职业学院2026年副校长招聘公告",
+      "category": "teacher",
+      "region": "广东",
+      "publish_date": "2026-07-29",
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/announcement/detail/419350.html",
+      "content_summary": "学院简介广州东华职业学院是经广东省人民政府批准、教育部备案的全日制普通高等院校。学校地处粤港澳大湾区核心区，坐落于广州市白云区帽峰山风景区东侧，毗邻广州科学城和...",
+      "match_score": 50,
+      "match_reason": "基础匹配",
+      "is_target_city": false
+    },
+    {
       "title": "汉口学院2026年航空与智能制造学院院长公开招聘公告",
       "category": "teacher",
       "region": "湖北",
@@ -45,16 +71,55 @@
       "is_target_city": false
     },
     {
-      "title": "上海创芯学院2026年招聘研究生专职辅导员",
-      "category": "fudaoyuan",
-      "region": "上海",
-      "publish_date": "2026-07-28",
-      "deadline": null,
+      "title": "江苏省海安市教体系统2026年夏季公开招聘11名教师公告",
+      "category": "teacher",
+      "region": "江苏",
+      "publish_date": "2026-07-29",
+      "deadline": "2026-08-04",
       "source": "gaoxiaojob",
-      "url": "https://www.gaoxiaojob.com/announcement/detail/418760.html",
-      "content_summary": "上海创芯学院（以下简称“学院”）是一所服务国家集成电路设计战略需求，创新人才培养模式，汇聚高校、企业、产线资源的新型研发机构。学院由上海科技大学、上海交通大学、...",
-      "match_score": 85,
-      "match_reason": "硕士可报；辅导员",
+      "url": "https://www.gaoxiaojob.com/announcement/detail/419292.html",
+      "content_summary": "为更好地选拔优秀适岗人才，优化教师队伍结构，促进教体事业可持续发展，根据《江苏省事业单位公开招聘人员办法》（苏办发[2020]9号）等文件精神，海安市教体系统2...",
+      "match_score": 50,
+      "match_reason": "基础匹配",
+      "is_target_city": false
+    },
+    {
+      "title": "广东省龙川县教育系统2026年公开招聘98名教师公告",
+      "category": "teacher",
+      "region": "广东",
+      "publish_date": "2026-07-29",
+      "deadline": "2026-08-05",
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/announcement/detail/419150.html",
+      "content_summary": "为贯彻省委、省政府“百万英才汇南粤”行动计划决策部署，适应龙川县教育事业发展的需要，加强我县教师队伍建设，根据《事业单位人事管理条例》（国务院令第652号）和《...",
+      "match_score": 50,
+      "match_reason": "基础匹配",
+      "is_target_city": false
+    },
+    {
+      "title": "重庆市事业单位2026年面向西藏生源地高校毕业生公开招聘工作人员",
+      "category": "other",
+      "region": "重庆",
+      "publish_date": "2026-07-29",
+      "deadline": "2026-08-03",
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/announcement/detail/419426.html",
+      "content_summary": "为支持西藏生源地高校毕业生到重庆工作，根据《事业单位人事管理条例》《事业单位公开招聘人员暂行规定》等规定，以及2026年重庆市就业援藏工作部署，重庆市事业单位决...",
+      "match_score": 50,
+      "match_reason": "基础匹配",
+      "is_target_city": false
+    },
+    {
+      "title": "甘肃省庆阳市2026年专项招聘公费师范生及优师专项师范生公告",
+      "category": "other",
+      "region": "甘肃",
+      "publish_date": "2026-07-29",
+      "deadline": "2026-07-31",
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/announcement/detail/419424.html",
+      "content_summary": "为进一步加强我市中小学教师队伍建设，根据《人力资源社会保障部办公厅教育部办公厅关于做好2026年中小学幼儿园教师公开招聘工作的通知》《省教育厅关于做好2026届...",
+      "match_score": 50,
+      "match_reason": "基础匹配",
       "is_target_city": false
     },
     {
@@ -68,19 +133,6 @@
       "content_summary": "郑州辅导员招聘",
       "match_score": 70,
       "match_reason": "辅导员",
-      "is_target_city": false
-    },
-    {
-      "title": "广州华商职业学院2026年财务资产部副部长招聘公告",
-      "category": "teacher",
-      "region": "广东",
-      "publish_date": "2026-07-28",
-      "deadline": null,
-      "source": "gaoxiaojob",
-      "url": "https://www.gaoxiaojob.com/announcement/detail/365734.html",
-      "content_summary": "为进一步强化学校财务资产管理工作，完善管理体系，提升工作效率与规范化水平，新增财务资产部副职编制1名，协助部门负责人统筹推进各项财务资产相关工作。一、岗位职责1...",
-      "match_score": 50,
-      "match_reason": "基础匹配",
       "is_target_city": false
     },
     {
@@ -110,19 +162,6 @@
       "is_target_city": false
     },
     {
-      "title": "广东省惠东县2026年度公开招聘第二批公办学校教师公告",
-      "category": "teacher",
-      "region": "广东",
-      "publish_date": "2026-07-28",
-      "deadline": "2026-08-05",
-      "source": "gaoxiaojob",
-      "url": "https://www.gaoxiaojob.com/announcement/detail/419050.html",
-      "content_summary": "为进一步充实我县教师队伍，根据《广东省事业单位公开招聘人员办法》（粤府令第301号）等文件精神，决定公开招聘第二批公办学校教师，现将招聘有关事项公告如下：一、招...",
-      "match_score": 50,
-      "match_reason": "基础匹配",
-      "is_target_city": false
-    },
-    {
       "title": "北京卫生职业学院招聘辅导员9人",
       "category": "fudaoyuan",
       "region": "北京-北京",
@@ -144,19 +183,6 @@
       "source": "gaoxiaojob",
       "url": "https://www.gaoxiaojob.com/announcement/detail/418718.html",
       "content_summary": "根据《云南省事业单位公开招聘工作人员办法》（云人社发〔2016〕182号）等有关规定，现将昆明市教育体育局直属学校（单位）2026年公开引进高层次和紧缺急需人才...",
-      "match_score": 50,
-      "match_reason": "基础匹配",
-      "is_target_city": false
-    },
-    {
-      "title": "云南省兰坪县2026年选聘28名“县管校聘”教师公告",
-      "category": "teacher",
-      "region": "云南",
-      "publish_date": "2026-07-27",
-      "deadline": "2026-07-29",
-      "source": "gaoxiaojob",
-      "url": "https://www.gaoxiaojob.com/announcement/detail/418703.html",
-      "content_summary": "为深入贯彻落实《云南省关于深化新时代中小学教师队伍建设改革的实施意见》《兰坪县义务教育教师“县管校聘”改革实施方案》《兰坪县教育综合改革方案》《兰坪县全面推进县...",
       "match_score": 50,
       "match_reason": "基础匹配",
       "is_target_city": false
@@ -422,19 +448,6 @@
       "is_target_city": false
     },
     {
-      "title": "湖北恩施学院2026年思政专任教师、辅导员招聘公告",
-      "category": "fudaoyuan",
-      "region": "湖北",
-      "publish_date": "2026-07-24",
-      "deadline": null,
-      "source": "gaoxiaojob",
-      "url": "https://www.gaoxiaojob.com/announcement/detail/410882.html",
-      "content_summary": "一、学校简介湖北恩施学院（原湖北民族大学科技学院）坐落于世界硒都、人间仙境、天然氧吧、美丽如画的湖北恩施，是教育部批准设立的全日制普通本科高校。学校于2003年...",
-      "match_score": 70,
-      "match_reason": "辅导员",
-      "is_target_city": false
-    },
-    {
       "title": "济南高新区教育系统所属事业单位2026年度第二次公开招聘6名人员公告",
       "category": "other",
       "region": "山东",
@@ -443,19 +456,6 @@
       "source": "gaoxiaojob",
       "url": "https://www.gaoxiaojob.com/announcement/detail/418340.html",
       "content_summary": "根据事业单位公开招聘有关规定，结合编制空缺情况和工作需要，现将2026年度济南高新区教育系统所属事业单位第二次公开招聘人员有关事宜公告如下：一、应聘条件（一）具...",
-      "match_score": 50,
-      "match_reason": "基础匹配",
-      "is_target_city": false
-    },
-    {
-      "title": "甘肃省庆阳市市直事业单位2026年公开引进高层次人才公告",
-      "category": "other",
-      "region": "甘肃",
-      "publish_date": "2026-07-24",
-      "deadline": "2026-08-16",
-      "source": "gaoxiaojob",
-      "url": "https://www.gaoxiaojob.com/announcement/detail/418268.html",
-      "content_summary": "根据中共庆阳市委、庆阳市人民政府《关于加强新时代人才培养引进工作的实施意见》和中共庆阳市委人才工作领导小组《关于印发〈庆阳市市直事业单位引进人才实施方案〉（20...",
       "match_score": 50,
       "match_reason": "基础匹配",
       "is_target_city": false
@@ -484,19 +484,6 @@
       "content_summary": "一、学校简介学校位于粤港澳大湾区核心城市——广州，现面向社会公开招聘人事处处长，诚邀有志于民办高等教育事业的管理英才加盟！二、岗位名称人事处处长（1名）三、岗位...",
       "match_score": 50,
       "match_reason": "基础匹配",
-      "is_target_city": false
-    },
-    {
-      "title": "上海对外经贸大学招聘辅导员7人",
-      "category": "fudaoyuan",
-      "region": "上海-上海",
-      "publish_date": "2026-06-18",
-      "deadline": null,
-      "source": "gaoxiaojob",
-      "url": "https://www.gaoxiaojob.com/job/detail/1685116.html",
-      "content_summary": "上海辅导员招聘",
-      "match_score": 70,
-      "match_reason": "辅导员",
       "is_target_city": false
     },
     {
@@ -565,6 +552,19 @@
       "is_target_city": false
     },
     {
+      "title": "杭州电子科技大学招聘辅导员3人",
+      "category": "fudaoyuan",
+      "region": "浙江-杭州",
+      "publish_date": "2026-04-30",
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/job/detail/1613301.html",
+      "content_summary": "杭州辅导员招聘",
+      "match_score": 70,
+      "match_reason": "辅导员",
+      "is_target_city": false
+    },
+    {
       "title": "长沙轨道交通职业学院招聘辅导员5人",
       "category": "fudaoyuan",
       "region": "湖南-长沙",
@@ -573,6 +573,19 @@
       "source": "gaoxiaojob",
       "url": "https://www.gaoxiaojob.com/job/detail/1593883.html",
       "content_summary": "长沙辅导员招聘",
+      "match_score": 70,
+      "match_reason": "辅导员",
+      "is_target_city": false
+    },
+    {
+      "title": "浙江传媒学院招聘辅导员2人",
+      "category": "fudaoyuan",
+      "region": "浙江-杭州",
+      "publish_date": "2026-04-16",
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/job/detail/1585404.html",
+      "content_summary": "杭州辅导员招聘",
       "match_score": 70,
       "match_reason": "辅导员",
       "is_target_city": false
@@ -617,6 +630,45 @@
       "is_target_city": false
     },
     {
+      "title": "杭州电子科技大学招聘辅导员10人",
+      "category": "fudaoyuan",
+      "region": "浙江-杭州",
+      "publish_date": "2025-11-12",
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/job/detail/1344333.html",
+      "content_summary": "杭州辅导员招聘",
+      "match_score": 70,
+      "match_reason": "辅导员",
+      "is_target_city": false
+    },
+    {
+      "title": "自然资源部第二海洋研究所招聘辅导员1人",
+      "category": "fudaoyuan",
+      "region": "浙江-杭州",
+      "publish_date": "2025-11-01",
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/job/detail/1329536.html",
+      "content_summary": "杭州辅导员招聘",
+      "match_score": 70,
+      "match_reason": "辅导员",
+      "is_target_city": false
+    },
+    {
+      "title": "浙江商业职业技术学院招聘辅导员4人",
+      "category": "fudaoyuan",
+      "region": "浙江-杭州",
+      "publish_date": "2025-09-22",
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/job/detail/1524080.html",
+      "content_summary": "杭州辅导员招聘",
+      "match_score": 70,
+      "match_reason": "辅导员",
+      "is_target_city": false
+    },
+    {
       "title": "2024年下半年阳新县纪委监委公开择优选调(聘)工作人员调整岗位计划公告",
       "category": "xuandiao",
       "region": "全国",
@@ -627,6 +679,19 @@
       "content_summary": "",
       "match_score": 70,
       "match_reason": "选调生",
+      "is_target_city": false
+    },
+    {
+      "title": "武汉联特科技股份有限公司2027届校园招聘",
+      "category": "other",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "hust",
+      "url": "https://job.hust.edu.cn/zpinfo1/2407119.htm",
+      "content_summary": "华中科技大学就业网",
+      "match_score": 95,
+      "match_reason": "应届可报；目标城市：武汉",
       "is_target_city": false
     },
     {
@@ -666,19 +731,6 @@
       "content_summary": "",
       "match_score": 70,
       "match_reason": "选调生",
-      "is_target_city": false
-    },
-    {
-      "title": "江西航空职业技术学院辅导员招聘公告（长期有效）",
-      "category": "fudaoyuan",
-      "region": "江西",
-      "publish_date": null,
-      "deadline": null,
-      "source": "gaoxiaojob",
-      "url": "https://www.gaoxiaojob.com/announcement/detail/337765.html",
-      "content_summary": "",
-      "match_score": 70,
-      "match_reason": "辅导员",
       "is_target_city": false
     },
     {
@@ -1020,6 +1072,32 @@
       "is_target_city": false
     },
     {
+      "title": "【启林投资】2027校园招聘",
+      "category": "other",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "hust",
+      "url": "https://job.hust.edu.cn/zpinfo1/2407125.htm",
+      "content_summary": "华中科技大学就业网",
+      "match_score": 55,
+      "match_reason": "应届可报",
+      "is_target_city": false
+    },
+    {
+      "title": "清闲智能创新2027届校园招聘",
+      "category": "other",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "hust",
+      "url": "https://job.hust.edu.cn/zpinfo1/2407124.htm",
+      "content_summary": "华中科技大学就业网",
+      "match_score": 55,
+      "match_reason": "应届可报",
+      "is_target_city": false
+    },
+    {
       "title": "新大陆自动识别2027届校园招聘简章",
       "category": "other",
       "region": "全国",
@@ -1066,19 +1144,6 @@
       "deadline": null,
       "source": "hust",
       "url": "https://job.hust.edu.cn/zpinfo1/2407103.htm",
-      "content_summary": "华中科技大学就业网",
-      "match_score": 55,
-      "match_reason": "应届可报",
-      "is_target_city": false
-    },
-    {
-      "title": "山东泰开电力电子有限公司 2027 届校园招聘简章",
-      "category": "other",
-      "region": "全国",
-      "publish_date": null,
-      "deadline": null,
-      "source": "hust",
-      "url": "https://job.hust.edu.cn/zpinfo1/2407100.htm",
       "content_summary": "华中科技大学就业网",
       "match_score": 55,
       "match_reason": "应届可报",
@@ -1150,6 +1215,45 @@
       "is_target_city": false
     },
     {
+      "title": "重庆科创职业学院2026年度招聘简章",
+      "category": "teacher",
+      "region": "重庆",
+      "publish_date": null,
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/announcement/detail/406233.html",
+      "content_summary": "",
+      "match_score": 50,
+      "match_reason": "基础匹配",
+      "is_target_city": false
+    },
+    {
+      "title": "厦门南洋职业学院2026年招聘公告",
+      "category": "teacher",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/announcement/detail/373689.html",
+      "content_summary": "",
+      "match_score": 50,
+      "match_reason": "基础匹配",
+      "is_target_city": false
+    },
+    {
+      "title": "浙江宇翔职业技术学院2026年公开招聘公告",
+      "category": "teacher",
+      "region": "浙江",
+      "publish_date": null,
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/announcement/detail/386912.html",
+      "content_summary": "",
+      "match_score": 50,
+      "match_reason": "基础匹配",
+      "is_target_city": false
+    },
+    {
       "title": "上海震旦职业学院2026年招聘启事",
       "category": "teacher",
       "region": "上海",
@@ -1157,45 +1261,6 @@
       "deadline": null,
       "source": "gaoxiaojob",
       "url": "https://www.gaoxiaojob.com/announcement/detail/35.html",
-      "content_summary": "",
-      "match_score": 50,
-      "match_reason": "基础匹配",
-      "is_target_city": false
-    },
-    {
-      "title": "香港城市大学（东莞）2026年行政人员招聘公告",
-      "category": "teacher",
-      "region": "全国",
-      "publish_date": null,
-      "deadline": null,
-      "source": "gaoxiaojob",
-      "url": "https://www.gaoxiaojob.com/announcement/detail/386752.html",
-      "content_summary": "",
-      "match_score": 50,
-      "match_reason": "基础匹配",
-      "is_target_city": false
-    },
-    {
-      "title": "江西枫林涉外经贸职业学院2026年人才引进（招聘）公告",
-      "category": "teacher",
-      "region": "江西",
-      "publish_date": null,
-      "deadline": null,
-      "source": "gaoxiaojob",
-      "url": "https://www.gaoxiaojob.com/announcement/detail/403446.html",
-      "content_summary": "",
-      "match_score": 50,
-      "match_reason": "基础匹配",
-      "is_target_city": false
-    },
-    {
-      "title": "上海东海职业技术学院2026年度教师招聘计划",
-      "category": "teacher",
-      "region": "上海",
-      "publish_date": null,
-      "deadline": null,
-      "source": "gaoxiaojob",
-      "url": "https://www.gaoxiaojob.com/announcement/detail/367165.html",
       "content_summary": "",
       "match_score": 50,
       "match_reason": "基础匹配",

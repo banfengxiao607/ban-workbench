@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-01T15:40:48.987304+08:00",
+  "generated_at": "2026-08-02T15:48:04.149132+08:00",
   "count": 102,
   "user_profile": {
     "graduation_year": "2027",
@@ -214,19 +214,6 @@
       "is_target_city": false
     },
     {
-      "title": "安徽省霍邱县教育系统2026年引进30名高层次紧缺人才公告",
-      "category": "other",
-      "region": "安徽",
-      "publish_date": "2026-07-28",
-      "deadline": "2026-08-01",
-      "source": "gaoxiaojob",
-      "url": "https://www.gaoxiaojob.com/announcement/detail/418928.html",
-      "content_summary": "为加强我县中职学校师资队伍建设，持续优化人才队伍结构，更好服务教育高质量发展，经县委编委研究同意，2026年面向社会公开引进30名高层次紧缺人才到皖西经济技术学...",
-      "match_score": 50,
-      "match_reason": "基础匹配",
-      "is_target_city": false
-    },
-    {
       "title": "北京卫生职业学院招聘辅导员9人",
       "category": "fudaoyuan",
       "region": "北京-北京",
@@ -248,6 +235,19 @@
       "source": "gaoxiaojob",
       "url": "https://www.gaoxiaojob.com/announcement/detail/418718.html",
       "content_summary": "根据《云南省事业单位公开招聘工作人员办法》（云人社发〔2016〕182号）等有关规定，现将昆明市教育体育局直属学校（单位）2026年公开引进高层次和紧缺急需人才...",
+      "match_score": 50,
+      "match_reason": "基础匹配",
+      "is_target_city": false
+    },
+    {
+      "title": "四川省广汉市教育和体育局关于2026年公开考核招聘12名教师的公告",
+      "category": "teacher",
+      "region": "四川",
+      "publish_date": "2026-07-27",
+      "deadline": "2026-08-04",
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/announcement/detail/418661.html",
+      "content_summary": "根据《事业单位人事管理条例》《四川省事业单位公开招聘工作人员实施办法》《德阳市事业单位公开招聘工作人员实施细则》等有关规定，广汉市教育系统面向社会公开考核招聘教...",
       "match_score": 50,
       "match_reason": "基础匹配",
       "is_target_city": false

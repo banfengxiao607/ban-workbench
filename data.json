@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-22T07:53:15.913590+08:00",
+  "generated_at": "2026-08-23T07:51:50.531790+08:00",
   "count": 109,
   "user_profile": {
     "graduation_year": "2027",
@@ -188,19 +188,6 @@
       "is_target_city": false
     },
     {
-      "title": "郑州升达经贸管理学院2026年辅导员招聘启事",
-      "category": "fudaoyuan",
-      "region": "河南",
-      "publish_date": "2026-08-20",
-      "deadline": "2026-08-22",
-      "source": "gaoxiaojob",
-      "url": "https://www.gaoxiaojob.com/announcement/detail/424507.html",
-      "content_summary": "根据学校工作需要，现面向社会公开招聘辅导员若干名（含龙湖校区和登封校区），具体要求如下：一、招聘条件1.学历与专业要求：普通高等教育硕士研究生毕业并取得相应学历...",
-      "match_score": 85,
-      "match_reason": "硕士可报；辅导员",
-      "is_target_city": false
-    },
-    {
       "title": "四川电影电视学院2026年核心管理岗全球公开招聘公告",
       "category": "teacher",
       "region": "四川",
@@ -253,19 +240,6 @@
       "is_target_city": false
     },
     {
-      "title": "四川省崇州市教育系统2026年公开招聘68名编外储备教师公告",
-      "category": "teacher",
-      "region": "四川",
-      "publish_date": "2026-08-20",
-      "deadline": "2026-08-22",
-      "source": "gaoxiaojob",
-      "url": "https://www.gaoxiaojob.com/announcement/detail/424671.html",
-      "content_summary": "崇州市教育系统因工作需要，按照“公开、公平、竞争、择优”的原则，面向社会招聘编外储备教师68名，招聘的编外储备教师实行合同制管理，现将有关事项公告如下：一、招聘...",
-      "match_score": 50,
-      "match_reason": "基础匹配",
-      "is_target_city": false
-    },
-    {
       "title": "四川省都江堰市人力资源和社会保障局2026年8月公开招聘21名编外教职人员公告",
       "category": "other",
       "region": "四川",
@@ -300,6 +274,19 @@
       "source": "gaoxiaojob",
       "url": "https://www.gaoxiaojob.com/announcement/detail/424277.html",
       "content_summary": "依据《黑龙江省事业单位公开招聘工作人员实施细则》《关于进一步做好我省县乡事业单位公开招聘工作的通知》等规定，经研究决定，现就公开招聘事业单位工作人员有关事宜公告...",
+      "match_score": 50,
+      "match_reason": "基础匹配",
+      "is_target_city": false
+    },
+    {
+      "title": "黑龙江省大庆市事业单位2026年下半年公开招聘286名工作人员公告",
+      "category": "other",
+      "region": "黑龙江",
+      "publish_date": "2026-08-19",
+      "deadline": "2026-08-31",
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/announcement/detail/424253.html",
+      "content_summary": "根据《黑龙江省事业单位公开招聘工作人员实施细则》《关于进一步做好全省事业单位公开招聘工作的通知》等规定，经研究决定，现就公开招聘事业单位工作人员有关事宜公告如下...",
       "match_score": 50,
       "match_reason": "基础匹配",
       "is_target_city": false
@@ -586,6 +573,19 @@
       "source": "gaoxiaojob",
       "url": "https://www.gaoxiaojob.com/job/detail/1671714.html",
       "content_summary": "北京辅导员招聘",
+      "match_score": 70,
+      "match_reason": "辅导员",
+      "is_target_city": false
+    },
+    {
+      "title": "郑州医药健康职业学院招聘辅导员10人",
+      "category": "fudaoyuan",
+      "region": "河南-郑州",
+      "publish_date": "2026-06-07",
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/job/detail/541859.html",
+      "content_summary": "郑州辅导员招聘",
       "match_score": 70,
       "match_reason": "辅导员",
       "is_target_city": false

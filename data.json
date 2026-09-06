@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-05T08:42:50.434766+08:00",
+  "generated_at": "2026-09-06T08:38:29.660060+08:00",
   "count": 112,
   "user_profile": {
     "graduation_year": "2027",
@@ -185,6 +185,19 @@
       "content_summary": "为进一步加强我市事业单位人才队伍建设，加大高层次人才招聘补充力度，优化事业单位人员结构，根据《事业单位人事管理条例》和事业单位公开招聘有关规定，现招聘事业单位工...",
       "match_score": 65,
       "match_reason": "硕士可报",
+      "is_target_city": false
+    },
+    {
+      "title": "广州理工学院2026年教师教学发展中心副主任招聘公告",
+      "category": "teacher",
+      "region": "广东",
+      "publish_date": "2026-09-02",
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/announcement/detail/390081.html",
+      "content_summary": "一、学校简介广州理工学院创建于2000年12月，是经教育部批准设立的以工学为主，管理学、经济学、文学、艺术学、教育学等多学科协调发展的全日制普通本科高校。学校地...",
+      "match_score": 50,
+      "match_reason": "基础匹配",
       "is_target_city": false
     },
     {
@@ -773,19 +786,6 @@
       "is_target_city": false
     },
     {
-      "title": "中国民生银行武汉分行2027届校园招聘",
-      "category": "other",
-      "region": "全国",
-      "publish_date": null,
-      "deadline": null,
-      "source": "hust",
-      "url": "https://job.hust.edu.cn/zpinfo1/2412411.htm",
-      "content_summary": "华中科技大学就业网",
-      "match_score": 95,
-      "match_reason": "应届可报；目标城市：武汉",
-      "is_target_city": false
-    },
-    {
       "title": "巨鲨医疗2027届招聘简章",
       "category": "other",
       "region": "全国",
@@ -1163,19 +1163,6 @@
       "is_target_city": false
     },
     {
-      "title": "广州城建职业学院2026年公开选聘中层干部公告",
-      "category": "teacher",
-      "region": "全国",
-      "publish_date": null,
-      "deadline": null,
-      "source": "gaoxiaojob",
-      "url": "https://www.gaoxiaojob.com/announcement/detail/426973.html",
-      "content_summary": "",
-      "match_score": 60,
-      "match_reason": "学生干部优先",
-      "is_target_city": false
-    },
-    {
       "title": "南阳职业学院2026年度高层次人才及中高层干部招聘公告（全年招聘）",
       "category": "teacher",
       "region": "全国",
@@ -1186,6 +1173,19 @@
       "content_summary": "",
       "match_score": 60,
       "match_reason": "学生干部优先",
+      "is_target_city": false
+    },
+    {
+      "title": "激光院2027年校招简章",
+      "category": "other",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "hust",
+      "url": "https://job.hust.edu.cn/zpinfo1/2407395.htm",
+      "content_summary": "华中科技大学就业网",
+      "match_score": 55,
+      "match_reason": "应届可报",
       "is_target_city": false
     },
     {

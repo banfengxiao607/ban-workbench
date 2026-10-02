@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-01T09:50:40.118969+08:00",
-  "count": 117,
+  "generated_at": "2026-10-02T10:06:19.241595+08:00",
+  "count": 118,
   "user_profile": {
     "graduation_year": "2027",
     "school": "华中科技大学",
@@ -159,6 +159,19 @@
       "content_summary": "薪火相传，护佑民生。福建医科大学公共卫生学院承闽越卫健之根基，继预防医学之薪火，融产学研用之所长，肇基于 1959 年，历经系所升格、学科深耕、平台扩容的发展征...",
       "match_score": 80,
       "match_reason": "医学/护理相关",
+      "is_target_city": false
+    },
+    {
+      "title": "广州应用科技学院2026年辅导员招聘公告",
+      "category": "fudaoyuan",
+      "region": "广东",
+      "publish_date": "2026-09-29",
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/announcement/detail/297163.html",
+      "content_summary": "广州应用科技学院是经教育部批准设立的全日制普通本科高校。其前身是创办于2000年的广州大学松田学院。2020年12月经教育部批准转设并更现名。学校地处粤港澳大湾...",
+      "match_score": 70,
+      "match_reason": "辅导员",
       "is_target_city": false
     },
     {

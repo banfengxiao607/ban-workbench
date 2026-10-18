@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-17T09:11:20.806812+08:00",
+  "generated_at": "2026-10-18T08:45:19.513969+08:00",
   "count": 131,
   "user_profile": {
     "graduation_year": "2027",
@@ -292,19 +292,6 @@
       "is_target_city": false
     },
     {
-      "title": "甘肃省张掖市市直学校2026年下半年公开引进11名高层次人才公告",
-      "category": "other",
-      "region": "甘肃",
-      "publish_date": "2026-10-10",
-      "deadline": "2026-10-17",
-      "source": "gaoxiaojob",
-      "url": "https://www.gaoxiaojob.com/announcement/detail/436046.html",
-      "content_summary": "为深入实施人才强市战略，加强教师队伍建设，优化教师队伍结构，提升教育教学质量，张掖市市直学校决定面向社会公开引进一批高层次人才，现将有关事宜公告如下：一、引进计...",
-      "match_score": 50,
-      "match_reason": "基础匹配",
-      "is_target_city": false
-    },
-    {
       "title": "福州市台江区教育局2026-2027学年校园招聘公告",
       "category": "other",
       "region": "福建",
@@ -315,19 +302,6 @@
       "content_summary": "现将台江区教育局2026-2027学年校园招聘有关事项公告如下：一、招聘对象面向年龄、专业等符合条件的硕士研究生及以上学历学位毕业生和教育部直属师范大学2027...",
       "match_score": 70,
       "match_reason": "硕士可报；应届可报",
-      "is_target_city": false
-    },
-    {
-      "title": "甘肃省嘉峪关市教育系统2026年秋季校园公开招聘40名教师公告",
-      "category": "teacher",
-      "region": "甘肃",
-      "publish_date": "2026-10-08",
-      "deadline": "2026-10-17",
-      "source": "gaoxiaojob",
-      "url": "https://www.gaoxiaojob.com/announcement/detail/435407.html",
-      "content_summary": "为进一步加强我市教师队伍建设，根据《甘肃省事业单位公开招聘人员暂行办法》和工作实际，计划在西北师范大学设置招聘点，为嘉峪关市教育系统公开招聘一批中小学教师，现将...",
-      "match_score": 50,
-      "match_reason": "基础匹配",
       "is_target_city": false
     },
     {
@@ -404,6 +378,32 @@
       "source": "gaoxiaojob",
       "url": "https://www.gaoxiaojob.com/announcement/detail/431595.html",
       "content_summary": "按照省委人才工作领导小组办公室《关于开展2026年度“黑龙江人才周”校园引才活动的通知》及《新时代龙江人才振兴60条》（黑办发[2022]27号）要求，结合我市...",
+      "match_score": 50,
+      "match_reason": "基础匹配",
+      "is_target_city": false
+    },
+    {
+      "title": "黑龙江省绥化市事业单位2026年度“黑龙江人才周”校园引进人才活动公告",
+      "category": "other",
+      "region": "黑龙江",
+      "publish_date": "2026-09-16",
+      "deadline": "2026-10-26",
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/announcement/detail/431575.html",
+      "content_summary": "根据《黑龙江省事业单位公开招聘工作人员实施细则》《关于进一步做好全省事业单位公开招聘工作的通知》等规定，经研究决定，现就公开招聘事业单位工作人员有关事宜公告如下...",
+      "match_score": 50,
+      "match_reason": "基础匹配",
+      "is_target_city": false
+    },
+    {
+      "title": "黑龙江省绥化市2026年“黑龙江人才周”校园引进人才活动公告",
+      "category": "other",
+      "region": "黑龙江",
+      "publish_date": "2026-09-16",
+      "deadline": "2026-10-26",
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/announcement/detail/431550.html",
+      "content_summary": "按照省委人才办《关于开展2026年度“黑龙江人才周”校园引才活动的通知》要求，经研究决定，开展绥化市“绥青优选”产业储备人才和“绥企优聘”企业急需紧缺人才引进活...",
       "match_score": 50,
       "match_reason": "基础匹配",
       "is_target_city": false
@@ -1462,6 +1462,19 @@
       "is_target_city": false
     },
     {
+      "title": "大商所飞泰测试技术有限公司2027届校园招聘公告",
+      "category": "other",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "hust",
+      "url": "https://job.hust.edu.cn/zpinfo1/2456384.htm",
+      "content_summary": "华中科技大学就业网",
+      "match_score": 55,
+      "match_reason": "应届可报",
+      "is_target_city": false
+    },
+    {
       "title": "湖北交通投资集团有限公司2027届秋季校园招聘公告",
       "category": "other",
       "region": "全国",
@@ -1612,19 +1625,6 @@
       "deadline": null,
       "source": "hust",
       "url": "https://job.hust.edu.cn/zpinfo1/2456356.htm",
-      "content_summary": "华中科技大学就业网",
-      "match_score": 55,
-      "match_reason": "应届可报",
-      "is_target_city": false
-    },
-    {
-      "title": "中国光大银行杭州分行2027年秋季校园招聘启事",
-      "category": "other",
-      "region": "全国",
-      "publish_date": null,
-      "deadline": null,
-      "source": "hust",
-      "url": "https://job.hust.edu.cn/zpinfo1/2456355.htm",
       "content_summary": "华中科技大学就业网",
       "match_score": 55,
       "match_reason": "应届可报",

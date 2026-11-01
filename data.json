@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-31T10:13:39.455946+08:00",
-  "count": 136,
+  "generated_at": "2026-11-01T09:54:55.794639+08:00",
+  "count": 135,
   "user_profile": {
     "graduation_year": "2027",
     "school": "华中科技大学",
@@ -69,6 +69,32 @@
       "match_score": 110,
       "match_reason": "目标城市：天津；辅导员",
       "is_target_city": true
+    },
+    {
+      "title": "杭州电子科技大学招聘辅导员10人",
+      "category": "fudaoyuan",
+      "region": "浙江-杭州",
+      "publish_date": "2026-11-12",
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/job/detail/1344333.html",
+      "content_summary": "杭州辅导员招聘",
+      "match_score": 70,
+      "match_reason": "辅导员",
+      "is_target_city": false
+    },
+    {
+      "title": "自然资源部第二海洋研究所招聘辅导员1人",
+      "category": "fudaoyuan",
+      "region": "浙江-杭州",
+      "publish_date": "2026-11-01",
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/job/detail/1329536.html",
+      "content_summary": "杭州辅导员招聘",
+      "match_score": 70,
+      "match_reason": "辅导员",
+      "is_target_city": false
     },
     {
       "title": "桂林市教育系统2026年赴高校招聘27届普通高校毕业生（桂林专场）秋季就业双选会公告",
@@ -318,14 +344,14 @@
       "is_target_city": false
     },
     {
-      "title": "贵州省黔西南布依族苗族自治州2026年10月引进高层次人才和急需紧缺人才公告",
+      "title": "甘肃省定西市2026年度第二批引进人才公告",
       "category": "other",
-      "region": "贵州",
-      "publish_date": "2026-10-19",
-      "deadline": "2026-10-31",
+      "region": "甘肃",
+      "publish_date": "2026-10-14",
+      "deadline": null,
       "source": "gaoxiaojob",
-      "url": "https://www.gaoxiaojob.com/announcement/detail/438600.html",
-      "content_summary": "为进一步加强黔西南州人才队伍建设，围绕经济社会发展人才需求，加大产业人才引进工作力度，经研究，决定开展2026年秋季赴省内外高校引才活动，面向社会引进一批优秀人...",
+      "url": "https://www.gaoxiaojob.com/announcement/detail/437541.html",
+      "content_summary": "为深入实施人才赋能工程，广泛吸引集聚各类人才来定创新创业，根据《定西市人才引进使用管理办法（修订）》《定西市“带编入企”引进高层次人才管理办法（试行）》等规定，...",
       "match_score": 50,
       "match_reason": "基础匹配",
       "is_target_city": false
@@ -916,32 +942,6 @@
       "is_target_city": false
     },
     {
-      "title": "杭州电子科技大学招聘辅导员10人",
-      "category": "fudaoyuan",
-      "region": "浙江-杭州",
-      "publish_date": "2025-11-12",
-      "deadline": null,
-      "source": "gaoxiaojob",
-      "url": "https://www.gaoxiaojob.com/job/detail/1344333.html",
-      "content_summary": "杭州辅导员招聘",
-      "match_score": 70,
-      "match_reason": "辅导员",
-      "is_target_city": false
-    },
-    {
-      "title": "自然资源部第二海洋研究所招聘辅导员1人",
-      "category": "fudaoyuan",
-      "region": "浙江-杭州",
-      "publish_date": "2025-11-01",
-      "deadline": null,
-      "source": "gaoxiaojob",
-      "url": "https://www.gaoxiaojob.com/job/detail/1329536.html",
-      "content_summary": "杭州辅导员招聘",
-      "match_score": 70,
-      "match_reason": "辅导员",
-      "is_target_city": false
-    },
-    {
       "title": "2024年下半年阳新县纪委监委公开择优选调(聘)工作人员调整岗位计划公告",
       "category": "xuandiao",
       "region": "全国",
@@ -955,16 +955,16 @@
       "is_target_city": false
     },
     {
-      "title": "武汉市2027年选聘生管培生招聘公告",
-      "category": "other",
-      "region": "全国",
+      "title": "青海省2027年度选调应届优秀大学毕业生公告（华中科技大学）",
+      "category": "xuandiao",
+      "region": "青海",
       "publish_date": null,
       "deadline": null,
       "source": "hust",
-      "url": "https://job.hust.edu.cn/jcfw/2433802.htm",
+      "url": "https://job.hust.edu.cn/jcfw/2464475.htm",
       "content_summary": "华中科技大学就业网",
-      "match_score": 95,
-      "match_reason": "应届可报；目标城市：武汉",
+      "match_score": 75,
+      "match_reason": "应届可报；选调生",
       "is_target_city": false
     },
     {
@@ -1690,19 +1690,6 @@
       "deadline": null,
       "source": "hust",
       "url": "https://job.hust.edu.cn/zpinfo1/2454466.htm",
-      "content_summary": "华中科技大学就业网",
-      "match_score": 55,
-      "match_reason": "应届可报",
-      "is_target_city": false
-    },
-    {
-      "title": "航天科工六院2027届校园招聘全面启动",
-      "category": "other",
-      "region": "全国",
-      "publish_date": null,
-      "deadline": null,
-      "source": "hust",
-      "url": "https://job.hust.edu.cn/zpinfo1/2464152.htm",
       "content_summary": "华中科技大学就业网",
       "match_score": 55,
       "match_reason": "应届可报",

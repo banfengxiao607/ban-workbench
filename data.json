@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-01T09:54:55.794639+08:00",
-  "count": 135,
+  "generated_at": "2026-11-02T10:14:14.200012+08:00",
+  "count": 136,
   "user_profile": {
     "graduation_year": "2027",
     "school": "华中科技大学",
@@ -81,6 +81,45 @@
       "content_summary": "杭州辅导员招聘",
       "match_score": 70,
       "match_reason": "辅导员",
+      "is_target_city": false
+    },
+    {
+      "title": "广东工商职业技术大学2026年公开选聘音乐舞蹈学院副院长公告",
+      "category": "teacher",
+      "region": "广东",
+      "publish_date": "2026-11-02",
+      "deadline": "2026-12-31",
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/announcement/detail/441878.html",
+      "content_summary": "根据《广东工商职业技术大学干部选拔任用管理实施办法》（广工商大〔2019〕32号）、《广东工商职业技术大学机构、编制、职能设置方案》（广工商大〔2023〕96号...",
+      "match_score": 60,
+      "match_reason": "学生干部优先",
+      "is_target_city": false
+    },
+    {
+      "title": "广东工商职业技术大学2026年公开选聘体育学院副院长公告",
+      "category": "teacher",
+      "region": "广东",
+      "publish_date": "2026-11-02",
+      "deadline": "2026-12-31",
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/announcement/detail/441875.html",
+      "content_summary": "根据《广东工商职业技术大学干部选拔任用管理实施办法》（广工商大〔2019〕32号）、《广东工商职业技术大学机构、编制、职能设置方案》（广工商大〔2023〕96号...",
+      "match_score": 60,
+      "match_reason": "学生干部优先",
+      "is_target_city": false
+    },
+    {
+      "title": "江西航空职业技术学院2026年急聘二级学院院长岗位公告",
+      "category": "teacher",
+      "region": "江西",
+      "publish_date": "2026-11-02",
+      "deadline": null,
+      "source": "gaoxiaojob",
+      "url": "https://www.gaoxiaojob.com/announcement/detail/401995.html",
+      "content_summary": "一、学校简介江西航空职业技术学院，源于1951年国营三二0厂（洪都机械厂）建厂初期的职工教育，前身是1956年成立的南昌四0四业余工学院，历经多次更名，1988...",
+      "match_score": 50,
+      "match_reason": "基础匹配",
       "is_target_city": false
     },
     {
@@ -196,32 +235,6 @@
       "source": "gaoxiaojob",
       "url": "https://www.gaoxiaojob.com/announcement/detail/414265.html",
       "content_summary": "一、学校简介学校特色：广州华商学院是一所财经特色鲜明、多学科协调发展的全日制应用型本科高等学校。学校现有17个学院，共55个本科专业，涵盖经、管、文、工、艺、教...",
-      "match_score": 50,
-      "match_reason": "基础匹配",
-      "is_target_city": false
-    },
-    {
-      "title": "广州华商学院2026年产业学院院长招聘公告",
-      "category": "teacher",
-      "region": "广东",
-      "publish_date": "2026-10-29",
-      "deadline": null,
-      "source": "gaoxiaojob",
-      "url": "https://www.gaoxiaojob.com/announcement/detail/388755.html",
-      "content_summary": "湾区逐梦，华商启航！学校特色：广州华商学院是一所财经特色鲜明、多学科协调发展的全日制应用型本科高等学校。学校现有17个学院，共54个本科专业，涵盖经、管、文、工...",
-      "match_score": 50,
-      "match_reason": "基础匹配",
-      "is_target_city": false
-    },
-    {
-      "title": "重庆对外经贸学院2026年招聘国际学院副院长公告",
-      "category": "teacher",
-      "region": "重庆",
-      "publish_date": "2026-10-29",
-      "deadline": null,
-      "source": "gaoxiaojob",
-      "url": "https://www.gaoxiaojob.com/announcement/detail/420802.html",
-      "content_summary": "重庆对外经贸学院（原重庆师范大学涉外商贸学院）是2001年经教育部批准设立的全日制普通本科高校。学校坐落于富有三千年巴渝文化底蕴的历史名城——重庆，在合川区和铜...",
       "match_score": 50,
       "match_reason": "基础匹配",
       "is_target_city": false
@@ -1605,6 +1618,45 @@
       "is_target_city": false
     },
     {
+      "title": "与优秀同行 | 方田教育2027校园招聘简章",
+      "category": "other",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "hust",
+      "url": "https://job.hust.edu.cn/zpinfo1/2441792.htm",
+      "content_summary": "华中科技大学就业网",
+      "match_score": 55,
+      "match_reason": "应届可报",
+      "is_target_city": false
+    },
+    {
+      "title": "思谋科技2027届校园招聘火热进行中",
+      "category": "other",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "hust",
+      "url": "https://job.hust.edu.cn/zpinfo1/2447453.htm",
+      "content_summary": "华中科技大学就业网",
+      "match_score": 55,
+      "match_reason": "应届可报",
+      "is_target_city": false
+    },
+    {
+      "title": "爱旭股份2027届校园招聘正式启动",
+      "category": "other",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "hust",
+      "url": "https://job.hust.edu.cn/zpinfo1/2464473.htm",
+      "content_summary": "华中科技大学就业网",
+      "match_score": 55,
+      "match_reason": "应届可报",
+      "is_target_city": false
+    },
+    {
       "title": "知来具身2027届校园招聘：让世间充满AI，与具身机器人共创",
       "category": "other",
       "region": "全国",
@@ -1683,32 +1735,6 @@
       "is_target_city": false
     },
     {
-      "title": "理光亚太研究院2027年度校园招聘",
-      "category": "other",
-      "region": "全国",
-      "publish_date": null,
-      "deadline": null,
-      "source": "hust",
-      "url": "https://job.hust.edu.cn/zpinfo1/2454466.htm",
-      "content_summary": "华中科技大学就业网",
-      "match_score": 55,
-      "match_reason": "应届可报",
-      "is_target_city": false
-    },
-    {
-      "title": "安徽扬子职业技术学院2027年专任教师招聘公告",
-      "category": "teacher",
-      "region": "安徽",
-      "publish_date": null,
-      "deadline": null,
-      "source": "gaoxiaojob",
-      "url": "https://www.gaoxiaojob.com/announcement/detail/428443.html",
-      "content_summary": "",
-      "match_score": 55,
-      "match_reason": "应届可报",
-      "is_target_city": false
-    },
-    {
       "title": "电商独角兽-掌上先机/慧策-校园招聘",
       "category": "other",
       "region": "全国",
@@ -1742,19 +1768,6 @@
       "deadline": null,
       "source": "hust",
       "url": "https://job.hust.edu.cn/zpinfo1/2390789.htm",
-      "content_summary": "华中科技大学就业网",
-      "match_score": 50,
-      "match_reason": "基础匹配",
-      "is_target_city": false
-    },
-    {
-      "title": "2026-辽宁省计量科学研究院-事业单位高层次人才招聘",
-      "category": "other",
-      "region": "辽宁",
-      "publish_date": null,
-      "deadline": null,
-      "source": "hust",
-      "url": "https://job.hust.edu.cn/zpinfo1/2464153.htm",
       "content_summary": "华中科技大学就业网",
       "match_score": 50,
       "match_reason": "基础匹配",

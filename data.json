@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-07T10:34:43.893860+08:00",
-  "count": 123,
+  "generated_at": "2026-11-08T10:05:06.574319+08:00",
+  "count": 124,
   "user_profile": {
     "graduation_year": "2027",
     "school": "华中科技大学",
@@ -1449,6 +1449,19 @@
       "is_target_city": false
     },
     {
+      "title": "中建八局城市发展有限公司2027届校园招聘",
+      "category": "other",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "hust",
+      "url": "https://job.hust.edu.cn/zpinfo1/2466279.htm",
+      "content_summary": "华中科技大学就业网",
+      "match_score": 55,
+      "match_reason": "应届可报",
+      "is_target_city": false
+    },
+    {
       "title": "公资集团2027届校园招聘",
       "category": "other",
       "region": "全国",
@@ -1456,6 +1469,19 @@
       "deadline": null,
       "source": "hust",
       "url": "https://job.hust.edu.cn/zpinfo1/2454179.htm",
+      "content_summary": "华中科技大学就业网",
+      "match_score": 55,
+      "match_reason": "应届可报",
+      "is_target_city": false
+    },
+    {
+      "title": "2027湖南未来教育校园招聘",
+      "category": "other",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "hust",
+      "url": "https://job.hust.edu.cn/zpinfo1/2466273.htm",
       "content_summary": "华中科技大学就业网",
       "match_score": 55,
       "match_reason": "应届可报",
@@ -1560,19 +1586,6 @@
       "deadline": null,
       "source": "hust",
       "url": "https://job.hust.edu.cn/zpinfo1/2466255.htm",
-      "content_summary": "华中科技大学就业网",
-      "match_score": 55,
-      "match_reason": "应届可报",
-      "is_target_city": false
-    },
-    {
-      "title": "中国科学院理化技术研究所2027年度 校园招聘公告",
-      "category": "other",
-      "region": "全国",
-      "publish_date": null,
-      "deadline": null,
-      "source": "hust",
-      "url": "https://job.hust.edu.cn/zpinfo1/2465936.htm",
       "content_summary": "华中科技大学就业网",
       "match_score": 55,
       "match_reason": "应届可报",

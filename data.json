@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-14T10:59:46.379277+08:00",
-  "count": 118,
+  "generated_at": "2026-11-15T10:26:22.160714+08:00",
+  "count": 120,
   "user_profile": {
     "graduation_year": "2027",
     "school": "华中科技大学",
@@ -1384,6 +1384,32 @@
       "is_target_city": false
     },
     {
+      "title": "杭州越兴仪器有限责任公司2027届校园招聘",
+      "category": "other",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "hust",
+      "url": "https://job.hust.edu.cn/zpinfo1/2468389.htm",
+      "content_summary": "华中科技大学就业网",
+      "match_score": 55,
+      "match_reason": "应届可报",
+      "is_target_city": false
+    },
+    {
+      "title": "2026-2027 届校园招聘简章",
+      "category": "other",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "hust",
+      "url": "https://job.hust.edu.cn/zpinfo1/2468387.htm",
+      "content_summary": "华中科技大学就业网",
+      "match_score": 55,
+      "match_reason": "应届可报",
+      "is_target_city": false
+    },
+    {
       "title": "湾区好银行 智汇创未来 江门农商银行2027届校园招聘启事",
       "category": "other",
       "region": "全国",
@@ -1462,19 +1488,6 @@
       "is_target_city": false
     },
     {
-      "title": "广州虹科电子科技有限公司2027届校园招聘信息",
-      "category": "other",
-      "region": "全国",
-      "publish_date": null,
-      "deadline": null,
-      "source": "hust",
-      "url": "https://job.hust.edu.cn/zpinfo1/2468373.htm",
-      "content_summary": "华中科技大学就业网",
-      "match_score": 55,
-      "match_reason": "应届可报",
-      "is_target_city": false
-    },
-    {
       "title": "中国人民解放军93221部队招聘文职人员宣传公告",
       "category": "other",
       "region": "全国",
@@ -1482,6 +1495,19 @@
       "deadline": null,
       "source": "hust",
       "url": "https://job.hust.edu.cn/jcfw/2467229.htm",
+      "content_summary": "华中科技大学就业网",
+      "match_score": 50,
+      "match_reason": "基础匹配",
+      "is_target_city": false
+    },
+    {
+      "title": "重庆市华翌智能装备27校招（智能高端五轴机床领域）",
+      "category": "other",
+      "region": "全国",
+      "publish_date": null,
+      "deadline": null,
+      "source": "hust",
+      "url": "https://job.hust.edu.cn/zpinfo1/2468388.htm",
       "content_summary": "华中科技大学就业网",
       "match_score": 50,
       "match_reason": "基础匹配",
